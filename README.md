@@ -1,5 +1,5 @@
-<h1 align="center">Hey, I'm Adityavardhan 👋</h1>
-<h3 align="center">AI & ML Engineer | Data Analyst | Community Leader | Tech Explorer 🚀</h3>
+<h1 align="center">Hey, I'm Adityavardhan </h1>
+<h3 align="center">AI & ML Engineer | Data Analyst | Community Leader | Tech Explorer </h3>
 
 <p align="center">
 Crafting intelligence. Understanding data. Pushing boundaries.
@@ -7,29 +7,31 @@ Crafting intelligence. Understanding data. Pushing boundaries.
 
 ---
 
-### 🔭 What I'm Working On
+###  What I'm Working On
 - Intelligent data systems for automation
-- Computer Vision & EEG-based Brain-Computer Interfaces
+- Computer Vision Based Problem Statements
+- Data Science on EEG via Brain-Computer Interfaces
+- MarTech Data Analysis
 - Scalable AI apps integrating MLOps + Cloud
 - Geospatial + Perception models for real-world robotics
 
 ---
 
-### 🧠 Tech Stack
+###  Tech Stack
 
-#### 🚀 Languages & Frameworks  
+#### Languages & Frameworks  
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=python,cpp,c,js,html,css,tensorflow,pytorch,flask,opencv,sklearn" />
+  <img src="https://skillicons.dev/icons?i=python,cpp,c,html,css,tensorflow,pytorch,flask,opencv,sklearn" />
 </p>
 
-#### 🛠 Tools & Cloud
+#### Tools & Cloud
 <p align="left">
   <img src="https://skillicons.dev/icons?i=gcp,docker,git,github,mysql,linux,raspberrypi" />
 </p>
 
 ---
 
-### 🏆 Achievements & Leadership
+### Achievements & Leadership
 - 🧠 Best Paper Award — Neural Signatures in EEG Analysis  
 - 🥇 Winners — **Smart India Hackathon 2023** (Ministry of Defence)  
 - 🎯 Lead — GDSC | CodeChef Chapter  
@@ -37,19 +39,19 @@ Crafting intelligence. Understanding data. Pushing boundaries.
 
 ---
 
-### 🎯 Featured Projects
+### Featured Projects
 
 | Project | Domain | Tech |
 |--------|--------|------|
-| **NeuroTetris** | BCI Gaming System | EEG, DL, Python |
-| **Legolas** | CV-based Road Infra Monitoring | YOLO, IoT, GIS |
+| **My Portfolio** | Single Page Portfolio Website | HTML, CSS, jquery |
+| **Contagious Tech** | CV based Human target Detection and Acqusition | YOLO, Python, Sklearn  |
 | **Tesseract** | Legal Document AI Chatbot | Gemini API, OCR, Flask |
 
 🔗 *Pinned repositories below highlight project code & demos.*
 
 ---
 
-### 📊 GitHub Stats
+###  GitHub Stats
 
 <p align="center">
   <img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adityavardhanjain&show_icons=true&theme=tokyonight" />
@@ -62,7 +64,7 @@ Crafting intelligence. Understanding data. Pushing boundaries.
 
 ---
 
-### 🔗 Portfolio Sections
+### Portfolio Sections
 
 - 🌟 About Me  
 - 📄 CV / Resume  
@@ -74,14 +76,15 @@ Crafting intelligence. Understanding data. Pushing boundaries.
 
 ---
 
-### 📄 Resume
+### Resume
 
 📌 Download my latest resume here:  
-➡️ [Click to view Resume (PDF)](/mnt/data/Adityavardhan Jain.pdf)
+➡️ [View Resume](https://adityavardhanjain.github.io/adityavardhanjain/#cv)
+
 
 ---
 
-### 📬 Connect With Me
+### Connect With Me
 
 <p align="left">
 <a href="mailto:jainadityavardhan@gmail.com"><img src="https://skillicons.dev/icons?i=gmail"/></a>
@@ -90,8 +93,10 @@ Crafting intelligence. Understanding data. Pushing boundaries.
 
 ---
 
-### 🧩 Fun Fact
+### 🧩 Here is a joke : ![Jokes Card](https://readme-jokes.vercel.app/api)
 
-The universe is mostly empty space — except my brain which is mostly full of ideas.
+
+
 
 <p align="center"><b>Thanks for reading — keep exploring!</b> 🚀</p>
+
