@@ -1,44 +1,97 @@
-Welcome to my personal portfolio! 🚀
-This site highlights my work, experience, and personal projects.
+<h1 align="center">Hey, I'm Adityavardhan 👋</h1>
+<h3 align="center">AI & ML Engineer | Data Analyst | Community Leader | Tech Explorer 🚀</h3>
 
-The foundation of this portfolio is Dimension, a one-page template with smooth modal transitions and a unique depth effect, originally crafted by HTML5 UP.
+<p align="center">
+Crafting intelligence. Understanding data. Pushing boundaries.
+</p>
 
-🔹 What You’ll Find Here
+---
 
-About Me — who I am and what drives my work
+### 🔭 What I'm Working On
+- Intelligent data systems for automation
+- Computer Vision & EEG-based Brain-Computer Interfaces
+- Scalable AI apps integrating MLOps + Cloud
+- Geospatial + Perception models for real-world robotics
 
-CV — My comprehensive resume
+---
 
-Projects — curated showcase of selected work
+### 🧠 Tech Stack
 
-Community and Clubs - Communities I have been a part of
+#### 🚀 Languages & Frameworks  
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=python,cpp,c,js,html,css,tensorflow,pytorch,flask,opencv,sklearn" />
+</p>
 
-Contact — easy ways to reach out and connect
+#### 🛠 Tools & Cloud
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=gcp,docker,git,github,mysql,linux,raspberrypi" />
+</p>
 
-The goal is to provide a quick, intuitive experience while still offering depth for those who want to dive in.
+---
 
-🛠️ Tech & Tools Used
+### 🏆 Achievements & Leadership
+- 🧠 Best Paper Award — Neural Signatures in EEG Analysis  
+- 🥇 Winners — **Smart India Hackathon 2023** (Ministry of Defence)  
+- 🎯 Lead — GDSC | CodeChef Chapter  
+- 🛠 Tatvic Analytics — Consultant & Data Analyst
 
-HTML5 & CSS3
+---
 
-Responsive and mobile-first design
+### 🎯 Featured Projects
 
-Icons via Font Awesome
+| Project | Domain | Tech |
+|--------|--------|------|
+| **NeuroTetris** | BCI Gaming System | EEG, DL, Python |
+| **Legolas** | CV-based Road Infra Monitoring | YOLO, IoT, GIS |
+| **Tesseract** | Legal Document AI Chatbot | Gemini API, OCR, Flask |
 
-🎨 Template Credits
+🔗 *Pinned repositories below highlight project code & demos.*
 
-This portfolio is adapted from the Dimension template by HTML5 UP
-Licensed under CCA 3.0 — attribution required
-Original author: AJ | html5up.net | @ajlkn
+---
 
-Additional resources:
+### 📊 GitHub Stats
 
-Demo images originally courtesy of Unsplash (not included)
+<p align="center">
+  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adityavardhanjain&show_icons=true&theme=tokyonight" />
+  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=Adityavardhanjain&theme=tokyonight" />
+</p>
 
-Responsive Tools (github.com/ajlkn/responsive-tools)
+<p align="center">
+  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adityavardhanjain&layout=compact&theme=tokyonight" />
+</p>
 
-📬 Contact
+---
 
-Feel free to reach out if you’d like to collaborate, chat, or just say hi!
-E mail : jainadityavardhan@gmail.com
-LinkedIn : https://www.linkedin.com/in/adityavardhan-jain/
+### 🔗 Portfolio Sections
+
+- 🌟 About Me  
+- 📄 CV / Resume  
+- 🚀 Projects  
+- 🌐 Communities & Clubs  
+- 📬 Contact  
+
+> My goal is to build systems that connect intelligence with impact.
+
+---
+
+### 📄 Resume
+
+📌 Download my latest resume here:  
+➡️ [Click to view Resume (PDF)](/mnt/data/Adityavardhan Jain.pdf)
+
+---
+
+### 📬 Connect With Me
+
+<p align="left">
+<a href="mailto:jainadityavardhan@gmail.com"><img src="https://skillicons.dev/icons?i=gmail"/></a>
+<a href="https://www.linkedin.com/in/adityavardhan-jain/"><img src="https://skillicons.dev/icons?i=linkedin"/></a>
+</p>
+
+---
+
+### 🧩 Fun Fact
+
+The universe is mostly empty space — except my brain which is mostly full of ideas.
+
+<p align="center"><b>Thanks for reading — keep exploring!</b> 🚀</p>
