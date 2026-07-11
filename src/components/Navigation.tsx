@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Satellite } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { navigationItems } from '@/lib/data';
 
 export default function Navigation() {
@@ -14,7 +14,6 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      // Update active section based on scroll position
       const sections = navigationItems.map(item => item.id);
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -41,103 +40,88 @@ export default function Navigation() {
   
   return (
     <>
-      {/* Desktop Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      {/* Navigation */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-[#030810]/90 backdrop-blur-md border-b border-cyan-500/10' 
+            ? 'bg-[#0c0f14]/95 backdrop-blur-md border-b border-white/5' 
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+        <div className="container">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.button
+            <button
               onClick={() => handleNavClick('home')}
-              className="flex items-center gap-2 group"
-              whileHover={{ scale: 1.02 }}
+              className="text-lg font-semibold tracking-tight"
             >
-              <Satellite className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
-              <span className="font-mono text-sm text-cyan-400/80 group-hover:text-cyan-300 transition-colors">
-                AJ-OS
-              </span>
-            </motion.button>
+              <span className="text-gray-100">AJ</span>
+              <span className="text-blue-400">.</span>
+            </button>
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-1">
               {navigationItems.map((item) => (
-                <motion.button
+                <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative px-4 py-2 text-xs font-mono tracking-wider transition-colors ${
+                  className={`px-4 py-2 text-sm rounded-lg transition-colors ${
                     activeSection === item.id
-                      ? 'text-cyan-400'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'text-blue-400 bg-blue-400/10'
+                      : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
                   }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   {item.shortLabel}
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="activeNav"
-                      className="absolute bottom-0 left-4 right-4 h-px bg-cyan-400/50"
-                    />
-                  )}
-                </motion.button>
+                </button>
               ))}
             </div>
             
             {/* Mobile Menu Button */}
-            <motion.button
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-slate-400 hover:text-cyan-400 transition-colors"
-              whileTap={{ scale: 0.95 }}
+              className="md:hidden p-2 text-gray-400 hover:text-gray-200"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </motion.button>
+            </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
       
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-30 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 md:hidden pt-16"
           >
             <div 
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
               onClick={() => setIsMobileMenuOpen(false)} 
             />
-            <div className="absolute right-0 top-0 bottom-0 w-72 bg-[#0a1628] border-l border-cyan-500/20 p-6 pt-20">
+            <motion.div
+              initial={{ y: -20 }}
+              animate={{ y: 0 }}
+              exit={{ y: -20 }}
+              className="relative bg-[#13161d] border-b border-white/5 p-6"
+            >
               <div className="space-y-2">
-                {navigationItems.map((item, index) => (
-                  <motion.button
+                {navigationItems.map((item) => (
+                  <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`block w-full text-left px-4 py-3 font-mono text-sm tracking-wider rounded-lg transition-colors ${
+                    className={`block w-full text-left px-4 py-3 text-sm rounded-lg transition-colors ${
                       activeSection === item.id
-                        ? 'bg-cyan-500/10 text-cyan-400'
-                        : 'text-slate-400 hover:bg-cyan-500/5 hover:text-slate-200'
+                        ? 'text-blue-400 bg-blue-400/10'
+                        : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
                     }`}
                   >
-                    <span className="text-cyan-500/50 mr-3">{String(index + 1).padStart(2, '0')}</span>
                     {item.label}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
