@@ -2,9 +2,9 @@
 
 export default function ResearcherProfile() {
   return (
-    <section id="about" className="py-24 px-6">
-      <div className="max-w-3xl mx-auto">
-        <p className="text-sm text-[#64748b] mb-4">About</p>
+    <section id="about" className="py-32 px-6 md:px-12 lg:px-16">
+      <div className="w-full max-w-5xl mx-auto">
+        <p className="text-sm text-[#94a3b8] mb-4">About</p>
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#f0f4f8]">
           Building intelligent systems at the intersection of AI, data, and human cognition.
         </h2>

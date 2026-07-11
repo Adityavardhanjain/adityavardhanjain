@@ -6,9 +6,9 @@ import { projects } from '@/lib/data';
 
 export default function MissionArchive() {
   return (
-    <section id="projects" className="py-24 px-6 bg-[#0d1421]">
-      <div className="max-w-3xl mx-auto">
-        <p className="text-sm text-[#64748b] mb-4">Projects</p>
+    <section id="projects" className="py-32 px-6 md:px-12 lg:px-16 bg-[#0d1421]">
+      <div className="w-full max-w-5xl mx-auto">
+        <p className="text-sm text-[#94a3b8] mb-4">Projects</p>
         <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-[#f0f4f8]">
           Featured Work
         </h2>
@@ -20,12 +20,12 @@ export default function MissionArchive() {
                 <h3 className="text-lg font-medium text-[#f0f4f8]">{project.title}</h3>
                 <div className="flex gap-3">
                   {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[#64748b] hover:text-[#60a5fa] transition-colors">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[#94a3b8] hover:text-[#60a5fa] transition-colors">
                       <GithubIcon className="w-5 h-5" />
                     </a>
                   )}
                   {project.demo && (
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[#64748b] hover:text-[#60a5fa] transition-colors">
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[#94a3b8] hover:text-[#60a5fa] transition-colors">
                       <ExternalLink className="w-5 h-5" />
                     </a>
                   )}

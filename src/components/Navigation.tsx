@@ -33,7 +33,7 @@ export default function Navigation() {
           isScrolled ? 'bg-[#07090f]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.05)]' : ''
         }`}
       >
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <button
@@ -49,7 +49,7 @@ export default function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className="text-sm text-[#64748b] hover:text-[#60a5fa] transition-colors"
+                  className="text-sm text-[#94a3b8] hover:text-[#60a5fa] transition-colors"
                 >
                   {item.shortLabel}
                 </button>
@@ -59,7 +59,7 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-[#64748b]"
+              className="md:hidden p-2 text-[#94a3b8]"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>

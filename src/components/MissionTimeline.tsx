@@ -4,10 +4,10 @@ import { experiences, achievements } from '@/lib/data';
 
 export default function MissionTimeline() {
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-3xl mx-auto">
+    <section id="experience" className="py-32 px-6 md:px-12 lg:px-16">
+      <div className="w-full max-w-5xl mx-auto">
         {/* Section Header */}
-        <p className="text-sm text-[#64748b] mb-4">Experience</p>
+        <p className="text-sm text-[#94a3b8] mb-4">Experience</p>
         <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-[#f0f4f8]">
           Work History
         </h2>
@@ -24,7 +24,7 @@ export default function MissionTimeline() {
                 <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-[#60a5fa] ring-4 ring-[#07090f]" />
                 
                 {/* Date */}
-                <p className="text-sm text-[#64748b] mb-1">{exp.period}</p>
+                <p className="text-sm text-[#94a3b8] mb-1 whitespace-nowrap">{exp.period}</p>
                 
                 {/* Title */}
                 <h3 className="text-lg font-medium mb-0.5 text-[#f0f4f8]">{exp.title}</h3>
@@ -67,7 +67,7 @@ export default function MissionTimeline() {
                 key={achievement.id} 
                 className="p-4 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl"
               >
-                <p className="text-xs text-[#64748b] mb-1">{achievement.year}</p>
+                <p className="text-xs text-[#94a3b8] mb-1 whitespace-nowrap">{achievement.year}</p>
                 <h4 className="text-sm font-medium text-[#f0f4f8] mb-0.5 leading-snug">
                   {achievement.title}
                 </h4>

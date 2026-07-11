@@ -19,9 +19,9 @@ export default function TransmissionCenter() {
   };
   
   return (
-    <section id="contact" className="py-24 px-6 bg-[#0d1421]">
-      <div className="max-w-3xl mx-auto">
-        <p className="text-sm text-[#64748b] mb-4">Contact</p>
+    <section id="contact" className="py-32 px-6 md:px-12 lg:px-16 bg-[#0d1421]">
+      <div className="w-full max-w-5xl mx-auto">
+        <p className="text-sm text-[#94a3b8] mb-4">Contact</p>
         <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-[#f0f4f8]">
           Get in Touch
         </h2>
