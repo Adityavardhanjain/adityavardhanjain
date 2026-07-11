@@ -19,64 +19,118 @@ export default function TransmissionCenter() {
   };
   
   return (
-    <section id="contact" className="py-32 px-6 md:px-12 lg:px-16 bg-[#0d1421]">
-      <div className="w-full max-w-5xl mx-auto">
-        <p className="text-sm text-[#94a3b8] mb-4">Contact</p>
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-[#f0f4f8]">
-          Get in Touch
-        </h2>
-        <p className="text-[#94a3b8] mb-10">
-          Interested in AI research or collaboration? Let&apos;s connect.
-        </p>
-        
-        <div className="grid sm:grid-cols-3 gap-4 mb-10">
-          <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="p-5 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-center hover:border-[rgba(96,165,250,0.3)] transition-all">
-            <GithubIcon className="w-6 h-6 mx-auto mb-3 text-[#94a3b8]" />
-            <p className="text-sm text-[#f0f4f8]">GitHub</p>
-          </a>
-          <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="p-5 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-center hover:border-[rgba(96,165,250,0.3)] transition-all">
-            <LinkedinIcon className="w-6 h-6 mx-auto mb-3 text-[#94a3b8]" />
-            <p className="text-sm text-[#f0f4f8]">LinkedIn</p>
-          </a>
-          <a href={`mailto:${siteConfig.email}`} className="p-5 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-center hover:border-[rgba(96,165,250,0.3)] transition-all">
-            <MailIcon className="w-6 h-6 mx-auto mb-3 text-[#94a3b8]" />
-            <p className="text-sm text-[#f0f4f8]">Email</p>
-          </a>
+    <section id="contact" className="py-[var(--section-spacing)]">
+      <div className="container-content">
+        {/* Section Label */}
+        <div className="flex items-center gap-4 mb-16">
+          <span className="text-sm font-medium text-[#3b82f6] tracking-widest uppercase">06</span>
+          <div className="h-px bg-[rgba(255,255,255,0.06)] flex-1 max-w-xs"></div>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Name"
-            value={formState.name}
-            onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-            className="w-full px-5 py-4 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-[#f0f4f8] placeholder-[#64748b] focus:border-[#60a5fa] focus:outline-none transition-colors"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={formState.email}
-            onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-            className="w-full px-5 py-4 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-[#f0f4f8] placeholder-[#64748b] focus:border-[#60a5fa] focus:outline-none transition-colors"
-            required
-          />
-          <textarea
-            placeholder="Message"
-            rows={5}
-            value={formState.message}
-            onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-            className="w-full px-5 py-4 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-[#f0f4f8] placeholder-[#64748b] focus:border-[#60a5fa] focus:outline-none transition-colors resize-none"
-            required
-          />
-          <button
-            type="submit"
-            className="w-full px-8 py-4 bg-[#60a5fa] text-[#07090f] rounded-xl font-semibold hover:bg-[#93c5fd] transition-colors flex items-center justify-center gap-2"
-          >
-            {submitted ? 'Sent!' : 'Send Message'}
-            <Send className="w-5 h-5" />
-          </button>
-        </form>
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left - Header & Contact Links */}
+          <div>
+            <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-[#94a3b8] text-body leading-relaxed mb-8 max-w-lg">
+              Interested in AI research, collaboration opportunities, or just want to connect? 
+              I am always open to discussing new projects, innovative ideas, or potential partnerships.
+            </p>
+            
+            {/* Contact Links */}
+            <div className="space-y-4">
+              <a 
+                href={siteConfig.github} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-5 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
+              >
+                <GithubIcon className="w-6 h-6 text-[#94a3b8] group-hover:text-[#3b82f6] transition-colors" />
+                <div>
+                  <p className="text-[#f0f4f8] font-medium">GitHub</p>
+                  <p className="text-sm text-[#64748b]">View my repositories</p>
+                </div>
+              </a>
+              
+              <a 
+                href={siteConfig.linkedin} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-5 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
+              >
+                <LinkedinIcon className="w-6 h-6 text-[#94a3b8] group-hover:text-[#3b82f6] transition-colors" />
+                <div>
+                  <p className="text-[#f0f4f8] font-medium">LinkedIn</p>
+                  <p className="text-sm text-[#64748b]">Connect with me</p>
+                </div>
+              </a>
+              
+              <a 
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center gap-4 p-5 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
+              >
+                <MailIcon className="w-6 h-6 text-[#94a3b8] group-hover:text-[#3b82f6] transition-colors" />
+                <div>
+                  <p className="text-[#f0f4f8] font-medium">Email</p>
+                  <p className="text-sm text-[#64748b]">{siteConfig.email}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+          {/* Right - Contact Form */}
+          <div>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-[#94a3b8] mb-2">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  value={formState.name}
+                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                  className="w-full px-5 py-4 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl text-[#f0f4f8] placeholder-[#475569] focus:border-[#3b82f6] focus:outline-none transition-colors"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-[#94a3b8] mb-2">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                  className="w-full px-5 py-4 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl text-[#f0f4f8] placeholder-[#475569] focus:border-[#3b82f6] focus:outline-none transition-colors"
+                  placeholder="your.email@example.com"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-[#94a3b8] mb-2">Message</label>
+                <textarea
+                  id="message"
+                  rows={6}
+                  value={formState.message}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  className="w-full px-5 py-4 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl text-[#f0f4f8] placeholder-[#475569] focus:border-[#3b82f6] focus:outline-none transition-colors resize-none"
+                  placeholder="Tell me about your project, idea, or how I can help..."
+                  required
+                />
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full px-8 py-4 bg-[#3b82f6] text-[#030810] rounded-xl font-semibold hover:bg-[#60a5fd] transition-all flex items-center justify-center gap-2"
+              >
+                {submitted ? 'Message Sent!' : 'Send Message'}
+                <Send className="w-5 h-5" />
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   );

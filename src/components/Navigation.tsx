@@ -29,27 +29,27 @@ export default function Navigation() {
     <>
       {/* Navigation */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all ${
-          isScrolled ? 'bg-[#07090f]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.05)]' : ''
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-[#030810]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.06)]' : ''
         }`}
       >
-        <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="flex items-center justify-between h-16">
+        <div className="container-content">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <button
               onClick={() => handleNavClick('home')}
-              className="text-xl font-semibold text-[#f0f4f8] hover:text-[#60a5fa] transition-colors"
+              className="text-2xl font-bold tracking-tight text-[#f0f4f8] hover:text-[#3b82f6] transition-colors"
             >
               AJ
             </button>
             
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-10">
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className="text-sm text-[#94a3b8] hover:text-[#60a5fa] transition-colors"
+                  className="text-sm font-medium tracking-wide text-[#94a3b8] hover:text-[#f0f4f8] transition-colors"
                 >
                   {item.shortLabel}
                 </button>
@@ -59,9 +59,9 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-[#94a3b8]"
+              className="lg:hidden p-2 text-[#94a3b8] hover:text-[#f0f4f8] transition-colors"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -69,13 +69,13 @@ export default function Navigation() {
       
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden pt-16 bg-[#07090f]">
-          <div className="p-6 space-y-2">
+        <div className="fixed inset-0 z-40 lg:hidden pt-20 bg-[#030810]">
+          <div className="container-content py-8 space-y-3">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className="block w-full text-left px-4 py-3 text-sm text-[#94a3b8] hover:text-white bg-[#0d1421] border border-[rgba(255,255,255,0.08)] rounded-xl"
+                className="block w-full text-left px-6 py-4 text-base font-medium text-[#cbd5e1] hover:text-[#f0f4f8] bg-[#070b14] border border-[rgba(255,255,255,0.06)] rounded-lg transition-colors"
               >
                 {item.label}
               </button>

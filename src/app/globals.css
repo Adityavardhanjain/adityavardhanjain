@@ -1,16 +1,46 @@
 @import "tailwindcss";
 
-/* Space Theme - Clean & Balanced */
+/* ========================================
+   CONTENT CONTAINER SYSTEM
+   Scientific exploration meets modern aerospace editorial design.
+   ======================================== */
+
 :root {
-  --bg-primary: #07090f;
-  --bg-secondary: #0d1421;
-  --bg-card: #0f1923;
+  /* Content Container */
+  --content-max-width: 1280px;
+  --content-padding-desktop: 48px;
+  --content-padding-tablet: 32px;
+  --content-padding-mobile: 20px;
+  
+  /* Typography Scale */
+  --text-hero-name: clamp(3.5rem, 7vw, 6.5rem);
+  --text-hero-role: clamp(1.15rem, 2vw, 1.5rem);
+  --text-hero-description: clamp(1rem, 1.3vw, 1.2rem);
+  --text-section-heading: clamp(2.5rem, 5vw, 4.5rem);
+  --text-subsection-heading: clamp(1.5rem, 2.5vw, 2.25rem);
+  --text-body: clamp(1rem, 1.1vw, 1.125rem);
+  --text-metadata: clamp(0.8rem, 0.95vw, 0.95rem);
+  --text-small: 0.875rem;
+  
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+  
+  /* Colors */
+  --bg-primary: #030810;
+  --bg-secondary: #070b14;
+  --bg-card: #0c1220;
+  --bg-elevated: #111827;
   --text-primary: #f0f4f8;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent: #60a5fa;
-  --accent-dim: rgba(96, 165, 250, 0.15);
-  --border: rgba(255, 255, 255, 0.08);
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-dim: rgba(59, 130, 246, 0.15);
+  --border: rgba(255, 255, 255, 0.06);
+  
+  /* Spacing */
+  --section-spacing: clamp(120px, 15vh, 180px);
 }
 
 @theme inline {
@@ -39,13 +69,75 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  line-height: 1.7;
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
+/* Content Container Utility */
+.container-content {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--content-padding-mobile);
+}
+
+@media (min-width: 640px) {
+  .container-content {
+    padding-inline: var(--content-padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-content {
+    padding-inline: var(--content-padding-desktop);
+  }
+}
+
+/* Typography Utilities */
+.text-hero-name {
+  font-size: var(--text-hero-name);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+}
+
+.text-hero-role {
+  font-size: var(--text-hero-role);
+  line-height: var(--leading-normal);
+}
+
+.text-hero-description {
+  font-size: var(--text-hero-description);
+  line-height: var(--leading-relaxed);
+  max-width: 60ch;
+}
+
+.text-section-heading {
+  font-size: var(--text-section-heading);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+}
+
+.text-subsection-heading {
+  font-size: var(--text-subsection-heading);
+  line-height: var(--leading-tight);
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+}
+
+.text-metadata {
+  font-size: var(--text-metadata);
+  line-height: var(--leading-normal);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -54,14 +146,20 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #1e3a5f;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #2d4a6f;
+}
+
+/* Focus States */
 :focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
