@@ -19,28 +19,28 @@ export default function TransmissionCenter() {
   };
   
   return (
-    <section id="contact" className="py-20 px-6 bg-[#1a1a1a]">
+    <section id="contact" className="py-24 px-6 bg-[#0d1421]">
       <div className="max-w-3xl mx-auto">
-        <p className="text-sm text-[#666666] mb-4">Contact</p>
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+        <p className="text-sm text-[#64748b] mb-4">Contact</p>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-[#f0f4f8]">
           Get in Touch
         </h2>
-        <p className="text-[#a0a0a0] mb-8">
+        <p className="text-[#94a3b8] mb-10">
           Interested in AI research or collaboration? Let&apos;s connect.
         </p>
         
-        <div className="grid sm:grid-cols-3 gap-4 mb-8">
-          <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="p-4 border border-[rgba(255,255,255,0.08)] rounded-lg text-center hover:border-[rgba(255,255,255,0.15)] transition-colors">
-            <GithubIcon className="w-5 h-5 mx-auto mb-2 text-[#a0a0a0]" />
-            <p className="text-sm">GitHub</p>
+        <div className="grid sm:grid-cols-3 gap-4 mb-10">
+          <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="p-5 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-center hover:border-[rgba(96,165,250,0.3)] transition-all">
+            <GithubIcon className="w-6 h-6 mx-auto mb-3 text-[#94a3b8]" />
+            <p className="text-sm text-[#f0f4f8]">GitHub</p>
           </a>
-          <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="p-4 border border-[rgba(255,255,255,0.08)] rounded-lg text-center hover:border-[rgba(255,255,255,0.15)] transition-colors">
-            <LinkedinIcon className="w-5 h-5 mx-auto mb-2 text-[#a0a0a0]" />
-            <p className="text-sm">LinkedIn</p>
+          <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="p-5 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-center hover:border-[rgba(96,165,250,0.3)] transition-all">
+            <LinkedinIcon className="w-6 h-6 mx-auto mb-3 text-[#94a3b8]" />
+            <p className="text-sm text-[#f0f4f8]">LinkedIn</p>
           </a>
-          <a href={`mailto:${siteConfig.email}`} className="p-4 border border-[rgba(255,255,255,0.08)] rounded-lg text-center hover:border-[rgba(255,255,255,0.15)] transition-colors">
-            <MailIcon className="w-5 h-5 mx-auto mb-2 text-[#a0a0a0]" />
-            <p className="text-sm">Email</p>
+          <a href={`mailto:${siteConfig.email}`} className="p-5 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-center hover:border-[rgba(96,165,250,0.3)] transition-all">
+            <MailIcon className="w-6 h-6 mx-auto mb-3 text-[#94a3b8]" />
+            <p className="text-sm text-[#f0f4f8]">Email</p>
           </a>
         </div>
         
@@ -50,7 +50,7 @@ export default function TransmissionCenter() {
             placeholder="Name"
             value={formState.name}
             onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-            className="w-full px-4 py-3 bg-transparent border border-[rgba(255,255,255,0.08)] rounded-lg text-white placeholder-[#666666] focus:border-[#3b82f6] focus:outline-none"
+            className="w-full px-5 py-4 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-[#f0f4f8] placeholder-[#64748b] focus:border-[#60a5fa] focus:outline-none transition-colors"
             required
           />
           <input
@@ -58,23 +58,23 @@ export default function TransmissionCenter() {
             placeholder="Email"
             value={formState.email}
             onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-            className="w-full px-4 py-3 bg-transparent border border-[rgba(255,255,255,0.08)] rounded-lg text-white placeholder-[#666666] focus:border-[#3b82f6] focus:outline-none"
+            className="w-full px-5 py-4 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-[#f0f4f8] placeholder-[#64748b] focus:border-[#60a5fa] focus:outline-none transition-colors"
             required
           />
           <textarea
             placeholder="Message"
-            rows={4}
+            rows={5}
             value={formState.message}
             onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-            className="w-full px-4 py-3 bg-transparent border border-[rgba(255,255,255,0.08)] rounded-lg text-white placeholder-[#666666] focus:border-[#3b82f6] focus:outline-none resize-none"
+            className="w-full px-5 py-4 bg-[#0f1923] border border-[rgba(255,255,255,0.08)] rounded-xl text-[#f0f4f8] placeholder-[#64748b] focus:border-[#60a5fa] focus:outline-none transition-colors resize-none"
             required
           />
           <button
             type="submit"
-            className="w-full px-6 py-3 bg-[#3b82f6] text-white rounded-lg font-medium hover:bg-[#2563eb] transition-colors flex items-center justify-center gap-2"
+            className="w-full px-8 py-4 bg-[#60a5fa] text-[#07090f] rounded-xl font-semibold hover:bg-[#93c5fd] transition-colors flex items-center justify-center gap-2"
           >
             {submitted ? 'Sent!' : 'Send Message'}
-            <Send className="w-4 h-4" />
+            <Send className="w-5 h-5" />
           </button>
         </form>
       </div>

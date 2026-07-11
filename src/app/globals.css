@@ -1,21 +1,22 @@
 @import "tailwindcss";
 
-/* Minimal Clean Design System */
+/* Space Theme - Clean & Balanced */
 :root {
-  --bg-primary: #0f0f0f;
-  --bg-secondary: #1a1a1a;
-  --bg-tertiary: #252525;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --accent: #3b82f6;
+  --bg-primary: #07090f;
+  --bg-secondary: #0d1421;
+  --bg-card: #0f1923;
+  --text-primary: #f0f4f8;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.15);
   --border: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
-  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-card: var(--bg-card);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
@@ -38,8 +39,9 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -51,7 +53,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #1e3a5f;
   border-radius: 3px;
 }
 

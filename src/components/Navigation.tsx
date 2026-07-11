@@ -30,7 +30,7 @@ export default function Navigation() {
       {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all ${
-          isScrolled ? 'bg-[#0f0f0f]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.05)]' : ''
+          isScrolled ? 'bg-[#07090f]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.05)]' : ''
         }`}
       >
         <div className="max-w-4xl mx-auto px-6">
@@ -38,7 +38,7 @@ export default function Navigation() {
             {/* Logo */}
             <button
               onClick={() => handleNavClick('home')}
-              className="text-xl font-semibold"
+              className="text-xl font-semibold text-[#f0f4f8] hover:text-[#60a5fa] transition-colors"
             >
               AJ
             </button>
@@ -49,7 +49,7 @@ export default function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className="text-sm text-[#666666] hover:text-white transition-colors"
+                  className="text-sm text-[#64748b] hover:text-[#60a5fa] transition-colors"
                 >
                   {item.shortLabel}
                 </button>
@@ -59,7 +59,7 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-[#666666]"
+              className="md:hidden p-2 text-[#64748b]"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -69,13 +69,13 @@ export default function Navigation() {
       
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden pt-16 bg-[#0f0f0f]">
+        <div className="fixed inset-0 z-40 md:hidden pt-16 bg-[#07090f]">
           <div className="p-6 space-y-2">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className="block w-full text-left px-4 py-3 text-sm text-[#a0a0a0] hover:text-white border border-[rgba(255,255,255,0.05)] rounded-lg"
+                className="block w-full text-left px-4 py-3 text-sm text-[#94a3b8] hover:text-white bg-[#0d1421] border border-[rgba(255,255,255,0.08)] rounded-xl"
               >
                 {item.label}
               </button>

@@ -2,14 +2,14 @@
 
 export default function ResearcherProfile() {
   return (
-    <section id="about" className="py-20 px-6">
+    <section id="about" className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
-        <p className="text-sm text-[#666666] mb-4">About</p>
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+        <p className="text-sm text-[#64748b] mb-4">About</p>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#f0f4f8]">
           Building intelligent systems at the intersection of AI, data, and human cognition.
         </h2>
         
-        <div className="space-y-4 text-[#a0a0a0]">
+        <div className="space-y-4 text-[#94a3b8]">
           <p>
             I am an AI and Machine Learning engineer, data analyst, and research enthusiast 
             interested in building intelligent systems that connect advanced computation with 
