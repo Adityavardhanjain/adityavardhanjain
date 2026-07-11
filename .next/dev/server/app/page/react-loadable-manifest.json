@@ -1,0 +1,9 @@
+{
+  "[project]/src/components/StarField.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/StarField.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/src_components_StarField_tsx_1n3rbc_._.js",
+      "static/chunks/src_components_StarField_tsx_0g18ioa._.js"
+    ]
+  }
+}

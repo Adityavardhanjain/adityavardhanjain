@@ -2,12 +2,17 @@
 
 export default function ResearcherProfile() {
   return (
-    <section id="about" className="py-[var(--section-spacing)] bg-[#070b14]">
-      <div className="container-content">
+    <section id="about" className="py-[var(--section-spacing)] relative">
+      {/* Subtle radial gradient for depth */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.04)] via-transparent to-transparent" />
+      </div>
+      
+      <div className="container-content relative z-10">
         {/* Section Label */}
-        <div className="flex items-center gap-4 mb-12">
-          <span className="text-sm font-medium text-[#3b82f6] tracking-widest uppercase">01</span>
-          <div className="h-px bg-[rgba(255,255,255,0.06)] flex-1 max-w-xs"></div>
+        <div className="section-label">
+          <span className="section-label-number">01 / Mission Profile</span>
+          <div className="section-label-line" />
         </div>
         
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
@@ -19,7 +24,7 @@ export default function ResearcherProfile() {
           </div>
           
           {/* Right - Bio Content */}
-          <div className="space-y-6 text-[#94a3b8] text-body">
+          <div className="space-y-6 text-[#8899aa] text-body">
             <p>
               I am an AI and Machine Learning engineer, data analyst, and research enthusiast 
               interested in building intelligent systems that connect advanced computation with 
@@ -35,18 +40,18 @@ export default function ResearcherProfile() {
             </p>
             
             {/* Key Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8 mt-8 border-t border-[rgba(255,255,255,0.06)]">
+            <div className="grid grid-cols-3 gap-8 pt-10 mt-10 border-t border-[rgba(255,255,255,0.04)]">
               <div>
-                <p className="text-3xl font-bold text-[#f0f4f8]">4+</p>
-                <p className="text-sm text-[#64748b] mt-1">Years Experience</p>
+                <p className="text-4xl font-bold text-[#f0f4f8] tracking-tight">4+</p>
+                <p className="text-sm text-[#5a6a7a] mt-2">Years Experience</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[#f0f4f8]">2</p>
-                <p className="text-sm text-[#64748b] mt-1">Publications</p>
+                <p className="text-4xl font-bold text-[#f0f4f8] tracking-tight">2</p>
+                <p className="text-sm text-[#5a6a7a] mt-2">Publications</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[#f0f4f8]">3</p>
-                <p className="text-sm text-[#64748b] mt-1">Organizations</p>
+                <p className="text-4xl font-bold text-[#f0f4f8] tracking-tight">3</p>
+                <p className="text-sm text-[#5a6a7a] mt-2">Organizations</p>
               </div>
             </div>
           </div>

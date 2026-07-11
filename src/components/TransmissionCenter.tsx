@@ -19,12 +19,17 @@ export default function TransmissionCenter() {
   };
   
   return (
-    <section id="contact" className="py-[var(--section-spacing)]">
-      <div className="container-content">
+    <section id="contact" className="py-[var(--section-spacing)] relative">
+      {/* Subtle radial gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.04)] via-transparent to-transparent" />
+      </div>
+      
+      <div className="container-content relative z-10">
         {/* Section Label */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="text-sm font-medium text-[#3b82f6] tracking-widest uppercase">06</span>
-          <div className="h-px bg-[rgba(255,255,255,0.06)] flex-1 max-w-xs"></div>
+        <div className="section-label">
+          <span className="section-label-number">07 / Transmission</span>
+          <div className="section-label-line" />
         </div>
         
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
@@ -33,7 +38,7 @@ export default function TransmissionCenter() {
             <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-4">
               Get in Touch
             </h2>
-            <p className="text-[#94a3b8] text-body leading-relaxed mb-8 max-w-lg">
+            <p className="text-[#8899aa] text-body leading-relaxed mb-10 max-w-lg">
               Interested in AI research, collaboration opportunities, or just want to connect? 
               I am always open to discussing new projects, innovative ideas, or potential partnerships.
             </p>
@@ -44,12 +49,12 @@ export default function TransmissionCenter() {
                 href={siteConfig.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
+                className="flex items-center gap-4 p-5 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
               >
-                <GithubIcon className="w-6 h-6 text-[#94a3b8] group-hover:text-[#3b82f6] transition-colors" />
+                <GithubIcon className="w-6 h-6 text-[#8899aa] group-hover:text-[#3b82f6] transition-colors" />
                 <div>
                   <p className="text-[#f0f4f8] font-medium">GitHub</p>
-                  <p className="text-sm text-[#64748b]">View my repositories</p>
+                  <p className="text-sm text-[#5a6a7a]">View my repositories</p>
                 </div>
               </a>
               
@@ -57,23 +62,23 @@ export default function TransmissionCenter() {
                 href={siteConfig.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
+                className="flex items-center gap-4 p-5 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
               >
-                <LinkedinIcon className="w-6 h-6 text-[#94a3b8] group-hover:text-[#3b82f6] transition-colors" />
+                <LinkedinIcon className="w-6 h-6 text-[#8899aa] group-hover:text-[#3b82f6] transition-colors" />
                 <div>
                   <p className="text-[#f0f4f8] font-medium">LinkedIn</p>
-                  <p className="text-sm text-[#64748b]">Connect with me</p>
+                  <p className="text-sm text-[#5a6a7a]">Connect with me</p>
                 </div>
               </a>
               
               <a 
                 href={`mailto:${siteConfig.email}`}
-                className="flex items-center gap-4 p-5 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
+                className="flex items-center gap-4 p-5 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group"
               >
-                <MailIcon className="w-6 h-6 text-[#94a3b8] group-hover:text-[#3b82f6] transition-colors" />
+                <MailIcon className="w-6 h-6 text-[#8899aa] group-hover:text-[#3b82f6] transition-colors" />
                 <div>
                   <p className="text-[#f0f4f8] font-medium">Email</p>
-                  <p className="text-sm text-[#64748b]">{siteConfig.email}</p>
+                  <p className="text-sm text-[#5a6a7a]">{siteConfig.email}</p>
                 </div>
               </a>
             </div>
@@ -83,39 +88,39 @@ export default function TransmissionCenter() {
           <div>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-[#94a3b8] mb-2">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-[#8899aa] mb-2">Name</label>
                 <input
                   id="name"
                   type="text"
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full px-5 py-4 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl text-[#f0f4f8] placeholder-[#475569] focus:border-[#3b82f6] focus:outline-none transition-colors"
+                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#3a4a5a] focus:border-[#3b82f6] focus:outline-none transition-colors"
                   placeholder="Your name"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#94a3b8] mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-[#8899aa] mb-2">Email</label>
                 <input
                   id="email"
                   type="email"
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full px-5 py-4 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl text-[#f0f4f8] placeholder-[#475569] focus:border-[#3b82f6] focus:outline-none transition-colors"
+                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#3a4a5a] focus:border-[#3b82f6] focus:outline-none transition-colors"
                   placeholder="your.email@example.com"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-[#94a3b8] mb-2">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-[#8899aa] mb-2">Message</label>
                 <textarea
                   id="message"
                   rows={6}
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full px-5 py-4 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl text-[#f0f4f8] placeholder-[#475569] focus:border-[#3b82f6] focus:outline-none transition-colors resize-none"
+                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#3a4a5a] focus:border-[#3b82f6] focus:outline-none transition-colors resize-none"
                   placeholder="Tell me about your project, idea, or how I can help..."
                   required
                 />

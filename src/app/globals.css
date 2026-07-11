@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 /* ========================================
-   CONTENT CONTAINER SYSTEM
-   Scientific exploration meets modern aerospace editorial design.
+   DIGITAL OBSERVATORY DESIGN SYSTEM
+   A mission archive documenting work across AI, data, and cognition.
    ======================================== */
 
 :root {
   /* Content Container */
   --content-max-width: 1280px;
-  --content-padding-desktop: 48px;
-  --content-padding-tablet: 32px;
-  --content-padding-mobile: 20px;
+  --content-padding-desktop: 64px;
+  --content-padding-tablet: 40px;
+  --content-padding-mobile: 24px;
   
   /* Typography Scale */
   --text-hero-name: clamp(3.5rem, 7vw, 6.5rem);
@@ -23,24 +23,27 @@
   --text-small: 0.875rem;
   
   /* Line Heights */
-  --leading-tight: 1.2;
-  --leading-normal: 1.6;
-  --leading-relaxed: 1.75;
+  --leading-tight: 1.15;
+  --leading-normal: 1.65;
+  --leading-relaxed: 1.8;
   
   /* Colors */
   --bg-primary: #030810;
-  --bg-secondary: #070b14;
-  --bg-card: #0c1220;
-  --bg-elevated: #111827;
+  --bg-secondary: #060c18;
+  --bg-card: #0a1120;
+  --bg-elevated: #0d1828;
   --text-primary: #f0f4f8;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  --text-secondary: #c8d4e3;
+  --text-muted: #8899aa;
   --accent: #3b82f6;
-  --accent-dim: rgba(59, 130, 246, 0.15);
-  --border: rgba(255, 255, 255, 0.06);
+  --accent-secondary: #6366f1;
+  --accent-glow: rgba(59, 130, 246, 0.4);
+  --border: rgba(255, 255, 255, 0.05);
+  --border-hover: rgba(255, 255, 255, 0.1);
   
   /* Spacing */
-  --section-spacing: clamp(120px, 15vh, 180px);
+  --section-spacing: clamp(140px, 18vh, 200px);
+  --section-inner-spacing: clamp(48px, 8vh, 80px);
 }
 
 @theme inline {
@@ -100,7 +103,7 @@ body {
 .text-hero-name {
   font-size: var(--text-hero-name);
   line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .text-hero-role {
@@ -111,13 +114,13 @@ body {
 .text-hero-description {
   font-size: var(--text-hero-description);
   line-height: var(--leading-relaxed);
-  max-width: 60ch;
+  max-width: 65ch;
 }
 
 .text-section-heading {
   font-size: var(--text-section-heading);
   line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .text-subsection-heading {
@@ -135,9 +138,33 @@ body {
   line-height: var(--leading-normal);
 }
 
+/* Section Label */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.section-label-number {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.section-label-line {
+  height: 1px;
+  background: var(--border);
+  flex: 1;
+  max-width: 120px;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -145,12 +172,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e3a5f;
-  border-radius: 4px;
+  background: #1a2a40;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2d4a6f;
+  background: #2a3a50;
 }
 
 /* Focus States */
@@ -165,4 +192,47 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  
+  .animate-orbital,
+  .animate-pulse-slow,
+  .animate-float {
+    animation: none !important;
+  }
+}
+
+/* Orbital Animation */
+@keyframes orbital-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbital-rotate-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-orbital {
+  animation: orbital-rotate linear infinite;
+}
+
+.animate-orbital-reverse {
+  animation: orbital-rotate-reverse linear infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

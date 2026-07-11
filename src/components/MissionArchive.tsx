@@ -4,89 +4,239 @@ import { ExternalLink, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/SocialIcons';
 import { projects } from '@/lib/data';
 
+// EEG Telemetry Visualization Component
+function EEGTelemetry() {
+  return (
+    <div className="w-full h-full bg-[#060c18] p-6 relative overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="font-mono text-[10px] text-[#8899aa] tracking-wider">NEURAL SIGNAL ACQUISITION</span>
+        </div>
+        <span className="font-mono text-[10px] text-[#3b82f6]">BCI-TETRIS-v2.4</span>
+      </div>
+      
+      {/* Signal Channels */}
+      <div className="space-y-2 mb-4">
+        {['CH1: FP1', 'CH2: FP2', 'CH3: F3', 'CH4: F4', 'CH5: C3', 'CH6: C4'].map((ch, i) => (
+          <div key={ch} className="flex items-center gap-3">
+            <span className="font-mono text-[9px] text-[#5a6a7a] w-12">{ch}</span>
+            <div className="flex-1 h-4 relative">
+              {/* Animated waveform */}
+              <svg className="w-full h-full" viewBox="0 0 200 16" preserveAspectRatio="none">
+                <path
+                  d={`M0,8 ${[...Array(40)].map((_, j) => {
+                    const x = j * 5;
+                    const y = 8 + Math.sin((j + i * 2) * 0.5 + Date.now() * 0.002) * 4 + Math.random() * 2;
+                    return `L${x},${y}`;
+                  }).join(' ')}`}
+                  fill="none"
+                  stroke={i % 2 === 0 ? '#3b82f6' : '#6366f1'}
+                  strokeWidth="1"
+                  opacity="0.7"
+                />
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Frequency Bands */}
+      <div className="grid grid-cols-4 gap-2 mb-4">
+        {[
+          { label: 'Delta', value: '2.3μV', color: '#3b82f6' },
+          { label: 'Theta', value: '4.1μV', color: '#6366f1' },
+          { label: 'Alpha', value: '8.7μV', color: '#8b5cf6' },
+          { label: 'Beta', value: '12.4μV', color: '#a855f7' },
+        ].map((band) => (
+          <div key={band.label} className="bg-[#0a1120] rounded p-2 text-center">
+            <p className="font-mono text-[9px] text-[#5a6a7a]">{band.label}</p>
+            <p className="font-mono text-xs font-semibold" style={{ color: band.color }}>{band.value}</p>
+          </div>
+        ))}
+      </div>
+      
+      {/* Prediction Confidence */}
+      <div className="bg-[#0a1120] rounded p-3">
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-mono text-[9px] text-[#8899aa]">PREDICTION CONFIDENCE</span>
+          <span className="font-mono text-xs font-semibold text-emerald-400">87.3%</span>
+        </div>
+        <div className="h-1 bg-[#1a2a40] rounded-full overflow-hidden">
+          <div className="h-full bg-gradient-to-r from-[#3b82f6] to-emerald-400 rounded-full" style={{ width: '87.3%' }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Document Processing Visualization
+function DocumentProcessing() {
+  return (
+    <div className="w-full h-full bg-[#060c18] p-6 relative overflow-hidden">
+      <div className="flex items-center gap-2 mb-4">
+        <div className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
+        <span className="font-mono text-[10px] text-[#8899aa] tracking-wider">DOCUMENT ANALYSIS</span>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-3 h-[calc(100%-40px)]">
+        {/* Source Document */}
+        <div className="bg-[#0a1120] rounded border border-[rgba(255,255,255,0.04)] p-3">
+          <p className="font-mono text-[9px] text-[#5a6a7a] mb-2">SOURCE</p>
+          <div className="space-y-1">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="h-2 bg-[#1a2a40] rounded" style={{ width: `${70 + Math.random() * 30}%` }} />
+            ))}
+          </div>
+        </div>
+        
+        {/* Processed Output */}
+        <div className="bg-[#0a1120] rounded border border-[rgba(59,130,246,0.2)] p-3">
+          <p className="font-mono text-[9px] text-[#3b82f6] mb-2">EXTRACTED</p>
+          <div className="space-y-1">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="h-2 bg-[#3b82f6]/20 rounded" style={{ width: `${60 + Math.random() * 40}%` }} />
+            ))}
+          </div>
+        </div>
+        
+        {/* Translation */}
+        <div className="bg-[#0a1120] rounded border border-[rgba(99,102,241,0.2)] p-3 col-span-2">
+          <p className="font-mono text-[9px] text-[#6366f1] mb-2">TRANSLATED (हिंदी)</p>
+          <div className="space-y-1">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="h-2 bg-[#6366f1]/20 rounded" style={{ width: `${50 + Math.random() * 50}%` }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Computer Vision Visualization
+function ComputerVision() {
+  return (
+    <div className="w-full h-full bg-[#060c18] p-6 relative overflow-hidden">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+          <span className="font-mono text-[10px] text-[#8899aa] tracking-wider">OBJECT DETECTION</span>
+        </div>
+        <span className="font-mono text-[10px] text-[#3b82f6]">YOLOv9</span>
+      </div>
+      
+      {/* Road Frame */}
+      <div className="relative aspect-video bg-[#0a1120] rounded border border-[rgba(255,255,255,0.04)] mb-3 overflow-hidden">
+        {/* Simulated road */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a2a40] to-[#0a1120]" />
+        
+        {/* Detected pothole */}
+        <div className="absolute top-1/3 left-1/4 w-12 h-8 border-2 border-red-500 rounded">
+          <span className="absolute -top-4 left-0 font-mono text-[8px] text-red-400">POTHOLE 94%</span>
+        </div>
+        
+        {/* Grid overlay */}
+        <div className="absolute inset-0 grid grid-cols-4 grid-rows-3 opacity-20">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="border border-[#3b82f6]/30" />
+          ))}
+        </div>
+      </div>
+      
+      {/* Detection Info */}
+      <div className="grid grid-cols-3 gap-2">
+        <div className="bg-[#0a1120] rounded p-2 text-center">
+          <p className="font-mono text-[9px] text-[#5a6a7a]">DETECTIONS</p>
+          <p className="font-mono text-sm font-semibold text-[#f0f4f8]">3</p>
+        </div>
+        <div className="bg-[#0a1120] rounded p-2 text-center">
+          <p className="font-mono text-[9px] text-[#5a6a7a]">CONFIDENCE</p>
+          <p className="font-mono text-sm font-semibold text-red-400">94.2%</p>
+        </div>
+        <div className="bg-[#0a1120] rounded p-2 text-center">
+          <p className="font-mono text-[9px] text-[#5a6a7a]">LAT/LNG</p>
+          <p className="font-mono text-[9px] text-[#8899aa]">23.045°N</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function MissionArchive() {
   const featured = projects.filter(p => p.featured);
-  const flagship = featured[0]; // Brain-Computer Interface Tetris
-  const secondary = featured.slice(1, 3); // Legal Tesseract, Pothole Detection
-  const additional = featured.slice(3); // Protein Structure
+  const flagship = featured[0];
+  const secondary = featured.slice(1, 3);
+  const additional = featured.slice(3);
 
   return (
-    <section id="projects" className="py-[var(--section-spacing)]">
-      <div className="container-content">
+    <section id="projects" className="py-[var(--section-spacing)] relative">
+      {/* Subtle radial gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
+      </div>
+      
+      <div className="container-content relative z-10">
         {/* Section Label */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="text-sm font-medium text-[#3b82f6] tracking-widest uppercase">02</span>
-          <div className="h-px bg-[rgba(255,255,255,0.06)] flex-1 max-w-xs"></div>
+        <div className="section-label">
+          <span className="section-label-number">02 / Mission Archive</span>
+          <div className="section-label-line" />
         </div>
         
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="mb-20">
           <h2 className="text-section-heading font-bold text-[#f0f4f8]">Featured Work</h2>
-          <p className="text-[#94a3b8] text-body mt-4 max-w-2xl">
+          <p className="text-[#8899aa] text-body mt-4 max-w-2xl">
             Selected projects exploring machine learning, computer vision, natural language processing, 
             and brain-computer interfaces.
           </p>
         </div>
         
-        {/* Flagship Project - Editorial Layout */}
+        {/* Flagship Project - Editorial Layout with Real Visualization */}
         {flagship && (
           <div className="mb-24">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              {/* Visual Placeholder */}
-              <div className="bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-2xl aspect-[4/3] flex items-center justify-center relative overflow-hidden group">
-                {/* Placeholder visualization */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f]/20 to-transparent" />
-                <div className="relative text-center px-8">
-                  <p className="text-xs font-medium text-[#3b82f6] tracking-widest uppercase mb-4">EEG Signal Visualization</p>
-                  <div className="flex items-center justify-center gap-1">
-                    {[...Array(20)].map((_, i) => (
-                      <div 
-                        key={i} 
-                        className="w-1 bg-[#3b82f6]/30 rounded-full animate-pulse"
-                        style={{ 
-                          height: `${20 + Math.random() * 60}px`,
-                          animationDelay: `${i * 0.05}s`
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-[#030810]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-sm font-medium text-[#f0f4f8]">View Project Details</span>
-                </div>
+              {/* EEG Telemetry Visualization */}
+              <div className="bg-[#0a1120] border border-[rgba(255,255,255,0.06)] rounded-2xl overflow-hidden aspect-[4/3]">
+                <EEGTelemetry />
               </div>
               
               {/* Content */}
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <p className="text-xs font-medium text-[#3b82f6] tracking-widest uppercase">Brain-Computer Interface</p>
+              <div className="space-y-8">
+                <div className="space-y-3">
+                  <p className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase">Brain-Computer Interface</p>
                   <h3 className="text-subsection-heading font-bold text-[#f0f4f8]">{flagship.title}</h3>
                 </div>
                 
-                <p className="text-[#94a3b8] text-body leading-relaxed">
+                <p className="text-[#8899aa] text-body leading-relaxed">
                   {flagship.description}
                 </p>
                 
-                {/* Impact Metrics */}
-                <div className="grid grid-cols-2 gap-4 py-4 border-y border-[rgba(255,255,255,0.06)]">
+                {/* Key Metrics */}
+                <div className="grid grid-cols-2 gap-4 py-6 border-y border-[rgba(255,255,255,0.04)]">
                   <div>
-                    <p className="text-2xl font-bold text-[#f0f4f8]">Real-time</p>
-                    <p className="text-sm text-[#64748b]">Signal Processing</p>
+                    <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">Real-time</p>
+                    <p className="text-sm text-[#5a6a7a] mt-1">Neural Signal Processing</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-[#f0f4f8]">EEG</p>
-                    <p className="text-sm text-[#64748b]">Neural Analysis</p>
+                    <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">87.3%</p>
+                    <p className="text-sm text-[#5a6a7a] mt-1">Prediction Accuracy</p>
                   </div>
                 </div>
                 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2">
-                  {flagship.technologies.slice(0, 5).map((tech) => (
-                    <span key={tech} className="px-3 py-1.5 text-sm text-[#94a3b8] bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded">
+                  {flagship.technologies.slice(0, 4).map((tech) => (
+                    <span key={tech} className="px-3 py-1.5 text-sm text-[#8899aa] bg-[#0a1120] border border-[rgba(255,255,255,0.04)] rounded">
                       {tech}
                     </span>
                   ))}
+                  {flagship.technologies.length > 4 && (
+                    <span className="px-3 py-1.5 text-sm text-[#5a6a7a]">
+                      +{flagship.technologies.length - 4} more
+                    </span>
+                  )}
                 </div>
                 
                 {/* Links */}
@@ -96,17 +246,17 @@ export default function MissionArchive() {
                       href={flagship.github} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#94a3b8] bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-lg hover:border-[#3b82f6] hover:text-[#f0f4f8] transition-all"
+                      className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-[#f0f4f8] bg-[#0a1120] border border-[rgba(255,255,255,0.08)] rounded-lg hover:border-[#3b82f6]/50 transition-all"
                     >
                       <GithubIcon className="w-4 h-4" />
                       GitHub
                     </a>
                   )}
                   <a 
-                    href={`#${flagship.id}`}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#3b82f6] hover:text-[#60a5fd] transition-colors"
+                    href="#contact"
+                    className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-[#3b82f6] hover:text-[#60a5fd] transition-colors"
                   >
-                    Case Study
+                    Learn More
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 </div>
@@ -115,20 +265,18 @@ export default function MissionArchive() {
           </div>
         )}
         
-        {/* Secondary Projects - Two Column */}
+        {/* Secondary Projects */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {secondary.map((project) => (
-            <div key={project.id} className="bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-2xl p-8 hover:border-[rgba(255,255,255,0.12)] transition-all group">
-              {/* Visual Placeholder */}
-              <div className="bg-[#070b14] border border-[rgba(255,255,255,0.04)] rounded-xl aspect-video mb-6 flex items-center justify-center">
-                <p className="text-xs font-medium text-[#3b82f6]/50 tracking-widest uppercase">
-                  {project.visualType === 'document' ? 'Document OCR' : 'Computer Vision'}
-                </p>
+          {secondary.map((project, idx) => (
+            <div key={project.id} className="bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-2xl overflow-hidden hover:border-[rgba(255,255,255,0.1)] transition-all group">
+              {/* Project Visual */}
+              <div className="aspect-video">
+                {idx === 0 ? <DocumentProcessing /> : <ComputerVision />}
               </div>
               
-              <div className="space-y-4">
+              <div className="p-6 space-y-4">
                 <div>
-                  <p className="text-xs font-medium text-[#3b82f6] tracking-widest uppercase mb-1">
+                  <p className="font-mono text-xs text-[#3b82f6]/70 tracking-widest uppercase mb-2">
                     {project.missionId}
                   </p>
                   <h3 className="text-lg font-semibold text-[#f0f4f8] group-hover:text-[#3b82f6] transition-colors">
@@ -136,28 +284,28 @@ export default function MissionArchive() {
                   </h3>
                 </div>
                 
-                <p className="text-[#94a3b8] text-sm leading-relaxed">
-                  {project.description.substring(0, 150)}...
+                <p className="text-[#8899aa] text-sm leading-relaxed">
+                  {project.description.substring(0, 120)}...
                 </p>
                 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <span key={tech} className="px-2 py-1 text-xs text-[#64748b] bg-[#070b14] rounded">
+                  {project.technologies.slice(0, 3).map((tech) => (
+                    <span key={tech} className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">
                       {tech}
                     </span>
                   ))}
                 </div>
                 
                 {/* Links */}
-                <div className="flex items-center gap-3 pt-2">
+                <div className="flex items-center gap-4 pt-2">
                   {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[#64748b] hover:text-[#3b82f6] transition-colors">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[#5a6a7a] hover:text-[#3b82f6] transition-colors">
                       <GithubIcon className="w-5 h-5" />
                     </a>
                   )}
                   {project.demo && (
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[#64748b] hover:text-[#3b82f6] transition-colors">
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[#5a6a7a] hover:text-[#3b82f6] transition-colors">
                       <ExternalLink className="w-5 h-5" />
                     </a>
                   )}
@@ -169,13 +317,13 @@ export default function MissionArchive() {
         
         {/* Additional Project */}
         {additional.length > 0 && additional.map((project) => (
-          <div key={project.id} className="flex items-center justify-between p-6 bg-[#0c1220] border border-[rgba(255,255,255,0.06)] rounded-xl hover:border-[rgba(255,255,255,0.1)] transition-all group">
+          <div key={project.id} className="flex items-center justify-between p-6 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[rgba(255,255,255,0.1)] transition-all group">
             <div className="flex items-center gap-6">
-              <div className="bg-[#070b14] border border-[rgba(255,255,255,0.04)] rounded-lg w-16 h-16 flex items-center justify-center">
-                <p className="text-xs font-medium text-[#3b82f6]/50">3D</p>
+              <div className="bg-[#060c18] border border-[rgba(255,255,255,0.04)] rounded-lg w-16 h-16 flex items-center justify-center">
+                <span className="font-mono text-xs text-[#3b82f6]/50">3D</span>
               </div>
               <div>
-                <p className="text-xs font-medium text-[#64748b] mb-1">{project.missionId}</p>
+                <p className="font-mono text-xs text-[#5a6a7a] mb-1">{project.missionId}</p>
                 <h3 className="text-base font-semibold text-[#f0f4f8] group-hover:text-[#3b82f6] transition-colors">
                   {project.title}
                 </h3>
@@ -184,12 +332,12 @@ export default function MissionArchive() {
             <div className="flex items-center gap-4">
               <div className="flex gap-2">
                 {project.github && (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[#64748b] hover:text-[#3b82f6] transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[#5a6a7a] hover:text-[#3b82f6] transition-colors">
                     <GithubIcon className="w-5 h-5" />
                   </a>
                 )}
                 {project.demo && (
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[#64748b] hover:text-[#3b82f6] transition-colors">
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[#5a6a7a] hover:text-[#3b82f6] transition-colors">
                     <ExternalLink className="w-5 h-5" />
                   </a>
                 )}
