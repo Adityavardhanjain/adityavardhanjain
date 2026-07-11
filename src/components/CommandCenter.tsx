@@ -6,6 +6,9 @@ import { siteConfig } from '@/lib/data';
 export default function CommandCenter() {
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+      {/* Readability mask behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.2)] to-transparent" />
+      
       {/* Background radial glow - subtle atmospheric effect */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-[rgba(59,130,246,0.06)] via-transparent to-transparent" />
@@ -17,7 +20,8 @@ export default function CommandCenter() {
           <div className="space-y-8 max-w-xl">
             {/* Section annotation */}
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase">00 / Orbit</span>
+              <span className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase">00 / ORBIT</span>
+              <span className="font-mono text-xs text-[#5a6a7a] tracking-widest uppercase">DATA · INTELLIGENCE · RESEARCH</span>
             </div>
             
             {/* Status indicator */}
@@ -26,7 +30,7 @@ export default function CommandCenter() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
-              <span className="text-sm text-[#8899aa] tracking-wide">Available for opportunities</span>
+              <span className="text-sm text-[#8899aa] tracking-wide">Active Mission</span>
             </div>
             
             {/* Name */}
@@ -36,18 +40,17 @@ export default function CommandCenter() {
             
             {/* Professional Identity */}
             <p className="text-hero-role text-[#c8d4e3] font-light tracking-wide">
-              AI/ML Engineer · Data Analyst · Research Enthusiast
+              Data Analyst · AI Engineer · Researcher
             </p>
             
             {/* Value Proposition */}
             <p className="text-hero-description text-[#8899aa]">
-              Building intelligent systems at the intersection of artificial intelligence, 
-              data, human cognition, and real-world impact.
+              I build data and intelligent systems that transform complex information into reliable decisions—from enterprise analytics and agentic automation to computer vision and brain-computer interfaces.
             </p>
             
-            {/* Capability Labels - Reduced to 4 */}
+            {/* Capability Labels */}
             <div className="flex flex-wrap gap-3 pt-2">
-              {['AI/ML', 'Data Analytics', 'Intelligent Systems', 'Research'].map((capability) => (
+              {['Advanced Analytics', 'Machine Learning', 'Computer Vision', 'BCI Research'].map((capability) => (
                 <span
                   key={capability}
                   className="px-4 py-2 text-sm font-medium text-[#8899aa] bg-[#0a1120] border border-[rgba(255,255,255,0.06)] rounded"
@@ -78,13 +81,13 @@ export default function CommandCenter() {
                 href="#contact" 
                 className="text-[#8899aa] hover:text-[#f0f4f8] font-medium transition-colors duration-300"
               >
-                Contact
+                Start a Conversation
               </a>
             </div>
             
             {/* Professional Credibility */}
             <p className="text-sm text-[#5a6a7a] pt-6 border-t border-[rgba(255,255,255,0.04)]">
-              Google · Tatvic Analytics · Codenscious Technologies
+              Google · Tatvic Analytics · ACM-published Research
             </p>
           </div>
           

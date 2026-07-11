@@ -3,27 +3,42 @@
 import { useState } from 'react';
 import { researchDirections, publications } from '@/lib/data';
 
-// Research topic positions for constellation visualization
+// Research topic positions for constellation visualization - expanded layout
 const topicPositions = [
-  { id: 'world-models', x: 25, y: 30, connections: ['llm-verification', 'intelligent-agents'] },
-  { id: 'llm-verification', x: 45, y: 20, connections: ['world-models', 'ai-reasoning'] },
-  { id: 'intelligent-agents', x: 35, y: 50, connections: ['world-models', 'multimodal-intelligence'] },
-  { id: 'ai-reasoning', x: 65, y: 25, connections: ['llm-verification', 'multimodal-intelligence'] },
-  { id: 'multimodal-intelligence', x: 70, y: 50, connections: ['ai-reasoning', 'intelligent-agents'] },
-  { id: 'comp-neuroscience', x: 20, y: 70, connections: ['bci'] },
-  { id: 'bci', x: 40, y: 80, connections: ['comp-neuroscience'] },
+  { id: 'world-models', x: 20, y: 25, connections: ['llm-verification', 'intelligent-agents'], label: 'World Models' },
+  { id: 'llm-verification', x: 40, y: 15, connections: ['world-models', 'ai-reasoning'], label: 'LLM Verification' },
+  { id: 'intelligent-agents', x: 30, y: 45, connections: ['world-models', 'multimodal-intelligence'], label: 'Intelligent Agents' },
+  { id: 'ai-reasoning', x: 60, y: 20, connections: ['llm-verification', 'multimodal-intelligence'], label: 'AI Reasoning' },
+  { id: 'multimodal-intelligence', x: 65, y: 45, connections: ['ai-reasoning', 'intelligent-agents'], label: 'Multimodal Intelligence' },
+  { id: 'comp-neuroscience', x: 15, y: 70, connections: ['bci'], label: 'Computational Neuroscience' },
+  { id: 'bci', x: 35, y: 80, connections: ['comp-neuroscience'], label: 'BCI' },
+  { id: 'ai-space', x: 75, y: 75, connections: [], label: 'AI for Space' },
 ];
 
 function ResearchConstellation() {
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null);
+  const [keyboardNav, setKeyboardNav] = useState(false);
   
   const activeDirection = researchDirections.find(d => d.id === activeTopic || d.id === hoveredTopic);
   
+  const handleKeyDown = (e: React.KeyboardEvent, topicId: string) => {
+    setKeyboardNav(true);
+    if (e.key === 'Enter' || e.key === ' ') {
+      setActiveTopic(activeTopic === topicId ? null : topicId);
+    }
+  };
+  
   return (
     <div className="relative">
-      {/* SVG Constellation */}
-      <svg viewBox="0 0 100 100" className="w-full aspect-square" preserveAspectRatio="xMidYMid meet">
+      {/* SVG Constellation - expanded to ~600px wide on desktop */}
+      <svg 
+        viewBox="0 0 100 100" 
+        className="w-full max-w-[600px] aspect-square" 
+        preserveAspectRatio="xMidYMid meet"
+        role="img"
+        aria-label="Research interests constellation diagram"
+      >
         {/* Connection lines */}
         {topicPositions.map(topic => (
           topic.connections.map(connId => {
@@ -37,8 +52,8 @@ function ResearchConstellation() {
                 y1={topic.y}
                 x2={target.x}
                 y2={target.y}
-                stroke={isActive ? 'rgba(59, 130, 246, 0.4)' : 'rgba(255, 255, 255, 0.06)'}
-                strokeWidth={isActive ? 0.5 : 0.3}
+                stroke={isActive ? 'rgba(59, 130, 246, 0.5)' : 'rgba(255, 255, 255, 0.08)'}
+                strokeWidth={isActive ? 0.6 : 0.4}
                 className="transition-all duration-300"
               />
             );
@@ -47,8 +62,6 @@ function ResearchConstellation() {
         
         {/* Topic nodes */}
         {topicPositions.map(topic => {
-          const direction = researchDirections.find(d => d.id === topic.id);
-          if (!direction) return null;
           const isActive = activeTopic === topic.id || hoveredTopic === topic.id;
           const isConnected = topicPositions.some(t => 
             t.connections.includes(topic.id) && (activeTopic === t.id || hoveredTopic === t.id)
@@ -60,52 +73,65 @@ function ResearchConstellation() {
               <circle
                 cx={topic.x}
                 cy={topic.y}
-                r={isActive ? 4 : 2.5}
-                fill={isActive ? '#3b82f6' : isConnected ? 'rgba(59, 130, 246, 0.5)' : 'rgba(255, 255, 255, 0.2)'}
+                r={isActive ? 5 : 3}
+                fill={isActive ? '#3b82f6' : isConnected ? 'rgba(59, 130, 246, 0.6)' : 'rgba(255, 255, 255, 0.25)'}
                 className="cursor-pointer transition-all duration-300"
                 onMouseEnter={() => setHoveredTopic(topic.id)}
                 onMouseLeave={() => setHoveredTopic(null)}
                 onClick={() => setActiveTopic(activeTopic === topic.id ? null : topic.id)}
+                onKeyDown={(e) => handleKeyDown(e, topic.id)}
                 tabIndex={0}
                 role="button"
-                aria-label={direction.title}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    setActiveTopic(activeTopic === topic.id ? null : topic.id);
-                  }
-                }}
+                aria-label={topic.label}
               />
               {/* Glow effect for active */}
               {isActive && (
                 <circle
                   cx={topic.x}
                   cy={topic.y}
-                  r={6}
+                  r={8}
                   fill="none"
-                  stroke="rgba(59, 130, 246, 0.3)"
+                  stroke="rgba(59, 130, 246, 0.4)"
                   className="animate-pulse-slow"
                 />
               )}
+              {/* Label - always visible */}
+              <text
+                x={topic.x + (topic.x > 50 ? 7 : -7)}
+                y={topic.y + 4}
+                fontSize="4"
+                fill={isActive ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'}
+                textAnchor={topic.x > 50 ? 'start' : 'end'}
+                className="transition-all duration-300 pointer-events-none select-none"
+                style={{ fontFamily: 'monospace' }}
+              >
+                {topic.label}
+              </text>
             </g>
           );
         })}
       </svg>
       
-      {/* Active topic info */}
-      {(activeTopic || hoveredTopic) && activeDirection && (
-        <div className="absolute inset-0 flex items-end justify-center pb-8 pointer-events-none">
-          <div className="bg-[#0a1120] border border-[rgba(255,255,255,0.08)] rounded-xl p-4 max-w-xs pointer-events-auto">
-            <p className="font-mono text-[10px] text-[#3b82f6] tracking-widest uppercase mb-1">
-              {activeDirection.status}
-            </p>
-            <h4 className="text-sm font-semibold text-[#f0f4f8] mb-2">{activeDirection.title}</h4>
-            <p className="text-xs text-[#8899aa] leading-relaxed">{activeDirection.description}</p>
-          </div>
+      {/* Active topic info panel */}
+      {activeDirection && (
+        <div className="mt-6 p-5 bg-[#0a1120]/80 backdrop-blur-sm border border-[rgba(255,255,255,0.08)] rounded-xl">
+          <p className="font-mono text-[10px] text-[#3b82f6] tracking-widest uppercase mb-2">
+            {activeDirection.status}
+          </p>
+          <h4 className="text-base font-semibold text-[#f0f4f8] mb-2">{activeDirection.title}</h4>
+          <p className="text-sm text-[#8899aa] leading-relaxed">{activeDirection.description}</p>
         </div>
       )}
       
+      {/* Keyboard navigation hint */}
+      {keyboardNav && (
+        <p className="mt-4 text-xs text-[#5a6a7a]">
+          Use Tab to navigate and Enter to select topics
+        </p>
+      )}
+      
       {/* Mobile fallback - accessible list */}
-      <div className="hidden mt-6 space-y-3">
+      <div className="mt-8 grid gap-4 md:hidden">
         {researchDirections.slice(0, 6).map((direction) => (
           <div 
             key={direction.id}
@@ -126,6 +152,9 @@ function ResearchConstellation() {
 export default function ResearchLab() {
   return (
     <section id="research" className="py-[var(--section-spacing)] relative">
+      {/* Readability mask behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.4)] to-transparent" />
+      
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(99,102,241,0.04)] via-transparent to-transparent" />
@@ -170,8 +199,28 @@ export default function ResearchLab() {
                       </a>
                     )}
                   </div>
-                  <p className="text-sm text-[#3b82f6] mb-3">{pub.venue} · {pub.year}</p>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="text-xs font-mono text-[#3b82f6]">{pub.venue}</span>
+                    <span className="text-xs text-[#5a6a7a]">·</span>
+                    <span className="text-xs font-mono text-[#5a6a7a]">{pub.year}</span>
+                  </div>
                   <p className="text-[#8899aa] text-sm leading-relaxed">{pub.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {pub.id === 'eeg-doctors' ? (
+                      <>
+                        <span className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">Computer Vision</span>
+                        <span className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">OCR</span>
+                        <span className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">Deep Learning</span>
+                        <span className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">Document Intelligence</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">EEG Analysis</span>
+                        <span className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">Neural Signals</span>
+                        <span className="px-2 py-1 text-xs text-[#5a6a7a] bg-[#060c18] rounded">Cognitive Science</span>
+                      </>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

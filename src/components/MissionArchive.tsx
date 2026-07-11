@@ -57,14 +57,14 @@ function EEGTelemetry() {
         ))}
       </div>
       
-      {/* Prediction Confidence */}
+      {/* Neural Pattern Classification */}
       <div className="bg-[#0a1120] rounded p-3">
         <div className="flex items-center justify-between mb-2">
-          <span className="font-mono text-[9px] text-[#8899aa]">PREDICTION CONFIDENCE</span>
-          <span className="font-mono text-xs font-semibold text-emerald-400">87.3%</span>
+          <span className="font-mono text-[9px] text-[#8899aa]">NEURAL PATTERN CLASSIFICATION</span>
+          <span className="font-mono text-xs font-semibold text-emerald-400">80%</span>
         </div>
         <div className="h-1 bg-[#1a2a40] rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-[#3b82f6] to-emerald-400 rounded-full" style={{ width: '87.3%' }} />
+          <div className="h-full bg-gradient-to-r from-[#3b82f6] to-emerald-400 rounded-full" style={{ width: '80%' }} />
         </div>
       </div>
     </div>
@@ -73,6 +73,11 @@ function EEGTelemetry() {
 
 // Document Processing Visualization
 function DocumentProcessing() {
+  // Static widths for consistent rendering
+  const sourceLines = ['85%', '72%', '90%', '65%', '78%', '88%'];
+  const extractedLines = ['80%', '95%', '70%', '88%'];
+  const translatedLines = ['75%', '82%', '68%'];
+  
   return (
     <div className="w-full h-full bg-[#060c18] p-6 relative overflow-hidden">
       <div className="flex items-center gap-2 mb-4">
@@ -85,8 +90,8 @@ function DocumentProcessing() {
         <div className="bg-[#0a1120] rounded border border-[rgba(255,255,255,0.04)] p-3">
           <p className="font-mono text-[9px] text-[#5a6a7a] mb-2">SOURCE</p>
           <div className="space-y-1">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-2 bg-[#1a2a40] rounded" style={{ width: `${70 + Math.random() * 30}%` }} />
+            {sourceLines.map((width, i) => (
+              <div key={i} className="h-2 bg-[#1a2a40] rounded" style={{ width }} />
             ))}
           </div>
         </div>
@@ -95,8 +100,8 @@ function DocumentProcessing() {
         <div className="bg-[#0a1120] rounded border border-[rgba(59,130,246,0.2)] p-3">
           <p className="font-mono text-[9px] text-[#3b82f6] mb-2">EXTRACTED</p>
           <div className="space-y-1">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-2 bg-[#3b82f6]/20 rounded" style={{ width: `${60 + Math.random() * 40}%` }} />
+            {extractedLines.map((width, i) => (
+              <div key={i} className="h-2 bg-[#3b82f6]/20 rounded" style={{ width }} />
             ))}
           </div>
         </div>
@@ -105,8 +110,8 @@ function DocumentProcessing() {
         <div className="bg-[#0a1120] rounded border border-[rgba(99,102,241,0.2)] p-3 col-span-2">
           <p className="font-mono text-[9px] text-[#6366f1] mb-2">TRANSLATED (हिंदी)</p>
           <div className="space-y-1">
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="h-2 bg-[#6366f1]/20 rounded" style={{ width: `${50 + Math.random() * 50}%` }} />
+            {translatedLines.map((width, i) => (
+              <div key={i} className="h-2 bg-[#6366f1]/20 rounded" style={{ width }} />
             ))}
           </div>
         </div>
@@ -134,7 +139,7 @@ function ComputerVision() {
         
         {/* Detected pothole */}
         <div className="absolute top-1/3 left-1/4 w-12 h-8 border-2 border-red-500 rounded">
-          <span className="absolute -top-4 left-0 font-mono text-[8px] text-red-400">POTHOLE 94%</span>
+          <span className="absolute -top-4 left-0 font-mono text-[8px] text-red-400">POTHOLE 95%</span>
         </div>
         
         {/* Grid overlay */}
@@ -152,8 +157,8 @@ function ComputerVision() {
           <p className="font-mono text-sm font-semibold text-[#f0f4f8]">3</p>
         </div>
         <div className="bg-[#0a1120] rounded p-2 text-center">
-          <p className="font-mono text-[9px] text-[#5a6a7a]">CONFIDENCE</p>
-          <p className="font-mono text-sm font-semibold text-red-400">94.2%</p>
+          <p className="font-mono text-[9px] text-[#5a6a7a]">mAP</p>
+          <p className="font-mono text-sm font-semibold text-emerald-400">95%</p>
         </div>
         <div className="bg-[#0a1120] rounded p-2 text-center">
           <p className="font-mono text-[9px] text-[#5a6a7a]">LAT/LNG</p>
@@ -172,6 +177,9 @@ export default function MissionArchive() {
 
   return (
     <section id="projects" className="py-[var(--section-spacing)] relative">
+      {/* Readability mask behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.3)] to-transparent" />
+      
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
@@ -205,23 +213,31 @@ export default function MissionArchive() {
               {/* Content */}
               <div className="space-y-8">
                 <div className="space-y-3">
-                  <p className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase">Brain-Computer Interface</p>
-                  <h3 className="text-subsection-heading font-bold text-[#f0f4f8]">{flagship.title}</h3>
+                  <p className="font-mono text-xs text-[#3b82f6] tracking-widest uppercase">Brain-Computer Interface · EEG · Machine Learning</p>
+                  <h3 className="text-subsection-heading font-bold text-[#f0f4f8]">NeuroTetris: Predicting Gameplay Outcomes from Neural Signals</h3>
                 </div>
                 
                 <p className="text-[#8899aa] text-body leading-relaxed">
-                  {flagship.description}
+                  A real-time brain-computer interface research system that analyzes EEG signals recorded during Tetris gameplay to identify neural patterns associated with player outcomes.
+                </p>
+                
+                <p className="text-[#8899aa] text-sm leading-relaxed">
+                  Built signal-processing and machine-learning pipelines for EEG filtering, exploratory analysis, feature extraction, neural-pattern classification, and real-time control mapping.
                 </p>
                 
                 {/* Key Metrics */}
-                <div className="grid grid-cols-2 gap-4 py-6 border-y border-[rgba(255,255,255,0.04)]">
+                <div className="grid grid-cols-3 gap-4 py-6 border-y border-[rgba(255,255,255,0.04)]">
                   <div>
-                    <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">Real-time</p>
-                    <p className="text-sm text-[#5a6a7a] mt-1">Neural Signal Processing</p>
+                    <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">80%</p>
+                    <p className="text-sm text-[#5a6a7a] mt-1">Neural-pattern classification accuracy</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">87.3%</p>
-                    <p className="text-sm text-[#5a6a7a] mt-1">Prediction Accuracy</p>
+                    <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">Real-time</p>
+                    <p className="text-sm text-[#5a6a7a] mt-1">EEG signal processing</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">OpenBCI</p>
+                    <p className="text-sm text-[#5a6a7a] mt-1">Neural-signal acquisition</p>
                   </div>
                 </div>
                 
@@ -280,13 +296,32 @@ export default function MissionArchive() {
                     {project.missionId}
                   </p>
                   <h3 className="text-lg font-semibold text-[#f0f4f8] group-hover:text-[#3b82f6] transition-colors">
-                    {project.title}
+                    {idx === 0 ? 'Tesseract: Making Legal Documents Easier to Understand' : 'Legolas: AI-Powered Road-Condition Intelligence'}
                   </h3>
                 </div>
                 
                 <p className="text-[#8899aa] text-sm leading-relaxed">
-                  {project.description.substring(0, 120)}...
+                  {idx === 0 
+                    ? 'An end-to-end legal-document intelligence platform that extracts text using OCR, generates context-aware summaries using transformer models, and translates results into regional languages.'
+                    : 'A computer-vision and edge-computing system that detects potholes, attaches geospatial context, and supports real-time road-condition monitoring through analytical dashboards.'}
                 </p>
+                
+                {/* Key Metrics */}
+                <div className="flex flex-wrap gap-3 py-3 border-y border-[rgba(255,255,255,0.04)]">
+                  {idx === 0 ? (
+                    <>
+                      <span className="text-xs font-mono text-[#3b82f6]">BERT</span>
+                      <span className="text-xs font-mono text-[#5a6a7a]">OCR</span>
+                      <span className="text-xs font-mono text-[#5a6a7a]">Translation</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-xs font-mono text-emerald-400">95% mAP</span>
+                      <span className="text-xs font-mono text-[#3b82f6]">YOLO</span>
+                      <span className="text-xs font-mono text-[#5a6a7a]">Edge + IoT</span>
+                    </>
+                  )}
+                </div>
                 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2">

@@ -20,6 +20,9 @@ export default function TransmissionCenter() {
   
   return (
     <section id="contact" className="py-[var(--section-spacing)] relative">
+      {/* Readability mask behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.3)] to-transparent" />
+      
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.04)] via-transparent to-transparent" />
@@ -28,7 +31,7 @@ export default function TransmissionCenter() {
       <div className="container-content relative z-10">
         {/* Section Label */}
         <div className="section-label">
-          <span className="section-label-number">07 / Transmission</span>
+          <span className="section-label-number">07 / TRANSMISSION</span>
           <div className="section-label-line" />
         </div>
         
@@ -36,11 +39,10 @@ export default function TransmissionCenter() {
           {/* Left - Header & Contact Links */}
           <div>
             <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-4">
-              Get in Touch
+              Let&apos;s build something worth exploring.
             </h2>
             <p className="text-[#8899aa] text-body leading-relaxed mb-10 max-w-lg">
-              Interested in AI research, collaboration opportunities, or just want to connect? 
-              I am always open to discussing new projects, innovative ideas, or potential partnerships.
+              Open to conversations around AI research, data systems, intelligent agents, computer vision, and ambitious technical projects.
             </p>
             
             {/* Contact Links */}
@@ -88,26 +90,26 @@ export default function TransmissionCenter() {
           <div>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-[#8899aa] mb-2">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-[#8899aa] mb-2">Identification</label>
                 <input
                   id="name"
                   type="text"
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#3a4a5a] focus:border-[#3b82f6] focus:outline-none transition-colors"
+                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#5a6a7a] focus:border-[#3b82f6] focus:outline-none transition-colors"
                   placeholder="Your name"
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#8899aa] mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-[#8899aa] mb-2">Return Signal</label>
                 <input
                   id="email"
                   type="email"
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#3a4a5a] focus:border-[#3b82f6] focus:outline-none transition-colors"
+                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#5a6a7a] focus:border-[#3b82f6] focus:outline-none transition-colors"
                   placeholder="your.email@example.com"
                   required
                 />
@@ -120,7 +122,7 @@ export default function TransmissionCenter() {
                   rows={6}
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#3a4a5a] focus:border-[#3b82f6] focus:outline-none transition-colors resize-none"
+                  className="w-full px-5 py-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl text-[#f0f4f8] placeholder-[#5a6a7a] focus:border-[#3b82f6] focus:outline-none transition-colors resize-none"
                   placeholder="Tell me about your project, idea, or how I can help..."
                   required
                 />
@@ -130,7 +132,7 @@ export default function TransmissionCenter() {
                 type="submit"
                 className="w-full px-8 py-4 bg-[#3b82f6] text-[#030810] rounded-xl font-semibold hover:bg-[#60a5fd] transition-all flex items-center justify-center gap-2"
               >
-                {submitted ? 'Message Sent!' : 'Send Message'}
+                {submitted ? 'Message Sent!' : 'Transmit Message'}
                 <Send className="w-5 h-5" />
               </button>
             </form>

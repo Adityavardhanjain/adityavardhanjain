@@ -5,6 +5,9 @@ import { experiences, achievements } from '@/lib/data';
 export default function MissionTimeline() {
   return (
     <section id="experience" className="py-[var(--section-spacing)] relative">
+      {/* Readability mask behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.3)] to-transparent" />
+      
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
@@ -38,8 +41,8 @@ export default function MissionTimeline() {
                 {/* Content - Full width editorial layout */}
                 <div className="lg:pl-12">
                   {/* Organization & Role */}
-                  <div className="mb-6">
-                    <h3 className="text-3xl lg:text-4xl font-bold text-[#f0f4f8] tracking-tight mb-2">
+                  <div className="mb-4">
+                    <h3 className="text-3xl lg:text-4xl font-bold text-[#f0f4f8] tracking-tight mb-1">
                       {exp.organization}
                     </h3>
                     <p className="text-xl text-[#c8d4e3] mb-1">{exp.title}</p>
@@ -49,20 +52,29 @@ export default function MissionTimeline() {
                   {/* Mobile date - visible only on mobile */}
                   <p className="lg:hidden font-mono text-xs text-[#3b82f6] mb-4">{exp.period}</p>
                   
+                  {/* Impact Metrics - For Tatvic */}
+                  {exp.impactMetrics && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 mb-8">
+                      {exp.impactMetrics.map((metric, i) => (
+                        <div key={i} className="text-center">
+                          <p className="text-2xl lg:text-3xl font-bold text-[#f0f4f8] tracking-tight">{metric.value}</p>
+                          <p className="text-xs text-[#5a6a7a] mt-1">{metric.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
                   {/* Description */}
                   <p className="text-[#8899aa] text-body leading-relaxed max-w-3xl mb-8">
                     {exp.description}
                   </p>
                   
-                  {/* Impact Highlights - Large readable format */}
+                  {/* Impact Highlights - Clean editorial bullet lists */}
                   {exp.highlights.length > 0 && (
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {exp.highlights.map((highlight, i) => (
-                        <div 
-                          key={i}
-                          className="flex items-start gap-4 p-5 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-lg"
-                        >
-                          <div className="w-2 h-2 mt-2 rounded-full bg-[#3b82f6] flex-shrink-0" />
+                        <div key={i} className="flex items-start gap-4">
+                          <div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#3b82f6] flex-shrink-0" />
                           <p className="text-[#8899aa] leading-relaxed">{highlight}</p>
                         </div>
                       ))}

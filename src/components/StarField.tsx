@@ -4,16 +4,22 @@ import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-function Stars({ count = 2000 }: { count?: number }) {
+// Seeded random for consistent star positions
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+function Stars({ count = 1800 }: { count?: number }) {
   const mesh = useRef<THREE.Points>(null);
   
   const positions = useMemo(() => {
     const positions = new Float32Array(count * 3);
     
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 100;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 100;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
+      positions[i * 3] = (seededRandom(i * 1) - 0.5) * 100;
+      positions[i * 3 + 1] = (seededRandom(i * 2) - 0.5) * 100;
+      positions[i * 3 + 2] = (seededRandom(i * 3) - 0.5) * 100;
     }
     
     return positions;
@@ -35,10 +41,10 @@ function Stars({ count = 2000 }: { count?: number }) {
   return (
     <points ref={mesh} geometry={geometry}>
       <pointsMaterial
-        size={0.15}
+        size={0.12}
         sizeAttenuation
         transparent
-        opacity={0.8}
+        opacity={0.6}
         color="#ffffff"
         blending={THREE.AdditiveBlending}
       />
@@ -49,7 +55,7 @@ function Stars({ count = 2000 }: { count?: number }) {
 function Nebula() {
   const mesh = useRef<THREE.Mesh>(null);
   
-  useFrame((state) => {
+  useFrame(() => {
     if (mesh.current) {
       mesh.current.rotation.z += 0.0002;
     }
@@ -61,7 +67,7 @@ function Nebula() {
       <meshBasicMaterial
         color="#1a2744"
         transparent
-        opacity={0.15}
+        opacity={0.12}
         side={THREE.BackSide}
       />
     </mesh>
@@ -83,7 +89,7 @@ function DistantNebula() {
       <meshBasicMaterial
         color="#0a1628"
         transparent
-        opacity={0.1}
+        opacity={0.08}
         side={THREE.BackSide}
       />
     </mesh>
@@ -94,7 +100,7 @@ export default function StarField() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 50], fov: 75 }}>
-        <Stars count={2500} />
+        <Stars count={1800} />
         <Nebula />
         <DistantNebula />
       </Canvas>
