@@ -140,7 +140,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="mt-4 text-cyan-400/80 font-mono text-sm md:text-base"
               >
-                AI/ML Engineer · Data Analyst · Research Enthusiast
+                Data Analyst · AI/ML Engineer · Research Enthusiast
               </motion.p>
             </motion.div>
           )}
