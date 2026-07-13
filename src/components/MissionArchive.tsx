@@ -300,6 +300,95 @@ function AdditionalProject({ project, visualLabel = '3D' }: AdditionalProjectPro
   );
 }
 
+// Featured BCI Project Card - Using proper CSS Grid layout
+function FeaturedBCICard({ 
+  missionId, 
+  title, 
+  description, 
+  technologies, 
+  github 
+}: { 
+  missionId: string; 
+  title: string; 
+  description: string; 
+  technologies: string[]; 
+  github?: string;
+}) {
+  return (
+    <article className="featured-project">
+      {/* EEG Visualization - Left Panel */}
+      <div className="featured-project__visual">
+        <EEGTelemetry />
+      </div>
+
+      {/* Content - Right Panel */}
+      <div className="featured-project__content">
+        {/* Category */}
+        <p className="font-mono text-[10px] sm:text-xs text-[#3b82f6]/70 tracking-widest uppercase mb-3 sm:mb-4">
+          {missionId}
+        </p>
+        
+        {/* Title */}
+        <h3 className="featured-project__title mb-4 sm:mb-6">
+          {title}
+        </h3>
+        
+        {/* Description */}
+        <p className="featured-project__description mb-6 sm:mb-8">
+          {description}
+        </p>
+        
+        {/* Metrics */}
+        <div className="metrics mb-6 sm:mb-8">
+          <div className="metric-item">
+            <p className="metric-value">80%</p>
+            <p className="metric-label">Neural-pattern classification accuracy</p>
+          </div>
+          <div className="metric-item">
+            <p className="metric-value">Real-time</p>
+            <p className="metric-label">EEG signal processing</p>
+          </div>
+          <div className="metric-item">
+            <p className="metric-value">OpenBCI</p>
+            <p className="metric-label">Neural-signal acquisition</p>
+          </div>
+        </div>
+        
+        {/* Technology Tags */}
+        <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+          {technologies.map((tech, idx) => (
+            <span key={`featured-tech-${idx}`} className="tech-tag">
+              {tech}
+            </span>
+          ))}
+        </div>
+        
+        {/* Links */}
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          {github && (
+            <a 
+              href={github} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+            >
+              <GithubIcon className="w-4 h-4" />
+              GitHub
+            </a>
+          )}
+          <a 
+            href="#contact"
+            className="flex items-center gap-2 text-sm sm:text-base font-medium text-[#3b82f6] hover:text-[#60a5fd] transition-colors"
+          >
+            Learn More
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function MissionArchive() {
   // Use validated project data
   const validProjects = safeArray(projects).filter((p): p is NonNullable<typeof p> => p !== null && typeof p === 'object');
@@ -309,9 +398,11 @@ export default function MissionArchive() {
   const secondary = featured.slice(1, 3);
   const additional = featured.slice(3);
   
-  const flagshipTitle = flagship ? safeString(flagship.title, 'Brain-Computer Interface: Tetris Outcome Prediction') : '';
-  const flagshipDescription = flagship ? safeString(flagship.description, 'Developed a real-time brain-computer interface system.') : '';
-  const flagshipTech = flagship ? safeArray((flagship as Record<string, unknown>).technologies) : [];
+  const flagshipTitle = flagship ? safeString(flagship.title, 'Brain–Computer Interface: Tetris Outcome Prediction') : '';
+  const flagshipDescription = flagship ? safeString(flagship.description, 'Developed a real-time brain-computer interface that processes EEG signals captured during Tetris gameplay. Applied signal processing, feature extraction, data analysis, and machine-learning techniques to investigate neural activity and predict gameplay outcomes.') : '';
+  const flagshipTech = flagship ? (safeArray((flagship as Record<string, unknown>).technologies) as string[]) : [];
+  const flagshipGithub = flagship ? safeUrl((flagship as Record<string, unknown>).github) : undefined;
+  const flagshipMissionId = flagship ? safeString((flagship as Record<string, unknown>).missionId, 'FEATURED RESEARCH · BRAIN–COMPUTER INTERFACE') : '';
   
   return (
     <section id="projects" className="py-[var(--section-spacing)] relative">
@@ -337,94 +428,23 @@ export default function MissionArchive() {
           </p>
         </div>
         
-        {/* Flagship Project */}
+        {/* Flagship Project - Fixed BCI Card */}
         {flagship && (
           <div className="mb-12 sm:mb-16">
             <div className="bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-2xl overflow-hidden hover:border-[rgba(255,255,255,0.1)] transition-all">
-              {/* Mobile: Stack visual above content */}
-              <div className="sm:hidden">
-                <div className="aspect-video">
-                  <EEGTelemetry />
-                </div>
-              </div>
-              
-              <div className="grid lg:grid-cols-2">
-                {/* Desktop: Visual on left */}
-                <div className="hidden sm:block aspect-video lg:aspect-auto lg:h-full">
-                  <EEGTelemetry />
-                </div>
-                
-                {/* Content on right */}
-                <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center min-w-0">
-                  <p className="font-mono text-[10px] sm:text-xs text-[#3b82f6]/70 tracking-widest uppercase mb-2">
-                    {String((flagship as Record<string, unknown>).missionId || 'MISSION-01')}
-                  </p>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#f0f4f8] mb-4 text-wrap">
-                    {flagshipTitle}
-                  </h3>
-                  <p className="text-[#8899aa] text-sm sm:text-base leading-relaxed mb-6 text-wrap">
-                    {flagshipDescription}
-                  </p>
-                  
-                  {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-6">
-                    <div>
-                      <p className="text-2xl sm:text-3xl font-bold text-[#f0f4f8] tracking-tight">80%</p>
-                      <p className="text-xs sm:text-sm text-[#5a6a7a] mt-1 text-wrap">Neural-pattern classification accuracy</p>
-                    </div>
-                    <div>
-                      <p className="text-2xl sm:text-3xl font-bold text-[#f0f4f8] tracking-tight">Real-time</p>
-                      <p className="text-xs sm:text-sm text-[#5a6a7a] mt-1 text-wrap">EEG signal processing</p>
-                    </div>
-                    <div>
-                      <p className="text-2xl sm:text-3xl font-bold text-[#f0f4f8] tracking-tight">OpenBCI</p>
-                      <p className="text-xs sm:text-sm text-[#5a6a7a] mt-1 text-wrap">Neural-signal acquisition</p>
-                    </div>
-                  </div>
-                  
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {flagshipTech.slice(0, 4).map((tech, idx) => (
-                      <span key={`flagship-tech-${idx}`} className="px-3 py-1.5 text-sm text-[#8899aa] bg-[#0a1120] border border-[rgba(255,255,255,0.04)] rounded text-wrap">
-                        {String(tech)}
-                      </span>
-                    ))}
-                    {flagshipTech.length > 4 && (
-                      <span className="px-3 py-1.5 text-sm text-[#5a6a7a]">
-                        +{flagshipTech.length - 4} more
-                      </span>
-                    )}
-                  </div>
-                  
-                  {/* Links */}
-                  <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                    {!!(flagship as Record<string, unknown>).github && (
-                      <a 
-                        href={String((flagship as Record<string, unknown>).github)} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="btn btn-secondary"
-                      >
-                        <GithubIcon className="w-4 h-4" />
-                        GitHub
-                      </a>
-                    )}
-                    <a 
-                      href="#contact"
-                      className="flex items-center gap-2 text-sm sm:text-base font-medium text-[#3b82f6] hover:text-[#60a5fd] transition-colors"
-                    >
-                      Learn More
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <FeaturedBCICard
+                missionId={flagshipMissionId}
+                title={flagshipTitle}
+                description={flagshipDescription}
+                technologies={flagshipTech}
+                github={flagshipGithub}
+              />
             </div>
           </div>
         )}
         
-        {/* Secondary Projects */}
-        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16 min-w-0">
+        {/* Secondary Projects - Clean two-column grid */}
+        <div className="project-grid mb-12 sm:mb-16">
           {secondary.map((project, idx) => {
             const p = project as Record<string, unknown>;
             return (
