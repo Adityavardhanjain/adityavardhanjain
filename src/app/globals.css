@@ -3,31 +3,19 @@
 /* ========================================
    DIGITAL OBSERVATORY DESIGN SYSTEM
    A mission archive documenting work across AI, data, and cognition.
+   
+   Resilient design principles:
+   - Content-driven layouts that adapt to data
+   - No fixed heights for primary content
+   - Overflow-wrap for all dynamic text
+   - Mobile-first responsive breakpoints
+   - Consistent container system
    ======================================== */
 
 :root {
-  /* Content Container */
-  --content-max-width: 1280px;
-  --content-padding-desktop: 64px;
-  --content-padding-tablet: 40px;
-  --content-padding-mobile: 24px;
-  
-  /* Typography Scale */
-  --text-hero-name: clamp(3.5rem, 7vw, 6.5rem);
-  --text-hero-role: clamp(1.15rem, 2vw, 1.5rem);
-  --text-hero-description: clamp(1rem, 1.3vw, 1.2rem);
-  --text-section-heading: clamp(2.5rem, 5vw, 4.5rem);
-  --text-subsection-heading: clamp(1.5rem, 2.5vw, 2.25rem);
-  --text-body: clamp(1rem, 1.1vw, 1.125rem);
-  --text-metadata: clamp(0.8rem, 0.95vw, 0.95rem);
-  --text-small: 0.875rem;
-  
-  /* Line Heights */
-  --leading-tight: 1.15;
-  --leading-normal: 1.65;
-  --leading-relaxed: 1.8;
-  
-  /* Colors */
+  /* ========================================
+     COLOR SYSTEM
+     ======================================== */
   --bg-primary: #030810;
   --bg-secondary: #060c18;
   --bg-card: #0a1120;
@@ -35,15 +23,80 @@
   --text-primary: #f0f4f8;
   --text-secondary: #c8d4e3;
   --text-muted: #8899aa;
+  --text-faint: #5a6a7a;
   --accent: #3b82f6;
   --accent-secondary: #6366f1;
   --accent-glow: rgba(59, 130, 246, 0.4);
+  --accent-emerald: #10b981;
   --border: rgba(255, 255, 255, 0.05);
   --border-hover: rgba(255, 255, 255, 0.1);
-  
-  /* Spacing */
-  --section-spacing: clamp(140px, 18vh, 200px);
-  --section-inner-spacing: clamp(48px, 8vh, 80px);
+  --border-accent: rgba(59, 130, 246, 0.3);
+
+  /* ========================================
+     CONTAINER SYSTEM
+     Consistent responsive container with adaptive padding
+     ======================================== */
+  --container-max: 1280px;
+  --container-padding-sm: 1rem;   /* 16px */
+  --container-padding-md: 1.25rem; /* 20px */
+  --container-padding-lg: 1.5rem; /* 24px */
+  --container-padding-xl: 2rem;    /* 32px */
+  --container-padding-2xl: 3rem;   /* 48px */
+  --container-padding-3xl: 4rem;  /* 64px */
+
+  /* ========================================
+     TYPOGRAPHY SCALE
+     All text uses clamp() for fluid responsive sizing
+     ======================================== */
+  --text-hero-name: clamp(2.5rem, 6vw, 5.5rem);
+  --text-hero-role: clamp(1rem, 1.8vw, 1.35rem);
+  --text-hero-description: clamp(0.95rem, 1.2vw, 1.1rem);
+  --text-section-heading: clamp(1.75rem, 4vw, 3.25rem);
+  --text-subsection-heading: clamp(1.25rem, 2.5vw, 1.75rem);
+  --text-card-heading: clamp(1.1rem, 2vw, 1.35rem);
+  --text-body: clamp(0.95rem, 1.1vw, 1.05rem);
+  --text-body-sm: clamp(0.85rem, 1vw, 0.95rem);
+  --text-metadata: clamp(0.75rem, 0.9vw, 0.875rem);
+  --text-small: clamp(0.7rem, 0.85vw, 0.8rem);
+  --text-label: 0.6875rem; /* 11px - fixed for consistency */
+
+  /* ========================================
+     LINE HEIGHTS
+     Optimized for readability at different sizes
+     ======================================== */
+  --leading-hero: 1.05;
+  --leading-heading: 1.1;
+  --leading-subheading: 1.2;
+  --leading-body: 1.65;
+  --leading-relaxed: 1.75;
+  --leading-tight: 1.15;
+
+  /* ========================================
+     SPACING SYSTEM
+     Consistent vertical rhythm with responsive section spacing
+     ======================================== */
+  --section-spacing: clamp(5rem, 12vw, 10rem);
+  --section-inner-spacing: clamp(2.5rem, 5vw, 4rem);
+  --gap-section: clamp(1.5rem, 3vw, 2rem);
+  --gap-card: clamp(1rem, 2vw, 1.5rem);
+  --gap-element: clamp(0.5rem, 1vw, 0.75rem);
+
+  /* ========================================
+     GRID SYSTEM
+     Adaptive grid with minimum column widths
+     ======================================== */
+  --grid-min-col: min(100%, 18rem); /* ~288px minimum column */
+  --grid-gap: clamp(1rem, 2vw, 1.5rem);
+  --grid-gap-lg: clamp(1.5rem, 3vw, 2.5rem);
+
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
 }
 
 @theme inline {
@@ -58,7 +111,10 @@
   --font-mono: var(--font-jetbrains);
 }
 
-* {
+/* ========================================
+   BASE RESET
+   ======================================== */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -66,6 +122,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -73,42 +130,101 @@ body {
   color: var(--text-primary);
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
   font-size: var(--text-body);
-  line-height: var(--leading-normal);
+  line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
-/* Content Container Utility */
+/* ========================================
+   RESILIENT TEXT UTILITIES
+   All dynamic text wraps safely
+   ======================================== */
+.text-wrap {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.text-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+/* Truncate single line with ellipsis */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ========================================
+   RESPONSIVE CONTAINER
+   Centered with consistent horizontal padding
+   ======================================== */
 .container-content {
   width: 100%;
-  max-width: var(--content-max-width);
+  max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--content-padding-mobile);
+  padding-inline: var(--container-padding-md);
 }
 
 @media (min-width: 640px) {
   .container-content {
-    padding-inline: var(--content-padding-tablet);
+    padding-inline: var(--container-padding-lg);
   }
 }
 
 @media (min-width: 1024px) {
   .container-content {
-    padding-inline: var(--content-padding-desktop);
+    padding-inline: var(--container-padding-2xl);
   }
 }
 
-/* Typography Utilities */
+/* ========================================
+   GRID UTILITIES
+   Resilient grids that adapt to content
+   ======================================== */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-col), 1fr));
+  gap: var(--grid-gap);
+}
+
+.grid-auto-lg {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  gap: var(--grid-gap-lg);
+}
+
+/* All grid and flex children should have min-width: 0 */
+.grid-auto > *,
+.grid-auto-lg > *,
+.grid > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* ========================================
+   TYPOGRAPHY UTILITIES
+   Consistent heading and body styles
+   ======================================== */
 .text-hero-name {
   font-size: var(--text-hero-name);
-  line-height: var(--leading-tight);
+  line-height: var(--leading-hero);
   letter-spacing: -0.025em;
+  font-weight: 700;
 }
 
 .text-hero-role {
   font-size: var(--text-hero-role);
-  line-height: var(--leading-normal);
+  line-height: var(--leading-body);
+  font-weight: 400;
 }
 
 .text-hero-description {
@@ -119,52 +235,201 @@ body {
 
 .text-section-heading {
   font-size: var(--text-section-heading);
-  line-height: var(--leading-tight);
-  letter-spacing: -0.025em;
+  line-height: var(--leading-heading);
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 .text-subsection-heading {
   font-size: var(--text-subsection-heading);
+  line-height: var(--leading-subheading);
+  font-weight: 600;
+}
+
+.text-card-heading {
+  font-size: var(--text-card-heading);
   line-height: var(--leading-tight);
+  font-weight: 600;
 }
 
 .text-body {
   font-size: var(--text-body);
-  line-height: var(--leading-relaxed);
+  line-height: var(--leading-body);
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-body);
 }
 
 .text-metadata {
   font-size: var(--text-metadata);
-  line-height: var(--leading-normal);
+  line-height: var(--leading-body);
 }
 
-/* Section Label */
+.text-label {
+  font-size: var(--text-label);
+  line-height: var(--leading-tight);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   SECTION LABEL COMPONENT
+   ======================================== */
 .section-label {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 48px;
+  gap: 1rem;
+  margin-bottom: var(--section-inner-spacing);
 }
 
 .section-label-number {
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: var(--text-label);
   font-weight: 500;
   color: var(--accent);
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .section-label-line {
   height: 1px;
   background: var(--border);
   flex: 1;
-  max-width: 120px;
+  max-width: 5rem;
 }
 
-/* Scrollbar */
+/* ========================================
+   CARD COMPONENTS
+   Resilient cards that grow with content
+   ======================================== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+.card-elevated {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* ========================================
+   BUTTON UTILITIES
+   Touch-friendly with proper sizing
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  min-height: 2.75rem; /* 44px minimum touch target */
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #030810;
+}
+
+.btn-primary:hover {
+  background: #60a5fa;
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-accent);
+}
+
+/* ========================================
+   FORM ELEMENTS
+   Accessible touch-friendly inputs
+   ======================================== */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--text-body);
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s ease;
+  min-height: 3rem; /* 48px minimum */
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.input::placeholder {
+  color: var(--text-faint);
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--text-body);
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s ease;
+  resize: vertical;
+  min-height: 8rem;
+}
+
+/* ========================================
+   LINK UTILITIES
+   Consistent link styling
+   ======================================== */
+.link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.link-accent {
+  color: var(--accent);
+}
+
+.link-accent:hover {
+  color: #60a5fa;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -180,27 +445,40 @@ body {
   background: #2a3a50;
 }
 
-/* Focus States */
+/* ========================================
+   FOCUS STATES
+   Visible focus indicators for accessibility
+   ======================================== */
 :focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
-/* Reduced Motion */
+/* ========================================
+   REDUCED MOTION
+   Respect user preferences
+   ======================================== */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
   
   .animate-orbital,
+  .animate-orbital-reverse,
   .animate-pulse-slow,
-  .animate-float {
+  .animate-float,
+  .animate-ping {
     animation: none !important;
   }
 }
 
-/* Orbital Animation */
+/* ========================================
+   ANIMATIONS
+   Orbital and ambient effects
+   ======================================== */
 @keyframes orbital-rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -235,4 +513,62 @@ body {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* ========================================
+   DECORATIVE GRADIENTS
+   Atmospheric backgrounds (pointer-events-none)
+   ======================================== */
+.gradient-radial {
+  background: radial-gradient(ellipse at center, var(--accent) 0%, transparent 70%);
+}
+
+.gradient-mask {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(3, 8, 16, 0.3) 20%,
+    rgba(3, 8, 16, 0.3) 80%,
+    transparent 100%
+  );
+}
+
+/* ========================================
+   UTILITY CLASSES FOR LAYOUT
+   ======================================== */
+
+/* Prevent text selection on UI elements */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Smooth scroll locking for mobile menus */
+.scroll-lock {
+  overflow: hidden;
+}
+
+/* Aspect ratios for media */
+.aspect-video {
+  aspect-ratio: 16 / 10;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* ========================================
+   MOBILE-SPECIFIC UTILITIES
+   ======================================== */
+@media (max-width: 639px) {
+  /* Ensure minimum touch target size */
+  .touch-target {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+  }
+  
+  /* Prevent horizontal overflow */
+  .overflow-safe {
+    overflow-x: hidden;
+  }
 }
