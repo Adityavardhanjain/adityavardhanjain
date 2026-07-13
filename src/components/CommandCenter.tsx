@@ -40,17 +40,19 @@ export default function CommandCenter() {
             
             {/* Professional Identity */}
             <p className="text-hero-role text-[#c8d4e3] font-light tracking-wide">
-              Data Analyst · AI Engineer · Researcher
+              Data Analyst · AIML Engineer · Researcher
             </p>
             
             {/* Value Proposition */}
             <p className="text-hero-description text-[#8899aa]">
-              I build data and intelligent systems that transform complex information into reliable decisions—from enterprise analytics and agentic automation to computer vision and brain-computer interfaces.
-            </p>
+I’m someone who is deeply driven by curiosity: about systems, data, intelligence, and how things work at scale. My journey so far has been shaped by a strong foundation in ML and data analytics, with growing hands-on experience in machine learning, cloud technologies, and large-scale data systems. I enjoy working at the intersection of data and decision-making, where structured thinking meets real-world impact.
+Professionally, I’ve spent time building and working with data-intensive applications, designing pipelines, handling complex datasets, and extracting insights that matter. This has given me a solid grounding in how modern data systems operate in production environments. Beyond execution, I’m particularly interested in understanding why systems are built the way they are, whether it’s distributed architectures, ML models, or scalable infrastructure.
+What sets me apart is not just what I know, but how I approach learning. I actively explore advanced topics like large language models, intelligent systems, and emerging AI paradigms, often going beyond surface-level understanding into research papers and first-principles thinking. I’m especially interested in the long-term direction of AI and space-tech, and how these fields will shape the future of human capability.
+Currently, I’m focused on evolving into my role as an apprentice at Google where I can contribute to building intelligent, scalable systems, while continuing to deepen my understanding of machine learning, distributed computing, and research-driven problem solving. I’m always open to meaningful conversations, collaborations, and opportunities that challenge me to think bigger and build better.            </p>
             
             {/* Capability Labels */}
             <div className="flex flex-wrap gap-3 pt-2">
-              {['Advanced Analytics', 'Machine Learning', 'Computer Vision', 'BCI Research'].map((capability) => (
+              {['Advanced Analytics', 'AI Engineering', 'Computer Vision', 'Machine Learning Research','Generative AI', 'Agentic AI'].map((capability) => (
                 <span
                   key={capability}
                   className="px-4 py-2 text-sm font-medium text-[#8899aa] bg-[#0a1120] border border-[rgba(255,255,255,0.06)] rounded"
@@ -87,7 +89,7 @@ export default function CommandCenter() {
             
             {/* Professional Credibility */}
             <p className="text-sm text-[#5a6a7a] pt-6 border-t border-[rgba(255,255,255,0.04)]">
-              Google · Tatvic Analytics · ACM-published Research
+              Google · Tatvic Analytics · ACM-published Research · Indore Institute of Science and Technology
             </p>
           </div>
           
