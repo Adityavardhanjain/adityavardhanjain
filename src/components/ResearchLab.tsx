@@ -18,28 +18,20 @@ const topicPositions = [
 function ResearchConstellation() {
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null);
-  const [keyboardNav, setKeyboardNav] = useState(false);
   
   const activeDirection = researchDirections.find(d => d.id === activeTopic || d.id === hoveredTopic);
   
-  const handleKeyDown = (e: React.KeyboardEvent, topicId: string) => {
-    setKeyboardNav(true);
-    if (e.key === 'Enter' || e.key === ' ') {
-      setActiveTopic(activeTopic === topicId ? null : topicId);
-    }
-  };
-  
   return (
     <div className="relative">
-      {/* SVG Constellation - responsive sizing */}
+      {/* SVG Constellation - improved contrast per spec */}
       <svg 
         viewBox="0 0 100 100" 
-        className="w-full max-w-[500px] mx-auto aspect-square hidden md:block" 
+        className="w-full max-w-[400px] mx-auto aspect-square hidden md:block" 
         preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label="Research interests constellation diagram"
       >
-        {/* Connection lines */}
+        {/* Connection lines - increased contrast */}
         {topicPositions.map(topic => (
           topic.connections.map(connId => {
             const target = topicPositions.find(t => t.id === connId);
@@ -52,7 +44,7 @@ function ResearchConstellation() {
                 y1={topic.y}
                 x2={target.x}
                 y2={target.y}
-                stroke={isActive ? 'rgba(59, 130, 246, 0.5)' : 'rgba(255, 255, 255, 0.08)'}
+                stroke={isActive ? 'rgba(59, 130, 246, 0.7)' : 'rgba(255, 255, 255, 0.2)'}
                 strokeWidth={isActive ? 0.6 : 0.4}
                 className="transition-all duration-300"
               />
@@ -60,7 +52,7 @@ function ResearchConstellation() {
           })
         ))}
         
-        {/* Topic nodes */}
+        {/* Topic nodes - increased visibility */}
         {topicPositions.map(topic => {
           const isActive = activeTopic === topic.id || hoveredTopic === topic.id;
           const isConnected = topicPositions.some(t => 
@@ -69,38 +61,32 @@ function ResearchConstellation() {
           
           return (
             <g key={topic.id}>
-              {/* Node circle */}
               <circle
                 cx={topic.x}
                 cy={topic.y}
-                r={isActive ? 5 : 3}
-                fill={isActive ? '#3b82f6' : isConnected ? 'rgba(59, 130, 246, 0.6)' : 'rgba(255, 255, 255, 0.25)'}
+                r={isActive ? 5 : 3.5}
+                fill={isActive ? '#3b82f6' : isConnected ? 'rgba(59, 130, 246, 0.7)' : 'rgba(255, 255, 255, 0.4)'}
                 className="cursor-pointer transition-all duration-300"
                 onMouseEnter={() => setHoveredTopic(topic.id)}
                 onMouseLeave={() => setHoveredTopic(null)}
                 onClick={() => setActiveTopic(activeTopic === topic.id ? null : topic.id)}
-                onKeyDown={(e) => handleKeyDown(e, topic.id)}
-                tabIndex={0}
-                role="button"
-                aria-label={topic.label}
               />
-              {/* Glow effect for active */}
               {isActive && (
                 <circle
                   cx={topic.x}
                   cy={topic.y}
                   r={8}
                   fill="none"
-                  stroke="rgba(59, 130, 246, 0.4)"
+                  stroke="rgba(59, 130, 246, 0.5)"
                   className="animate-pulse-slow"
                 />
               )}
-              {/* Label - always visible */}
+              {/* Labels - increased contrast per spec */}
               <text
                 x={topic.x + (topic.x > 50 ? 7 : -7)}
                 y={topic.y + 4}
-                fontSize="4"
-                fill={isActive ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'}
+                fontSize="4.5"
+                fill={isActive ? '#3b82f6' : 'rgba(255, 255, 255, 0.6)'}
                 textAnchor={topic.x > 50 ? 'start' : 'end'}
                 className="transition-all duration-300 pointer-events-none select-none"
                 style={{ fontFamily: 'monospace' }}
@@ -112,36 +98,36 @@ function ResearchConstellation() {
         })}
       </svg>
       
+      {/* Center node label */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center justify-center">
+        <div className="bg-[#0a1120] border border-[rgba(59,130,246,0.3)] rounded-full px-4 py-2">
+          <span className="font-mono text-xs text-[#f0f4f8]">INTELLIGENT SYSTEMS</span>
+        </div>
+      </div>
+      
       {/* Active topic info panel */}
       {activeDirection && (
-        <div className="mt-4 sm:mt-6 p-4 sm:p-5 bg-[#0a1120]/80 backdrop-blur-sm border border-[rgba(255,255,255,0.08)] rounded-xl">
+        <div className="mt-4 p-4 bg-[#0a1120]/90 backdrop-blur-sm border border-[rgba(255,255,255,0.08)] rounded-xl">
           <p className="font-mono text-[10px] text-[#3b82f6] tracking-widest uppercase mb-2">
             {safeString(activeDirection.status, 'exploring').toUpperCase()}
           </p>
-          <h4 className="text-base font-semibold text-[#f0f4f8] mb-2 text-wrap">{safeString(activeDirection.title)}</h4>
-          <p className="text-sm text-[#8899aa] leading-relaxed text-wrap">{safeString(activeDirection.description)}</p>
+          <h4 className="text-base font-semibold text-[#f0f4f8] mb-2">{safeString(activeDirection.title)}</h4>
+          <p className="text-sm text-[#8899aa] leading-relaxed">{safeString(activeDirection.description)}</p>
         </div>
       )}
       
-      {/* Keyboard navigation hint */}
-      {keyboardNav && (
-        <p className="mt-4 text-xs text-[#5a6a7a]">
-          Use Tab to navigate and Enter to select topics
-        </p>
-      )}
-      
-      {/* Mobile fallback - accessible list */}
-      <div className="mt-6 grid gap-3 md:hidden">
+      {/* Mobile fallback - two-column chip grid per spec */}
+      <div className="mt-6 grid grid-cols-2 gap-3 md:hidden">
         {researchDirections.slice(0, 6).map((direction) => (
           <div 
             key={direction.id}
-            className="p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-lg min-w-0"
+            className="p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl"
           >
             <p className="font-mono text-[10px] text-[#3b82f6]/70 tracking-widest uppercase mb-1">
               {safeString(direction.status, 'exploring').toUpperCase()}
             </p>
-            <h4 className="text-sm font-semibold text-[#f0f4f8] mb-1 text-wrap">{safeString(direction.title)}</h4>
-            <p className="text-xs text-[#5a6a7a] leading-relaxed text-wrap">{safeString(direction.description)}</p>
+            <h4 className="text-sm font-semibold text-[#f0f4f8] mb-1">{safeString(direction.title)}</h4>
+            <p className="text-xs text-[#5a6a7a] leading-relaxed">{safeString(direction.description)}</p>
           </div>
         ))}
       </div>
@@ -149,7 +135,7 @@ function ResearchConstellation() {
   );
 }
 
-// Publication Card Component
+// Publication Card Component - separate cards per spec
 interface PublicationCardProps {
   publication: Record<string, unknown>;
 }
@@ -162,9 +148,9 @@ function PublicationCard({ publication }: PublicationCardProps) {
   const link = safeUrl(publication.link);
   
   return (
-    <div className="p-4 sm:p-6 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[rgba(255,255,255,0.1)] transition-all min-w-0">
-      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-3">
-        <h3 className="text-base sm:text-lg font-semibold text-[#f0f4f8] leading-tight text-wrap min-w-0">{title}</h3>
+    <div className="card">
+      <div className="flex items-start justify-between gap-4 mb-3">
+        <h3 className="text-card-title font-semibold text-[#f0f4f8] leading-tight">{title}</h3>
         {link && (
           <a 
             href={link} 
@@ -180,21 +166,18 @@ function PublicationCard({ publication }: PublicationCardProps) {
         )}
       </div>
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-xs sm:text-sm font-mono text-[#3b82f6] text-wrap">{venue}</span>
+        <span className="text-sm font-mono text-[#3b82f6]">{venue}</span>
         {venue && year && <span className="text-xs text-[#5a6a7a]">·</span>}
-        {year && <span className="text-xs sm:text-sm font-mono text-[#5a6a7a] text-wrap">{year}</span>}
+        {year && <span className="text-sm font-mono text-[#5a6a7a]">{year}</span>}
       </div>
-      <p className="text-[#8899aa] text-sm leading-relaxed text-wrap min-w-0">{description}</p>
+      <p className="text-body text-[#8899aa] leading-relaxed">{description}</p>
     </div>
   );
 }
 
 export default function ResearchLab() {
   return (
-    <section id="research" className="py-[var(--section-spacing)] relative">
-      {/* Readability mask behind content */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.4)] to-transparent" />
-      
+    <section id="research" className="section relative">
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(99,102,241,0.04)] via-transparent to-transparent" />
@@ -207,11 +190,11 @@ export default function ResearchLab() {
           <div className="section-label-line" />
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 min-w-0">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-w-0">
           {/* Left - Research Constellation */}
           <div className="min-w-0">
-            <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-4 text-wrap">Research Interests</h2>
-            <p className="text-[#8899aa] text-sm sm:text-base mb-6 sm:mb-8 text-wrap">
+            <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">Research Interests</h2>
+            <p className="text-body text-[#8899aa] mb-6">
               Exploring the intersection of artificial intelligence, neuroscience, and intelligent systems.
             </p>
             <ResearchConstellation />
@@ -219,9 +202,9 @@ export default function ResearchLab() {
           
           {/* Right - Publications */}
           <div className="min-w-0">
-            <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-6 sm:mb-8 text-wrap">Publications</h2>
-            
-            <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-section-title font-bold text-[#f0f4f8] mb-6">Publications</h2>
+            {/* Two separate cards per spec */}
+            <div className="space-y-4">
               {publications.map((pub) => (
                 <PublicationCard key={pub.id} publication={pub as unknown as Record<string, unknown>} />
               ))}

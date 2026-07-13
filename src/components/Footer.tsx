@@ -5,7 +5,7 @@ import { siteConfig, safeString } from '@/lib/data';
 
 export default function Footer() {
   return (
-    <footer className="py-10 sm:py-12 border-t border-[rgba(255,255,255,0.04)]">
+    <footer className="py-12 border-t border-[rgba(255,255,255,0.04)]">
       <div className="container-content">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Left - Copyright */}
@@ -17,7 +17,7 @@ export default function Footer() {
           <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm" aria-label="Footer navigation">
             <a href="#home" className="text-[#5a6a7a] hover:text-[#8899aa] transition-colors">Home</a>
             <a href="#about" className="text-[#5a6a7a] hover:text-[#8899aa] transition-colors">Profile</a>
-            <a href="#projects" className="text-[#5a6a7a] hover:text-[#8899aa] transition-colors">Missions</a>
+            <a href="#projects" className="text-[#5a6a7a] hover:text-[#8899aa] transition-colors">Projects</a>
             <a href="#research" className="text-[#5a6a7a] hover:text-[#8899aa] transition-colors">Research</a>
             <a href="#contact" className="text-[#5a6a7a] hover:text-[#8899aa] transition-colors">Contact</a>
           </nav>

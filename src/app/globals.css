@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 /* ========================================
-   DIGITAL OBSERVATORY DESIGN SYSTEM
-   A mission archive documenting work across AI, data, and cognition.
+   PORTFOLIO DESIGN SYSTEM
+   A premium space-research interface.
    
-   Resilient design principles:
+   Design principles:
    - Content-driven layouts that adapt to data
    - No fixed heights for primary content
-   - Overflow-wrap for all dynamic text
+   - Proper word-breaking (no mid-word breaks)
    - Mobile-first responsive breakpoints
    - Consistent container system
    ======================================== */
@@ -34,37 +34,26 @@
 
   /* ========================================
      CONTAINER SYSTEM
-     Consistent responsive container with adaptive padding
      ======================================== */
-  --container-max: 1280px;
-  --container-padding-sm: 1rem;   /* 16px */
-  --container-padding-md: 1.25rem; /* 20px */
-  --container-padding-lg: 1.5rem; /* 24px */
-  --container-padding-xl: 2rem;    /* 32px */
-  --container-padding-2xl: 3rem;   /* 48px */
-  --container-padding-3xl: 4rem;  /* 64px */
+  --container-max: 1180px;
+  --container-padding: clamp(1.5rem, 4vw, 3rem); /* 24px - 48px */
 
   /* ========================================
-     TYPOGRAPHY SCALE
-     All text uses clamp() for fluid responsive sizing
+     TYPOGRAPHY SCALE - Using responsive clamp()
+     Per specification: Hero clamp(3.5rem, 8vw, 7.5rem)
      ======================================== */
-  --text-hero-name: clamp(2.5rem, 6vw, 5.5rem);
-  --text-hero-role: clamp(1rem, 1.8vw, 1.35rem);
-  --text-hero-description: clamp(0.95rem, 1.2vw, 1.1rem);
-  --text-section-heading: clamp(1.75rem, 4vw, 3.25rem);
-  --text-subsection-heading: clamp(1.25rem, 2.5vw, 1.75rem);
-  --text-card-heading: clamp(1.1rem, 2vw, 1.35rem);
-  --text-body: clamp(0.95rem, 1.1vw, 1.05rem);
-  --text-body-sm: clamp(0.85rem, 1vw, 0.95rem);
-  --text-metadata: clamp(0.75rem, 0.9vw, 0.875rem);
-  --text-small: clamp(0.7rem, 0.85vw, 0.8rem);
-  --text-label: 0.6875rem; /* 11px - fixed for consistency */
+  --text-hero-name: clamp(3.5rem, 8vw, 7.5rem);
+  --text-section-title: clamp(2.3rem, 5vw, 4.5rem);
+  --text-card-title: clamp(1.15rem, 2vw, 1.65rem);
+  --text-body: clamp(1rem, 1.2vw, 1.1rem);
+  --text-hero-role: clamp(1.1rem, 1.5vw, 1.35rem);
+  --text-body-sm: clamp(0.9rem, 1vw, 1rem);
+  --text-label: 0.6875rem;
 
   /* ========================================
      LINE HEIGHTS
-     Optimized for readability at different sizes
      ======================================== */
-  --leading-hero: 1.05;
+  --leading-hero: 1.0;
   --leading-heading: 1.1;
   --leading-subheading: 1.2;
   --leading-body: 1.65;
@@ -73,19 +62,18 @@
 
   /* ========================================
      SPACING SYSTEM
-     Consistent vertical rhythm with responsive section spacing
+     Per specification: section padding-block: clamp(72px, 9vw, 128px)
      ======================================== */
-  --section-spacing: clamp(5rem, 12vw, 10rem);
-  --section-inner-spacing: clamp(2.5rem, 5vw, 4rem);
-  --gap-section: clamp(1.5rem, 3vw, 2rem);
+  --section-padding: clamp(4.5rem, 9vw, 8rem);
+  --section-inner-spacing: clamp(1.5rem, 3vw, 2.5rem);
+  --gap-section: clamp(1rem, 2vw, 1.5rem);
   --gap-card: clamp(1rem, 2vw, 1.5rem);
   --gap-element: clamp(0.5rem, 1vw, 0.75rem);
 
   /* ========================================
      GRID SYSTEM
-     Adaptive grid with minimum column widths
      ======================================== */
-  --grid-min-col: min(100%, 18rem); /* ~288px minimum column */
+  --grid-min-col: min(100%, 18rem);
   --grid-gap: clamp(1rem, 2vw, 1.5rem);
   --grid-gap-lg: clamp(1.5rem, 3vw, 2.5rem);
 
@@ -138,21 +126,51 @@ body {
 }
 
 /* ========================================
-   RESILIENT TEXT UTILITIES
-   All dynamic text wraps safely
+   BASE RESET
+   ======================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   PAGE CONTAINER SYSTEM
+   Per specification: width: min(1180px, calc(100% - 48px))
+   ======================================== */
+.page-container {
+  width: min(var(--container-max), calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+/* ========================================
+   TEXT UTILITIES - NO MID-WORD BREAKS
+   Per specification: word-break: normal; overflow-wrap: normal; hyphens: none;
    ======================================== */
 .text-wrap {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   word-break: normal;
-  hyphens: auto;
+  hyphens: none;
 }
 
-.text-break {
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-.text-nowrap {
+.text-keep {
   white-space: nowrap;
 }
 
@@ -171,24 +189,12 @@ body {
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--container-padding-md);
-}
-
-@media (min-width: 640px) {
-  .container-content {
-    padding-inline: var(--container-padding-lg);
-  }
-}
-
-@media (min-width: 1024px) {
-  .container-content {
-    padding-inline: var(--container-padding-2xl);
-  }
+  padding-inline: var(--container-padding);
 }
 
 /* ========================================
    GRID UTILITIES
-   Resilient grids that adapt to content
+   Per specification: min-width: 0 on all grid/flex children
    ======================================== */
 .grid-auto {
   display: grid;
@@ -205,9 +211,9 @@ body {
 /* All grid and flex children should have min-width: 0 */
 .grid-auto > *,
 .grid-auto-lg > *,
-.grid > * {
+.grid > *,
+.flex > * {
   min-width: 0;
-  min-height: 0;
 }
 
 /* ========================================
@@ -217,7 +223,7 @@ body {
 .text-hero-name {
   font-size: var(--text-hero-name);
   line-height: var(--leading-hero);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   font-weight: 700;
 }
 
@@ -227,27 +233,15 @@ body {
   font-weight: 400;
 }
 
-.text-hero-description {
-  font-size: var(--text-hero-description);
-  line-height: var(--leading-relaxed);
-  max-width: 65ch;
-}
-
-.text-section-heading {
-  font-size: var(--text-section-heading);
+.text-section-title {
+  font-size: var(--text-section-title);
   line-height: var(--leading-heading);
   letter-spacing: -0.02em;
   font-weight: 700;
 }
 
-.text-subsection-heading {
-  font-size: var(--text-subsection-heading);
-  line-height: var(--leading-subheading);
-  font-weight: 600;
-}
-
-.text-card-heading {
-  font-size: var(--text-card-heading);
+.text-card-title {
+  font-size: var(--text-card-title);
   line-height: var(--leading-tight);
   font-weight: 600;
 }
@@ -262,17 +256,23 @@ body {
   line-height: var(--leading-body);
 }
 
-.text-metadata {
-  font-size: var(--text-metadata);
-  line-height: var(--leading-body);
-}
-
 .text-label {
   font-size: var(--text-label);
   line-height: var(--leading-tight);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* ========================================
+   SECTION UTILITIES
+   ======================================== */
+.section {
+  padding-block: var(--section-padding);
+}
+
+.section-inner {
+  margin-bottom: var(--section-inner-spacing);
 }
 
 /* ========================================
@@ -299,42 +299,37 @@ body {
   height: 1px;
   background: var(--border);
   flex: 1;
-  max-width: 5rem;
+  max-width: 3rem;
 }
 
 /* ========================================
    CARD COMPONENTS
-   Resilient cards that grow with content
+   Per specification: no fixed heights, cards adapt to content
    ======================================== */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  padding: clamp(1rem, 3vw, 1.5rem);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
+  transform: translateY(-4px);
   border-color: var(--border-hover);
-}
-
-.card-elevated {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: clamp(1rem, 3vw, 1.5rem);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
 }
 
 /* ========================================
    BUTTON UTILITIES
-   Touch-friendly with proper sizing
+   Touch-friendly with proper sizing (min 44px)
    ======================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 1.75rem;
   font-size: var(--text-body-sm);
   font-weight: 500;
   border-radius: var(--radius-lg);
@@ -342,7 +337,7 @@ body {
   cursor: pointer;
   border: none;
   text-decoration: none;
-  min-height: 2.75rem; /* 44px minimum touch target */
+  min-height: 2.75rem;
 }
 
 .btn-primary {
@@ -366,18 +361,18 @@ body {
 
 /* ========================================
    FORM ELEMENTS
-   Accessible touch-friendly inputs
+   Accessible touch-friendly inputs (min 48px)
    ======================================== */
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1rem;
   font-size: var(--text-body);
   color: var(--text-primary);
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: border-color 0.2s ease;
-  min-height: 3rem; /* 48px minimum */
+  min-height: 3rem;
 }
 
 .input:focus {
@@ -391,7 +386,7 @@ body {
 
 .textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1rem;
   font-size: var(--text-body);
   color: var(--text-primary);
   background: var(--bg-card);
@@ -404,7 +399,6 @@ body {
 
 /* ========================================
    LINK UTILITIES
-   Consistent link styling
    ======================================== */
 .link {
   color: var(--text-muted);
@@ -447,7 +441,6 @@ body {
 
 /* ========================================
    FOCUS STATES
-   Visible focus indicators for accessibility
    ======================================== */
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -456,7 +449,6 @@ body {
 
 /* ========================================
    REDUCED MOTION
-   Respect user preferences
    ======================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -465,19 +457,10 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
-  .animate-orbital,
-  .animate-orbital-reverse,
-  .animate-pulse-slow,
-  .animate-float,
-  .animate-ping {
-    animation: none !important;
-  }
 }
 
 /* ========================================
    ANIMATIONS
-   Orbital and ambient effects
    ======================================== */
 @keyframes orbital-rotate {
   from { transform: rotate(0deg); }
@@ -517,58 +500,33 @@ body {
 
 /* ========================================
    DECORATIVE GRADIENTS
-   Atmospheric backgrounds (pointer-events-none)
    ======================================== */
 .gradient-radial {
   background: radial-gradient(ellipse at center, var(--accent) 0%, transparent 70%);
 }
 
-.gradient-mask {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(3, 8, 16, 0.3) 20%,
-    rgba(3, 8, 16, 0.3) 80%,
-    transparent 100%
-  );
-}
-
 /* ========================================
-   UTILITY CLASSES FOR LAYOUT
+   UTILITY CLASSES
    ======================================== */
-
-/* Prevent text selection on UI elements */
 .no-select {
   user-select: none;
   -webkit-user-select: none;
 }
 
-/* Smooth scroll locking for mobile menus */
 .scroll-lock {
   overflow: hidden;
 }
 
-/* Aspect ratios for media */
 .aspect-video {
-  aspect-ratio: 16 / 10;
-}
-
-.aspect-square {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
 }
 
 /* ========================================
    MOBILE-SPECIFIC UTILITIES
    ======================================== */
 @media (max-width: 639px) {
-  /* Ensure minimum touch target size */
   .touch-target {
     min-height: 2.75rem;
     min-width: 2.75rem;
-  }
-  
-  /* Prevent horizontal overflow */
-  .overflow-safe {
-    overflow-x: hidden;
   }
 }

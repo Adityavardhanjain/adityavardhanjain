@@ -10,7 +10,8 @@ function seededRandom(seed: number) {
   return x - Math.floor(x);
 }
 
-function Stars({ count = 1800 }: { count?: number }) {
+// Stars component - reduced count for mobile per spec
+function Stars({ count = 720 }: { count?: number }) {
   const mesh = useRef<THREE.Points>(null);
   
   const positions = useMemo(() => {
@@ -44,7 +45,7 @@ function Stars({ count = 1800 }: { count?: number }) {
         size={0.12}
         sizeAttenuation
         transparent
-        opacity={0.6}
+        opacity={0.5}
         color="#ffffff"
         blending={THREE.AdditiveBlending}
       />
@@ -67,7 +68,7 @@ function Nebula() {
       <meshBasicMaterial
         color="#1a2744"
         transparent
-        opacity={0.12}
+        opacity={0.1}
         side={THREE.BackSide}
       />
     </mesh>
@@ -89,7 +90,7 @@ function DistantNebula() {
       <meshBasicMaterial
         color="#0a1628"
         transparent
-        opacity={0.08}
+        opacity={0.06}
         side={THREE.BackSide}
       />
     </mesh>
@@ -100,7 +101,7 @@ export default function StarField() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 50], fov: 75 }}>
-        <Stars count={1800} />
+        <Stars count={720} />
         <Nebula />
         <DistantNebula />
       </Canvas>

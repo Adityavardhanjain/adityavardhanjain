@@ -1,17 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-
-// Satellite nodes for 5 capability groups
-const satelliteNodes = [
-  { id: 'data', label: 'Data & Decision Intelligence', angle: 0 },
-  { id: 'ai', label: 'AI & Machine Learning', angle: 72 },
-  { id: 'engineering', label: 'Data Engineering & Automation', angle: 144 },
-  { id: 'research', label: 'Research & Intelligent Systems', angle: 216 },
-  { id: 'deploy', label: 'Engineering & Deployment', angle: 288 },
-];
-
-// Capability groups data
+// Capability groups data - per spec
 const capabilityGroups = [
   {
     id: 'data-intelligence',
@@ -48,124 +37,52 @@ const secondaryTechnologies = [
   'C', 'C++', 'Bash'
 ];
 
-function SystemsArchitecture() {
-  const [activeNode, setActiveNode] = useState<string | null>(null);
-  
+// AJ Core visual - optional, large enough per spec
+function AJCoreVisual() {
   return (
-    <div className="relative w-full max-w-lg mx-auto hidden md:block" style={{ aspectRatio: '1' }}>
-      {/* Connection lines from center to satellites */}
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-        {satelliteNodes.map((node) => {
-          const angle = (node.angle - 90) * (Math.PI / 180);
-          const x2 = 50 + 32 * Math.cos(angle);
-          const y2 = 50 + 32 * Math.sin(angle);
-          const isActive = activeNode === node.id;
+    <div className="relative w-full max-w-md mx-auto mb-8">
+      <svg viewBox="0 0 100 100" className="w-full aspect-square">
+        {/* Outer ring */}
+        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(59,130,246,0.1)" strokeWidth="0.5" />
+        <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(59,130,246,0.08)" strokeWidth="0.5" />
+        <circle cx="50" cy="50" r="25" fill="none" stroke="rgba(59,130,246,0.06)" strokeWidth="0.5" />
+        
+        {/* Connection lines */}
+        {[0, 72, 144, 216, 288].map((angle, i) => {
+          const rad = (angle - 90) * (Math.PI / 180);
+          const x = 50 + 35 * Math.cos(rad);
+          const y = 50 + 35 * Math.sin(rad);
           return (
-            <line
-              key={node.id}
-              x1="50"
-              y1="50"
-              x2={x2}
-              y2={y2}
-              stroke={isActive ? 'rgba(59, 130, 246, 0.5)' : 'rgba(59, 130, 246, 0.15)'}
-              strokeWidth={isActive ? 0.8 : 0.5}
-              className="transition-all duration-300"
-            />
+            <line key={i} x1="50" y1="50" x2={x} y2={y} stroke="rgba(59,130,246,0.15)" strokeWidth="0.3" />
+          );
+        })}
+        
+        {/* Center node */}
+        <circle cx="50" cy="50" r="12" fill="#0a1120" stroke="rgba(59,130,246,0.3)" strokeWidth="1" />
+        <text x="50" y="48" textAnchor="middle" fontSize="8" fill="#f0f4f8" fontWeight="bold" fontFamily="monospace">AJ</text>
+        <text x="50" y="56" textAnchor="middle" fontSize="4" fill="#8899aa" fontFamily="monospace">CORE</text>
+        
+        {/* Satellite nodes */}
+        {[0, 72, 144, 216, 288].map((angle, i) => {
+          const rad = (angle - 90) * (Math.PI / 180);
+          const x = 50 + 35 * Math.cos(rad);
+          const y = 50 + 35 * Math.sin(rad);
+          const labels = ['DATA', 'AI/ML', 'ENG', 'RESEARCH', 'DEPLOY'];
+          return (
+            <g key={i}>
+              <circle cx={x} cy={y} r="5" fill="#0a1120" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
+              <text x={x} y={y + 1} textAnchor="middle" fontSize="3" fill="#8899aa" fontFamily="monospace">{labels[i]}</text>
+            </g>
           );
         })}
       </svg>
-      
-      {/* Central core */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-br from-[#0a1120] to-[#0d1828] border border-[rgba(59,130,246,0.3)] flex items-center justify-center shadow-lg shadow-[rgba(59,130,246,0.1)]"
-      >
-        <span className="font-mono text-xs font-bold text-[#f0f4f8] tracking-tight text-center leading-none">
-          AJ<br/>CORE
-        </span>
-      </div>
-      
-      {/* Satellite nodes */}
-      {satelliteNodes.map((node) => {
-        const angle = (node.angle - 90) * (Math.PI / 180);
-        const x = 50 + 32 * Math.cos(angle);
-        const y = 50 + 32 * Math.sin(angle);
-        const isActive = activeNode === node.id;
-        
-        return (
-          <div
-            key={node.id}
-            className={`absolute w-20 h-20 rounded-full bg-[#0a1120] border flex items-center justify-center cursor-pointer transition-all duration-300 ${
-              isActive ? 'border-[rgba(59,130,246,0.5)] shadow-lg shadow-[rgba(59,130,246,0.2)]' : 'border-[rgba(255,255,255,0.06)]'
-            }`}
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              transform: 'translate(-50%, -50%)'
-            }}
-            onMouseEnter={() => setActiveNode(node.id)}
-            onMouseLeave={() => setActiveNode(null)}
-          >
-            <span className="font-mono text-[9px] text-[#8899aa] text-center leading-tight px-2 text-wrap">
-              {node.label.split(' ').map((word, i) => (
-                <span key={i}>{word}<br/></span>
-              ))}
-            </span>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-// Mobile-capable skill list component
-function SkillList() {
-  const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
-  
-  return (
-    <div className="md:hidden space-y-3">
-      {capabilityGroups.map((group) => (
-        <div 
-          key={group.id}
-          className="bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl overflow-hidden"
-        >
-          <button
-            onClick={() => setExpandedGroup(expandedGroup === group.id ? null : group.id)}
-            className="w-full flex items-center justify-between p-4 text-left"
-            aria-expanded={expandedGroup === group.id}
-          >
-            <h3 className="text-sm font-semibold text-[#f0f4f8] text-wrap pr-4">{group.title}</h3>
-            <span className={`text-[#5a6a7a] transition-transform ${expandedGroup === group.id ? 'rotate-180' : ''}`}>
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </span>
-          </button>
-          {expandedGroup === group.id && (
-            <div className="px-4 pb-4">
-              <div className="flex flex-wrap gap-2">
-                {group.technologies.map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="px-3 py-1.5 text-sm text-[#8899aa] bg-[#060c18] rounded text-wrap"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
     </div>
   );
 }
 
 export default function SystemsMatrix() {
   return (
-    <section id="skills" className="py-[var(--section-spacing)] relative">
-      {/* Readability mask behind content */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.3)] to-transparent" />
-      
+    <section id="skills" className="section relative">
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
@@ -178,39 +95,24 @@ export default function SystemsMatrix() {
           <div className="section-label-line" />
         </div>
         
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-section-heading font-bold text-[#f0f4f8] text-wrap">Technical Skills</h2>
-          <p className="text-[#8899aa] text-body mt-4 max-w-2xl text-wrap">
+        <div className="mb-12">
+          <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">Technical Skills</h2>
+          <p className="text-body text-[#8899aa] max-w-2xl">
             A comprehensive toolkit spanning data intelligence, machine learning, data engineering, research, and deployment.
           </p>
         </div>
         
-        {/* Systems Architecture Visual - desktop only */}
-        <div className="mb-12 sm:mb-16 flex justify-center">
-          <SystemsArchitecture />
-        </div>
+        {/* AJ Core Visual - optional, large enough */}
+        <AJCoreVisual />
         
-        {/* Mobile Skill List - mobile only */}
-        <div className="mb-12 sm:mb-16 md:hidden">
-          <SkillList />
-        </div>
-        
-        {/* Five Capability Groups */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 min-w-0">
+        {/* Five Capability Groups - per spec: responsive card grid, 3 cols desktop, 2 tablet, 1 mobile */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 min-w-0">
           {capabilityGroups.map((group) => (
-            <div 
-              key={group.id}
-              className="p-4 sm:p-6 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl min-w-0"
-            >
-              <h3 className="text-base font-semibold text-[#f0f4f8] mb-4 text-wrap">{group.title}</h3>
-              
-              {/* Technology tags */}
+            <div key={group.id} className="card">
+              <h3 className="text-card-title font-semibold text-[#f0f4f8] mb-4">{group.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {group.technologies.map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm text-[#8899aa] bg-[#060c18] rounded text-wrap"
-                  >
+                  <span key={tech} className="px-2.5 py-1 text-xs text-[#8899aa] bg-[#060c18] rounded">
                     {tech}
                   </span>
                 ))}
@@ -220,10 +122,10 @@ export default function SystemsMatrix() {
         </div>
         
         {/* Full Systems Inventory - Expandable */}
-        <details className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-[rgba(255,255,255,0.04)]">
+        <details className="mt-10 pt-8 border-t border-[rgba(255,255,255,0.04)]">
           <summary className="cursor-pointer list-none">
             <div className="flex items-center gap-2">
-              <h3 className="font-mono text-[10px] sm:text-xs text-[#5a6a7a] tracking-widest uppercase mb-0 hover:text-[#8899aa] transition-colors">
+              <h3 className="font-mono text-xs text-[#5a6a7a] tracking-widest uppercase mb-0 hover:text-[#8899aa] transition-colors">
                 VIEW FULL SYSTEMS INVENTORY
               </h3>
               <span className="text-[#5a6a7a]">
@@ -233,12 +135,9 @@ export default function SystemsMatrix() {
               </span>
             </div>
           </summary>
-          <div className="flex flex-wrap gap-2 pt-4 sm:pt-6">
+          <div className="flex flex-wrap gap-2 pt-6">
             {secondaryTechnologies.map((tech) => (
-              <span 
-                key={tech} 
-                className="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm text-[#5a6a7a] bg-[#0a1120] rounded text-wrap"
-              >
+              <span key={tech} className="px-2.5 py-1 text-xs text-[#5a6a7a] bg-[#0a1120] rounded">
                 {tech}
               </span>
             ))}
