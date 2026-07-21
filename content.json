@@ -16,7 +16,7 @@
   },
 
   "hero": {
-    "statusText": "AVAILABLE FOR AI, DATA & RESEARCH COLLABORATIONS",
+    "statusText": "AVAILABLE FOR AI ENGINEERING, DATA ANALYTICS & RESEARCH COLLABORATIONS",
     "highlights": [
       { "id": "work", "text": "Google — Data Analytics Apprentice", "color": "blue" },
       { "id": "experience", "text": "3+ years building AI and data systems", "color": "indigo" },
