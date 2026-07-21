@@ -92,8 +92,7 @@
         "status": "completed",
         "visualType": "road"
       }
-    ],
- 
+    ]
   },
 
   "research": {
@@ -163,7 +162,7 @@
         "venue": "ACM Digital Library",
         "year": "2026",
         "description": "The research addresses the challenge of deciphering illegible handwriting, particularly prevalent among physicians, by developing a system for accurately recognizing handwritten medicine names. A hybrid deep learning model comprising Convolutional Neural Network (CNN), Recurrent Neural Network (RNN) and ambiguity handling algorithm is proposed in this research. The dataset consists of IAM dataset and locally collected dataset for training and testing. Beyond handwriting recognition, our study includes the design of an intuitive user interface for medical practitioners, streamlining the prescription process. Additionally, the performance of model is compared with various OCR models like CNN-Char-Classifier, CTC word classifier and Py-Tesseract on difference performance matrices like character error ratio, word accuracy and confusion matrix. The results show that maximum word accuracy is presented by proposed model.",
-        "status": "published"
+        "status": "published",
         "link" : "https://doi.org/10.1145/3793449.3793517"
       },
       {
