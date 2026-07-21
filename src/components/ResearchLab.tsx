@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { researchDirections, publications, safeString, safeUrl } from '@/lib/data';
+import content from '@/lib/content';
+import type { ResearchDirection, Publication } from '@/lib/content';
 
 // Research topic positions for constellation visualization - viewBox 700x430
 // Positions with 70-80 unit padding from edges
@@ -18,11 +19,11 @@ const topicPositions = [
 // Central node position
 const centerNode = { x: 350, y: 215 };
 
-function ResearchConstellation() {
+function ResearchConstellation({ directions }: { directions: ResearchDirection[] }) {
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null);
   
-  const activeDirection = researchDirections.find(d => d.id === activeTopic || d.id === hoveredTopic);
+  const activeDirection = directions.find(d => d.id === activeTopic || d.id === hoveredTopic);
   
   // Helper to get label offset
   const getLabelOffset = (labelPos: string, isActive: boolean) => {
@@ -199,25 +200,25 @@ function ResearchConstellation() {
       {activeDirection && (
         <div className="research-info-panel">
           <p className="font-mono text-[10px] text-[#3b82f6] tracking-widest uppercase mb-2">
-            {safeString(activeDirection.status, 'exploring').toUpperCase()}
+            {activeDirection.status.toUpperCase()}
           </p>
-          <h4 className="text-base font-semibold text-[#f0f4f8] mb-2">{safeString(activeDirection.title)}</h4>
-          <p className="text-sm text-[#8899aa] leading-relaxed">{safeString(activeDirection.description)}</p>
+          <h4 className="text-base font-semibold text-[#f0f4f8] mb-2">{activeDirection.title}</h4>
+          <p className="text-sm text-[#8899aa] leading-relaxed">{activeDirection.description}</p>
         </div>
       )}
       
       {/* Mobile fallback - research interest grid */}
       <div className="research-interest-grid md:hidden">
-        {researchDirections.slice(0, 6).map((direction) => (
+        {directions.slice(0, 6).map((direction) => (
           <div 
             key={direction.id}
             className="research-interest-card"
           >
             <p className="font-mono text-[10px] text-[#3b82f6]/70 tracking-widest uppercase mb-1">
-              {safeString(direction.status, 'exploring').toUpperCase()}
+              {direction.status.toUpperCase()}
             </p>
-            <h4 className="text-sm font-semibold text-[#f0f4f8] mb-1">{safeString(direction.title)}</h4>
-            <p className="text-xs text-[#5a6a7a] leading-relaxed line-clamp-2">{safeString(direction.description)}</p>
+            <h4 className="text-sm font-semibold text-[#f0f4f8] mb-1">{direction.title}</h4>
+            <p className="text-xs text-[#5a6a7a] leading-relaxed line-clamp-2">{direction.description}</p>
           </div>
         ))}
       </div>
@@ -227,23 +228,17 @@ function ResearchConstellation() {
 
 // Publication Card Component - separate cards per spec
 interface PublicationCardProps {
-  publication: Record<string, unknown>;
+  publication: Publication;
 }
 
 function PublicationCard({ publication }: PublicationCardProps) {
-  const title = safeString(publication.title, 'Untitled Publication');
-  const venue = safeString(publication.venue);
-  const year = safeString(publication.year);
-  const description = safeString(publication.description);
-  const link = safeUrl(publication.link);
-  
   return (
     <div className="publication-card">
       <div className="flex items-start justify-between gap-4 mb-3">
-        <h3 className="publication-title">{title}</h3>
-        {link && (
+        <h3 className="publication-title">{publication.title}</h3>
+        {publication.link && (
           <a 
-            href={link} 
+            href={publication.link} 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-[#3b82f6] hover:text-[#60a5fd] transition-colors flex-shrink-0"
@@ -256,16 +251,18 @@ function PublicationCard({ publication }: PublicationCardProps) {
         )}
       </div>
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-sm font-mono text-[#3b82f6]">{venue}</span>
-        {venue && year && <span className="text-xs text-[#5a6a7a]">·</span>}
-        {year && <span className="text-sm font-mono text-[#5a6a7a]">{year}</span>}
+        <span className="text-sm font-mono text-[#3b82f6]">{publication.venue}</span>
+        {publication.venue && publication.year && <span className="text-xs text-[#5a6a7a]">·</span>}
+        {publication.year && <span className="text-sm font-mono text-[#5a6a7a]">{publication.year}</span>}
       </div>
-      <p className="text-body text-[#8899aa] leading-relaxed">{description}</p>
+      <p className="text-body text-[#8899aa] leading-relaxed">{publication.description}</p>
     </div>
   );
 }
 
 export default function ResearchLab() {
+  const { research } = content;
+  
   return (
     <section id="research" className="research-section relative">
       {/* Subtle radial gradient */}
@@ -276,26 +273,26 @@ export default function ResearchLab() {
       <div className="container-content relative z-10">
         {/* Section Label */}
         <div className="section-label">
-          <span className="section-label-number">03 / Deep-Field Research</span>
+          <span className="section-label-number">{research.sectionLabel}</span>
           <div className="section-label-line" />
         </div>
         
         <div className="research-layout">
           {/* Left - Research Constellation */}
           <div className="research-column">
-            <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">Research Interests</h2>
+            <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">{research.title}</h2>
             <p className="text-body text-[#8899aa] mb-6">
-              Exploring the intersection of artificial intelligence, neuroscience, and intelligent systems.
+              {research.subtitle}
             </p>
-            <ResearchConstellation />
+            <ResearchConstellation directions={research.directions} />
           </div>
           
           {/* Right - Publications */}
           <div className="publications-column">
             <h2 className="text-section-title font-bold text-[#f0f4f8] mb-6">Publications</h2>
             <div className="publications-list">
-              {publications.map((pub) => (
-                <PublicationCard key={pub.id} publication={pub as unknown as Record<string, unknown>} />
+              {research.publications.map((pub) => (
+                <PublicationCard key={pub.id} publication={pub} />
               ))}
             </div>
           </div>

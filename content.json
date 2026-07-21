@@ -1,0 +1,448 @@
+{
+  "_comment": "============================================================",
+  "_documentation": "This file contains all editable content for your portfolio. You can edit this file to add, remove, or modify sections, subsections, and content without touching the code. Save this file and the changes will appear on your site.",
+  "_instructions": {
+    "overview": "Each section is organized by component. Edit the values directly.",
+    "text": "All text content can be freely edited - it's stored in 'text' fields.",
+    "lists": "Arrays like 'highlights', 'skills', 'technologies' can have items added, removed, or reordered.",
+    "items": "Objects with 'id' fields can be added or removed. Adding a new item just requires a unique id.",
+    "booleans": "'featured: true' shows items prominently, 'featured: false' archives them.",
+    "status_values": {
+      "project_status": "completed | in-progress | archived",
+      "research_status": "active | exploring | planned",
+      "publication_status": "published | under-review | draft",
+      "experience_type": "work | education | leadership"
+    }
+  },
+
+  "hero": {
+    "statusText": "AVAILABLE FOR AI, DATA & RESEARCH COLLABORATIONS",
+    "highlights": [
+      { "id": "work", "text": "Google — Data Analytics Apprentice", "color": "blue" },
+      { "id": "experience", "text": "3+ years building AI and data systems", "color": "indigo" },
+      { "id": "research", "text": "Research in intelligent systems and BCI", "color": "purple" }
+    ],
+    "biography": "I build intelligent systems at the intersection of data, machine learning, and research—from large-scale analytics and agentic AI to computer vision and brain–computer interfaces.",
+    "ctas": [
+      { "id": "explore", "label": "Explore My Work", "href": "#projects", "type": "primary" },
+      { "id": "resume", "label": "View Résumé", "href": "#experience", "type": "secondary" },
+      { "id": "contact", "label": "Start a Conversation", "href": "#contact", "type": "link" }
+    ]
+  },
+
+  "about": {
+    "sectionLabel": "01 / Mission Profile",
+    "headline": "Building intelligent systems where data, AI, and human cognition intersect.",
+    "paragraphs": [
+      "I currently work as a Data Analytics Apprentice at Google, supporting large-customer sales through campaign analytics, automated reporting, performance optimization, and agentic AI systems.",
+      "My broader interests span world models, intelligent agents, multimodal reasoning, computational neuroscience, and space technology. I enjoy turning complex research ideas into systems that work beyond the prototype stage."
+    ],
+    "metrics": [
+      { "value": "3+", "label": "Years Building" },
+      { "value": "4", "label": "Major Projects" },
+      { "value": "2", "label": "Research Publications" },
+      { "value": "1", "label": "Hackathon Victory" }
+    ]
+  },
+
+  "projects": {
+    "sectionLabel": "02 / Mission Archive",
+    "title": "Featured Missions",
+    "subtitle": "Selected projects showcasing expertise in AI, data systems, and research.",
+    "viewAll": "View All Missions",
+    "items": [
+      {
+        "id": "neuro-tetris",
+        "missionId": "MISSION-01",
+        "title": "Brain-Computer Interface: Tetris Outcome Prediction",
+        "objective": "Real-time BCI system using EEG signals to predict Tetris gameplay outcomes",
+        "description": "Developed a real-time brain-computer interface system that processes EEG signals collected using an OpenBCI UltraCortex headset during Tetris gameplay. Applied signal processing, feature extraction, data analysis, and machine-learning techniques to investigate neural activity and predict gameplay outcomes.",
+        "technologies": ["Python", "OpenBCI", "BrainFlow", "EEG Signal Processing", "FFT", "Machine Learning", "Feature Engineering", "Data Analysis"],
+        "researchThemes": ["Brain-computer interfaces", "Neural-signal analysis", "Human-computer interaction", "Real-time prediction"],
+        "github": "https://github.com/adityavardhanjain/EEG-Tetris-Prediction",
+        "featured": true,
+        "status": "completed",
+        "visualType": "eeg"
+      },
+      {
+        "id": "legal-tesseract",
+        "missionId": "MISSION-02",
+        "title": "AI-Powered Legal Document Summarization and Translation",
+        "objective": "End-to-end platform for legal document OCR, summarization, and multilingual translation",
+        "description": "Built an intelligent legal-document platform that extracts text using OCR, summarizes complex legal content using language models, and translates information into Indian languages to improve accessibility.",
+        "technologies": ["Python", "Flask", "Tesseract OCR", "Legal-BERT", "Gemini", "Natural Language Processing", "Translation", "Generative AI"],
+        "researchThemes": ["Legal AI", "Document understanding", "Multilingual NLP", "Accessibility"],
+        "github": "https://github.com/adityavardhanjain/Legal-Tesseract",
+        "demo": "https://legal-tesseract.onrender.com",
+        "featured": true,
+        "status": "completed",
+        "visualType": "document"
+      },
+      {
+        "id": "pothole-detection",
+        "missionId": "MISSION-03",
+        "title": "AI Pothole Detection and Road-Maintenance System",
+        "objective": "Computer-vision system for real-time road damage detection with geospatial tracking",
+        "description": "Developed a computer-vision system for detecting road damage using YOLO, edge-computing hardware, cameras, and GPS. Designed the system to identify potholes, capture geospatial information, and support infrastructure monitoring through analytical dashboards.",
+        "technologies": ["YOLOv9", "Python", "OpenCV", "Raspberry Pi", "Computer Vision", "GPS", "Power BI", "Data Visualization"],
+        "researchThemes": ["Real-time object detection", "Edge AI", "Geospatial mapping", "Smart infrastructure"],
+        "github": "https://github.com/adityavardhanjain/Pothole-Detection",
+        "featured": true,
+        "status": "completed",
+        "visualType": "road"
+      },
+      {
+        "id": "protein-structure",
+        "missionId": "MISSION-04",
+        "title": "Interactive 3D Protein Structure Prediction",
+        "objective": "Web application for protein structure prediction from amino acid sequences",
+        "description": "Created an interactive application that predicts protein structures from amino-acid sequences and visualizes the generated structures in three dimensions using ESMFold.",
+        "technologies": ["ESMFold", "Python", "Streamlit", "Deep Learning", "Bioinformatics", "3D Molecular Visualization"],
+        "researchThemes": ["Protein structure prediction", "Structural biology", "Deep learning applications", "Molecular visualization"],
+        "github": "https://github.com/adityavardhanjain/Protein-Structure-Prediction",
+        "demo": "https://protein-structure-predictor.streamlit.app",
+        "featured": true,
+        "status": "completed",
+        "visualType": "protein"
+      },
+      {
+        "id": "emotion-recognition",
+        "missionId": "MISSION-05",
+        "title": "Emotion Recognition Through Brain-Computer Interface",
+        "objective": "EEG-based emotion classification using signal processing and machine learning",
+        "description": "Explored emotion recognition using EEG signals, signal-processing methods, feature extraction, and machine-learning models to classify emotional states from neural activity patterns.",
+        "technologies": ["Python", "EEG", "Signal Processing", "Machine Learning", "Feature Extraction"],
+        "researchThemes": ["Affective computing", "Neural pattern recognition", "Emotion classification", "BCI applications"],
+        "featured": false,
+        "status": "completed",
+        "visualType": "emotion"
+      }
+    ],
+    "archived": [
+      { "id": "house-price", "title": "House Price Prediction", "tech": "Python, Scikit-learn, Pandas" },
+      { "id": "sales-forecasting", "title": "Store-Sales Time-Series Forecasting", "tech": "Python, Prophet, Pandas" },
+      { "id": "weapon-detection", "title": "Weapon Detection Through CCTV", "tech": "YOLO, OpenCV, Python" },
+      { "id": "data-analytics", "title": "Data-Analytics Projects", "tech": "SQL, Python, Tableau" }
+    ]
+  },
+
+  "research": {
+    "sectionLabel": "03 / Research Lab",
+    "title": "Research Directions",
+    "subtitle": "Exploring intelligence—artificial, biological, and beyond.",
+    "directions": [
+      {
+        "id": "world-models",
+        "title": "World Models",
+        "description": "Investigating how AI systems can build internal representations of environments for improved decision-making and prediction.",
+        "status": "exploring"
+      },
+      {
+        "id": "llm-verification",
+        "title": "LLM-Assisted Rule Verification in World Models",
+        "description": "Exploring whether external language models can function as high-level reasoning and verification systems within simulated environments.",
+        "status": "active"
+      },
+      {
+        "id": "intelligent-agents",
+        "title": "Intelligent Agents",
+        "description": "Developing autonomous agents that can perceive, reason, and act in complex environments with minimal human intervention.",
+        "status": "exploring"
+      },
+      {
+        "id": "ai-reasoning",
+        "title": "AI Reasoning",
+        "description": "Advancing symbolic and neural approaches to mathematical reasoning, logical inference, and problem-solving.",
+        "status": "exploring"
+      },
+      {
+        "id": "deterministic-consistency",
+        "title": "Deterministic Consistency in Simulated Environments",
+        "description": "Ensuring reproducible and consistent behavior in physics simulations for reliable agent training.",
+        "status": "exploring"
+      },
+      {
+        "id": "multimodal-intelligence",
+        "title": "Multimodal Intelligence",
+        "description": "Integrating vision, language, audio, and other modalities for comprehensive AI understanding.",
+        "status": "exploring"
+      },
+      {
+        "id": "comp-neuroscience",
+        "title": "Computational Neuroscience",
+        "description": "Using computational methods to understand brain function, neural coding, and cognitive processes.",
+        "status": "active"
+      },
+      {
+        "id": "bci",
+        "title": "Brain-Computer Interfaces",
+        "description": "Developing non-invasive BCI systems for neural signal interpretation and real-time feedback applications.",
+        "status": "active"
+      },
+      {
+        "id": "ai-space",
+        "title": "AI for Space Exploration",
+        "description": "Applying machine learning to autonomous navigation, planetary analysis, and spacecraft decision systems.",
+        "status": "planned"
+      }
+    ],
+    "publications": [
+      {
+        "id": "eeg-doctors",
+        "title": "A Method for Doctor's Handwritten Text Recognition",
+        "venue": "ACM Digital Library",
+        "year": "2026",
+        "description": "Utilizing Deep Learning and Ambiguity Handling for handwritten medical record extraction.",
+        "status": "published"
+      },
+      {
+        "id": "neural-signatures",
+        "title": "Neural Signatures of Eye Blinking",
+        "venue": "CARE IIST Conference",
+        "year": "2024",
+        "description": "EEG analysis for inferencing complex cognitive processes during voluntary actions. Awarded Best Paper.",
+        "status": "published",
+        "link": "#"
+      }
+    ],
+    "currentFocus": {
+      "title": "LLM-Assisted Rule Verification in World Models",
+      "status": "Research Concept",
+      "summary": "Investigating whether an external language model can function as a high-level reasoning and verification system within a simulated world model—evaluating events, checking consistency with environmental rules, and supporting more coherent long-term simulations.",
+      "keywords": ["World Models", "LLM Verification", "Simulation", "AI Safety", "Consistency Checking"]
+    }
+  },
+
+  "skills": {
+    "sectionLabel": "04 / Systems Matrix",
+    "title": "Core Competencies",
+    "subtitle": "Technical expertise across AI, data, and research domains.",
+    "categories": [
+      {
+        "id": "programming",
+        "title": "Programming Languages",
+        "icon": "code",
+        "skills": ["Python", "SQL", "C", "C++", "Bash", "R"]
+      },
+      {
+        "id": "ai-ml",
+        "title": "Artificial Intelligence",
+        "icon": "brain",
+        "skills": ["Machine Learning", "Deep Learning", "Generative AI", "Computer Vision", "Natural Language Processing", "Time-Series Analysis"]
+      },
+      {
+        "id": "frameworks",
+        "title": "Frameworks & Libraries",
+        "icon": "layers",
+        "skills": ["PyTorch", "TensorFlow", "Scikit-learn", "OpenCV", "BERT", "MediaPipe", "Ultralytics YOLO", "Transformers", "LangChain"]
+      },
+      {
+        "id": "data",
+        "title": "Data & Analytics",
+        "icon": "database",
+        "skills": ["Data Analysis", "Data Visualization", "Probability & Statistics", "Microsoft Excel", "Power BI", "Tableau", "Database Management", "BigQuery", "Pandas", "NumPy"]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure & DevOps",
+        "icon": "server",
+        "skills": ["Git", "Docker", "Kubernetes", "Google Cloud Platform", "Linux", "Flask", "React", "AWS", "GCP", "CI/CD"]
+      },
+      {
+        "id": "robotics",
+        "title": "Robotics & Embedded",
+        "icon": "cpu",
+        "skills": ["ROS", "Gazebo", "Raspberry Pi", "Arduino", "Edge Computing", "Computer Networking"]
+      },
+      {
+        "id": "research",
+        "title": "Research & Signal Processing",
+        "icon": "activity",
+        "skills": ["EEG Analysis", "Brain-Computer Interfaces", "Signal Processing", "Feature Extraction", "Experimental Analysis", "Research Methodology", "Technical Writing"]
+      }
+    ],
+    "interestNodes": [
+      { "id": "ai", "label": "Artificial Intelligence", "x": 50, "y": 50, "connections": ["ml", "nlp", "genai", "agents"] },
+      { "id": "ml", "label": "Machine Learning", "x": 30, "y": 30, "connections": ["ai", "cv", "datascience", "agents"] },
+      { "id": "cv", "label": "Computer Vision", "x": 70, "y": 30, "connections": ["ml", "robotics", "bci"] },
+      { "id": "nlp", "label": "Natural Language Processing", "x": 20, "y": 60, "connections": ["ai", "genai", "agents"] },
+      { "id": "genai", "label": "Generative AI", "x": 40, "y": 20, "connections": ["ai", "nlp", "agents"] },
+      { "id": "datascience", "label": "Data Science", "x": 60, "y": 70, "connections": ["ml", "stats", "visualization"] },
+      { "id": "bci", "label": "Brain-Computer Interfaces", "x": 80, "y": 50, "connections": ["cv", "neuroscience", "hci"] },
+      { "id": "neuroscience", "label": "Computational Neuroscience", "x": 90, "y": 30, "connections": ["bci", "ai"] },
+      { "id": "agents", "label": "Intelligent Agents", "x": 50, "y": 40, "connections": ["ai", "ml", "nlp", "genai"] },
+      { "id": "robotics", "label": "Robotics", "x": 85, "y": 70, "connections": ["cv", "embedded"] },
+      { "id": "spacetech", "label": "Space Technology", "x": 10, "y": 85, "connections": ["ai", "robotics"] }
+    ]
+  },
+
+  "experience": {
+    "sectionLabel": "05 / Mission Timeline",
+    "title": "Career & Education",
+    "subtitle": "A timeline of professional experience and academic background.",
+    "items": [
+      {
+        "id": "google",
+        "title": "Data Analytics Apprentice",
+        "organization": "Google",
+        "location": "Hyderabad, India",
+        "period": "March 2026 — Present",
+        "startDate": "2026-03",
+        "description": "Supporting Large Customer Sales through enterprise analytics, campaign-performance optimization, automated reporting, and agentic AI systems.",
+        "highlights": [
+          "Analyze campaign metrics and user behavior to improve targeting, bidding strategies, account structure, and ROAS.",
+          "Build dashboards and automated reporting systems for KPI monitoring and faster client decision-making.",
+          "Develop internal tools for SQL generation and deterministic validation using agentic AI, SQLGlot, cloud computing, and advanced statistical methods."
+        ],
+        "impactMetrics": [
+          { "value": "4–5%", "label": "CVR Improvement" },
+          { "value": "60%", "label": "Less Manual Reporting" },
+          { "value": "80–90%", "label": "Fewer Reporting Discrepancies" },
+          { "value": "10+", "label": "Advanced Analyses" }
+        ],
+        "type": "work"
+      },
+      {
+        "id": "tatvic",
+        "title": "Digital Analyst",
+        "organization": "Tatvic Analytics",
+        "location": "Ahmedabad, India",
+        "period": "December 2024 — March 2026",
+        "startDate": "2024-12",
+        "description": "Delivered advanced analytics and automation solutions across lead-generation and publisher clients using GA4, BigQuery, SQL, statistics, and agentic workflows.",
+        "highlights": [
+          "Identified conversion gaps and developed data-backed marketing strategies.",
+          "Automated reporting workflows using n8n and Google Agentspace.",
+          "Performed root-cause analysis across complex client reporting systems.",
+          "Delivered attribution, cohort, funnel, and customer-journey analyses."
+        ],
+        "impactMetrics": null,
+        "type": "work"
+      },
+      {
+        "id": "codenscious",
+        "title": "Computer Vision & Data Engineer",
+        "organization": "Codenscious Technologies",
+        "location": "Indore, India",
+        "period": "July 2024 — December 2024",
+        "startDate": "2024-07",
+        "description": "Developed computer-vision, IoT, and analytical systems for real-world infrastructure monitoring.",
+        "highlights": [
+          "Contributed to Legolas, a YOLO-powered pothole-detection system achieving 95% mAP.",
+          "Integrated computer vision, geospatial tagging, edge computing, and analytical dashboards.",
+          "Researched SLAM and ROS 2 simulations to evaluate model accuracy and deployment feasibility."
+        ],
+        "impactMetrics": null,
+        "type": "work"
+      },
+      {
+        "id": "care",
+        "title": "Data Science Research Intern",
+        "organization": "Center of Advanced Research and Engineering",
+        "location": "IIST, Indore, India",
+        "period": "July 2023 — July 2024",
+        "startDate": "2023-07",
+        "description": "Conducted brain–computer interface research examining the cognitive effects of voluntary actions through EEG signals.",
+        "highlights": [
+          "Applied deep learning, statistical analysis, signal processing, and data visualization to neural data.",
+          "Contributed to research on neural signatures and cognitive inference."
+        ],
+        "impactMetrics": null,
+        "type": "work"
+      }
+    ],
+    "achievements": {
+      "sectionLabel": "Achievements & Recognition",
+      "items": [
+        {
+          "id": "sih-2023",
+          "title": "Winner - Smart India Hackathon",
+          "organization": "Software Edition",
+          "year": "2023",
+          "description": "National level hackathon winner for innovative software solution",
+          "type": "award"
+        },
+        {
+          "id": "gdsc-lead",
+          "title": "Google Developer Student Clubs Lead",
+          "organization": "GDSC",
+          "year": "2023-24",
+          "description": "Led technical community building, organized workshops and events",
+          "type": "leadership"
+        },
+        {
+          "id": "harvard-python",
+          "title": "Certified: Python for Data Science",
+          "organization": "Harvard University (edX)",
+          "year": "2023",
+          "description": "Verified certification in Python programming for data science applications",
+          "type": "certification"
+        },
+        {
+          "id": "harvard-inference",
+          "title": "Certified: Data Science: Inference and Modelling",
+          "organization": "Harvard University (edX)",
+          "year": "2023",
+          "description": "Verified certification in statistical inference and data modeling",
+          "type": "certification"
+        },
+        {
+          "id": "google-data",
+          "title": "Google Certified Data Analytics Professional",
+          "organization": "Google",
+          "year": "2024",
+          "description": "Professional certification in data analytics practices",
+          "type": "certification"
+        },
+        {
+          "id": "cisco-ccna",
+          "title": "CCNA Certified",
+          "organization": "Cisco Networking Academy",
+          "year": "2023",
+          "description": "Completed certifications in Introduction to Networks, Switching, Routing, and Wireless Essentials, and Enterprise Networking Security and Automation",
+          "type": "certification"
+        },
+        {
+          "id": "best-paper",
+          "title": "Best Paper Award",
+          "organization": "CARE IIST",
+          "year": "2024",
+          "description": "Awarded for research on Neural Signatures in EEG Analysis",
+          "type": "award"
+        },
+        {
+          "id": "munsoc",
+          "title": "High Commendation",
+          "organization": "IIT Indore Model United Nations",
+          "year": "2022",
+          "description": "Recognized for diplomatic skills and research preparation",
+          "type": "milestone"
+        },
+        {
+          "id": "spot-award",
+          "title": "Spot Award for Exceptional Performance",
+          "organization": "Tatvic Analytics",
+          "year": "2025",
+          "description": "Recognized for outstanding contributions as Consultant and Data Analyst",
+          "type": "award"
+        }
+      ]
+    }
+  },
+
+  "contact": {
+    "sectionLabel": "06 / Transmission Center",
+    "title": "Let's Connect",
+    "subtitle": "Open to collaborations, research discussions, and new opportunities.",
+    "email": "jainadityavardhan@gmail.com",
+    "availability": "Currently available for: AI collaborations, Research partnerships, Data science consulting, Speaking engagements",
+    "social": {
+      "github": "https://github.com/adityavardhanjain",
+      "linkedin": "https://linkedin.com/in/adityavardhan-jain/"
+    },
+    "footer": {
+      "copyright": "© 2024 Adityavardhan Jain. Built with Next.js.",
+      "credits": "Designed with care"
+    }
+  }
+}

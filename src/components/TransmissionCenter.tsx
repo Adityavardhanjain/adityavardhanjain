@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, MailIcon } from '@/components/ui/SocialIcons';
-import { siteConfig, safeString } from '@/lib/data';
+import { siteConfig } from '@/lib/data';
+import content from '@/lib/content';
 
 export default function TransmissionCenter() {
+  const { contact } = content;
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   
@@ -32,7 +34,7 @@ export default function TransmissionCenter() {
       <div className="container-content relative z-10">
         {/* Section Label */}
         <div className="section-label">
-          <span className="section-label-number">07 / TRANSMISSION</span>
+          <span className="section-label-number">{contact.sectionLabel}</span>
           <div className="section-label-line" />
         </div>
         
@@ -40,16 +42,16 @@ export default function TransmissionCenter() {
           {/* Left - Header & Contact Links */}
           <div className="min-w-0">
             <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">
-              Let&apos;s build something worth exploring.
+              {contact.title}
             </h2>
             <p className="text-body text-[#8899aa] leading-relaxed mb-8 max-w-lg">
-              Open to conversations around AI research, data systems, intelligent agents, computer vision, and ambitious technical projects.
+              {contact.subtitle}
             </p>
             
             {/* Contact Links */}
             <div className="space-y-3">
               <a 
-                href={siteConfig.github} 
+                href={contact.social.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group min-w-0"
@@ -62,7 +64,7 @@ export default function TransmissionCenter() {
               </a>
               
               <a 
-                href={siteConfig.linkedin} 
+                href={contact.social.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group min-w-0"
@@ -75,13 +77,13 @@ export default function TransmissionCenter() {
               </a>
               
               <a 
-                href={`mailto:${safeString(siteConfig.email, 'contact@example.com')}`}
+                href={`mailto:${contact.email}`}
                 className="flex items-center gap-4 p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group min-w-0"
               >
                 <MailIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#3b82f6] transition-colors flex-shrink-0" />
                 <div className="min-w-0">
                   <p className="text-[#f0f4f8] font-medium">Email</p>
-                  <p className="text-sm text-[#5a6a7a]">{safeString(siteConfig.email, 'contact@example.com')}</p>
+                  <p className="text-sm text-[#5a6a7a]">{contact.email}</p>
                 </div>
               </a>
             </div>

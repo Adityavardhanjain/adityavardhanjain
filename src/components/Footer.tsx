@@ -1,16 +1,18 @@
 'use client';
 
 import { GithubIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
-import { siteConfig, safeString } from '@/lib/data';
+import content from '@/lib/content';
 
 export default function Footer() {
+  const { contact } = content;
+  
   return (
     <footer className="py-12 border-t border-[rgba(255,255,255,0.04)]">
       <div className="container-content">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Left - Copyright */}
           <p className="text-sm text-[#5a6a7a] text-center sm:text-left">
-            © {new Date().getFullYear()} {safeString(siteConfig.name, 'Adityavardhan Jain')}
+            {contact.footer.copyright.replace('© 2024', `© ${new Date().getFullYear()}`)}
           </p>
           
           {/* Center - Navigation */}
@@ -25,7 +27,7 @@ export default function Footer() {
           {/* Right - Social Links */}
           <div className="flex gap-3">
             <a 
-              href={safeString(siteConfig.github, '#')} 
+              href={contact.social.github} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="p-2.5 text-[#5a6a7a] hover:text-[#3b82f6] bg-[#0a1120] border border-[rgba(255,255,255,0.04)] rounded-lg hover:border-[#3b82f6]/30 transition-all touch-target"
@@ -34,7 +36,7 @@ export default function Footer() {
               <GithubIcon className="w-4 h-4" />
             </a>
             <a 
-              href={safeString(siteConfig.linkedin, '#')} 
+              href={contact.social.linkedin} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="p-2.5 text-[#5a6a7a] hover:text-[#3b82f6] bg-[#0a1120] border border-[rgba(255,255,255,0.04)] rounded-lg hover:border-[#3b82f6]/30 transition-all touch-target"

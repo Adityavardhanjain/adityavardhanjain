@@ -1,6 +1,10 @@
 'use client';
 
+import content from '@/lib/content';
+
 export default function ResearcherProfile() {
+  const { about } = content;
+  
   return (
     <section id="about" className="section relative">
       {/* Subtle radial gradient */}
@@ -11,7 +15,7 @@ export default function ResearcherProfile() {
       <div className="container-content relative z-10">
         {/* Section Label */}
         <div className="section-label">
-          <span className="section-label-number">01 / Mission Profile</span>
+          <span className="section-label-number">{about.sectionLabel}</span>
           <div className="section-label-line" />
         </div>
         
@@ -19,37 +23,26 @@ export default function ResearcherProfile() {
           {/* Left - Large Statement */}
           <div className="min-w-0">
             <h2 className="text-section-title font-bold text-[#f0f4f8] leading-tight text-wrap">
-              Building intelligent systems where data, AI, and human cognition intersect.
+              {about.headline}
             </h2>
           </div>
           
           {/* Right - Two concise paragraphs + Metrics */}
           <div className="space-y-6 min-w-0">
-            <p className="text-body text-[#8899aa] leading-relaxed">
-              I currently work as a Data Analytics Apprentice at Google, supporting large-customer sales through campaign analytics, automated reporting, performance optimization, and agentic AI systems.
-            </p>
-            <p className="text-body text-[#8899aa] leading-relaxed">
-              My broader interests span world models, intelligent agents, multimodal reasoning, computational neuroscience, and space technology. I enjoy turning complex research ideas into systems that work beyond the prototype stage.
-            </p>
+            {about.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-body text-[#8899aa] leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
             
             {/* Four compact metrics per spec */}
             <div className="grid grid-cols-2 gap-6 pt-8 mt-4 border-t border-[rgba(255,255,255,0.06)]">
-              <div>
-                <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">3+</p>
-                <p className="text-sm text-[#5a6a7a] mt-1">Years Building</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">4</p>
-                <p className="text-sm text-[#5a6a7a] mt-1">Major Projects</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">2</p>
-                <p className="text-sm text-[#5a6a7a] mt-1">Research Publications</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">1</p>
-                <p className="text-sm text-[#5a6a7a] mt-1">Hackathon Victory</p>
-              </div>
+              {about.metrics.map((metric, index) => (
+                <div key={index}>
+                  <p className="text-3xl font-bold text-[#f0f4f8] tracking-tight">{metric.value}</p>
+                  <p className="text-sm text-[#5a6a7a] mt-1">{metric.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

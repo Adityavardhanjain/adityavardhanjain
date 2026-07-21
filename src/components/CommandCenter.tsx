@@ -1,8 +1,11 @@
 'use client';
 
 import { siteConfig } from '@/lib/data';
+import content from '@/lib/content';
 
 export default function CommandCenter() {
+  const { hero } = content;
+  
   return (
     <section id="home" className="min-h-[100svh] flex items-center relative overflow-hidden">
       {/* Subtle atmospheric glow */}
@@ -20,63 +23,66 @@ export default function CommandCenter() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
-              <span className="text-sm text-[#8899aa] tracking-wide">AVAILABLE FOR AI, DATA & RESEARCH COLLABORATIONS</span>
+              <span className="text-sm text-[#8899aa] tracking-wide">{hero.statusText}</span>
             </div>
             
             {/* Name - Per spec: spans with display:block, white-space:nowrap for first name */}
             <h1 className="text-hero-name font-bold text-[#f0f4f8] leading-none">
-              <span className="block text-nowrap">Adityavardhan</span>
-              <span className="block">Jain</span>
+              <span className="block text-nowrap">{siteConfig.name.split(' ')[0]}</span>
+              <span className="block">{siteConfig.name.split(' ').slice(1).join(' ')}</span>
             </h1>
             
             {/* Professional Identity */}
             <p className="text-hero-role text-[#c8d4e3] tracking-wide">
-              Data Analyst · AI/ML Engineer · Researcher
+              {siteConfig.title}
             </p>
             
             {/* Biography - Single concise paragraph per spec */}
             <p className="text-body text-[#8899aa] max-w-xl leading-relaxed">
-              I build intelligent systems at the intersection of data, machine learning, and research—from large-scale analytics and agentic AI to computer vision and brain–computer interfaces.
+              {hero.biography}
             </p>
             
             {/* Three compact highlights per spec */}
             <div className="flex flex-wrap gap-6 py-4">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#3b82f6]" />
-                <span className="text-sm text-[#8899aa]">Google — Data Analytics Apprentice</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
-                <span className="text-sm text-[#8899aa]">3+ years building AI and data systems</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#8b5cf6]" />
-                <span className="text-sm text-[#8899aa]">Research in intelligent systems and BCI</span>
-              </div>
+              {hero.highlights.map((highlight) => (
+                <div key={highlight.id} className="flex items-center gap-2">
+                  <div className={`w-1.5 h-1.5 rounded-full ${
+                    highlight.color === 'blue' ? 'bg-[#3b82f6]' :
+                    highlight.color === 'indigo' ? 'bg-[#6366f1]' :
+                    'bg-[#8b5cf6]'
+                  }`} />
+                  <span className="text-sm text-[#8899aa]">{highlight.text}</span>
+                </div>
+              ))}
             </div>
             
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a 
-                href="#projects" 
-                className="btn btn-primary"
-              >
-                Explore My Work
-              </a>
-              <a 
-                href={siteConfig.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-              >
-                View Résumé
-              </a>
-              <a 
-                href="#contact" 
-                className="text-[#8899aa] hover:text-[#f0f4f8] font-medium transition-colors duration-300 text-nowrap"
-              >
-                Start a Conversation
-              </a>
+              {hero.ctas.map((cta) => (
+                cta.type === 'primary' ? (
+                  <a key={cta.id} href={cta.href} className="btn btn-primary">
+                    {cta.label}
+                  </a>
+                ) : cta.type === 'secondary' ? (
+                  <a 
+                    key={cta.id}
+                    href={siteConfig.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary"
+                  >
+                    {cta.label}
+                  </a>
+                ) : (
+                  <a 
+                    key={cta.id}
+                    href={cta.href} 
+                    className="text-[#8899aa] hover:text-[#f0f4f8] font-medium transition-colors duration-300 text-nowrap"
+                  >
+                    {cta.label}
+                  </a>
+                )
+              ))}
             </div>
           </div>
           

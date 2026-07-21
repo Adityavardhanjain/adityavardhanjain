@@ -2,7 +2,8 @@
 
 import { ExternalLink, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/SocialIcons';
-import { projects, safeString, safeArray, safeUrl } from '@/lib/data';
+import { safeString, safeArray, safeUrl } from '@/lib/data';
+import content, { getFeaturedProjects } from '@/lib/content';
 
 // EEG Telemetry Visualization Component
 function EEGTelemetry() {
@@ -390,19 +391,12 @@ function FeaturedBCICard({
 }
 
 export default function MissionArchive() {
-  // Use validated project data
-  const validProjects = safeArray(projects).filter((p): p is NonNullable<typeof p> => p !== null && typeof p === 'object');
-  const featured = validProjects.filter(p => (p as Record<string, unknown>).featured === true);
+  const { projects: projectsContent } = content;
+  const featured = getFeaturedProjects();
   
-  const flagship = featured[0] as Record<string, unknown> | undefined;
+  const flagship = featured[0];
   const secondary = featured.slice(1, 3);
   const additional = featured.slice(3);
-  
-  const flagshipTitle = flagship ? safeString(flagship.title, 'Brain–Computer Interface: Tetris Outcome Prediction') : '';
-  const flagshipDescription = flagship ? safeString(flagship.description, 'Developed a real-time brain-computer interface that processes EEG signals captured during Tetris gameplay. Applied signal processing, feature extraction, data analysis, and machine-learning techniques to investigate neural activity and predict gameplay outcomes.') : '';
-  const flagshipTech = flagship ? (safeArray((flagship as Record<string, unknown>).technologies) as string[]) : [];
-  const flagshipGithub = flagship ? safeUrl((flagship as Record<string, unknown>).github) : undefined;
-  const flagshipMissionId = flagship ? safeString((flagship as Record<string, unknown>).missionId, 'FEATURED RESEARCH · BRAIN–COMPUTER INTERFACE') : '';
   
   return (
     <section id="projects" className="py-[var(--section-spacing)] relative">
@@ -417,14 +411,14 @@ export default function MissionArchive() {
       <div className="container-content relative z-10">
         {/* Section Label */}
         <div className="section-label">
-          <span className="section-label-number">02 / Mission Archive</span>
+          <span className="section-label-number">{projectsContent.sectionLabel}</span>
           <div className="section-label-line" />
         </div>
         
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-4">Featured Projects</h2>
+          <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-4">{projectsContent.title}</h2>
           <p className="text-[#8899aa] text-body max-w-2xl text-wrap">
-            A selection of research and engineering projects spanning AI, data systems, and emerging technologies.
+            {projectsContent.subtitle}
           </p>
         </div>
         
@@ -433,11 +427,11 @@ export default function MissionArchive() {
           <div className="mb-12 sm:mb-16">
             <div className="bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-2xl overflow-hidden hover:border-[rgba(255,255,255,0.1)] transition-all">
               <FeaturedBCICard
-                missionId={flagshipMissionId}
-                title={flagshipTitle}
-                description={flagshipDescription}
-                technologies={flagshipTech}
-                github={flagshipGithub}
+                missionId={flagship.missionId}
+                title={flagship.title}
+                description={flagship.description}
+                technologies={flagship.technologies}
+                github={flagship.github}
               />
             </div>
           </div>
@@ -445,42 +439,38 @@ export default function MissionArchive() {
         
         {/* Secondary Projects - Clean two-column grid */}
         <div className="project-grid mb-12 sm:mb-16">
-          {secondary.map((project, idx) => {
-            const p = project as Record<string, unknown>;
-            return (
-              <ProjectCard
-                key={String(p.id)}
-                project={{
-                  id: String(p.id || ''),
-                  missionId: safeString(p.missionId, 'MISSION-XX'),
-                  title: safeString(p.title),
-                  description: safeString(p.description),
-                  technologies: safeArray(p.technologies),
-                  github: p.github as string | undefined,
-                  demo: p.demo as string | undefined,
-                  visualType: String(p.visualType || 'default'),
-                }}
-                visualComponent={idx === 0 ? <DocumentProcessing /> : <ComputerVision />}
-              />
-            );
-          })}
+          {secondary.map((project, idx) => (
+            <ProjectCard
+              key={project.id}
+              project={{
+                id: project.id,
+                missionId: project.missionId,
+                title: project.title,
+                description: project.description,
+                technologies: project.technologies,
+                github: project.github,
+                demo: project.demo,
+                visualType: project.visualType,
+              }}
+              visualComponent={idx === 0 ? <DocumentProcessing /> : <ComputerVision />}
+            />
+          ))}
         </div>
         
         {/* Additional Projects */}
         {additional.length > 0 && (
           <div className="space-y-4">
             {additional.map((project, idx) => {
-              const p = project as Record<string, unknown>;
               const visualLabels = ['3D', 'EEG', 'NLP', 'CV'];
               return (
                 <AdditionalProject
-                  key={String(p.id)}
+                  key={project.id}
                   project={{
-                    id: String(p.id || ''),
-                    missionId: safeString(p.missionId, 'MISSION-XX'),
-                    title: safeString(p.title),
-                    github: p.github as string | undefined,
-                    demo: p.demo as string | undefined,
+                    id: project.id,
+                    missionId: project.missionId,
+                    title: project.title,
+                    github: project.github,
+                    demo: project.demo,
                   }}
                   visualLabel={visualLabels[idx % visualLabels.length]}
                 />
