@@ -199,10 +199,10 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
       {/* Active topic info panel */}
       {activeDirection && (
         <div className="research-info-panel">
-          <p className="text-xs text-[#00D4FF] mb-2">
+          <p className="font-mono text-[0.6875rem] tracking-[0.15em] uppercase text-[#00D4FF] mb-2">
             {activeDirection.status}
           </p>
-          <h4 className="text-base font-semibold text-[#f0f4f8] mb-2">{activeDirection.title}</h4>
+          <h4 className="font-serif text-lg font-semibold text-[#f0f4f8] mb-2 leading-snug">{activeDirection.title}</h4>
           <p className="text-sm text-[#8899aa] leading-relaxed">{activeDirection.description}</p>
         </div>
       )}
@@ -214,10 +214,10 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
             key={direction.id}
             className="research-interest-card"
           >
-            <p className="text-xs text-[#8ea1b5] mb-1">
+            <p className="font-mono text-[0.625rem] tracking-[0.12em] uppercase text-[#8ea1b5] mb-1.5">
               {direction.status}
             </p>
-            <h4 className="text-sm font-semibold text-[#f0f4f8] mb-1">{direction.title}</h4>
+            <h4 className="font-serif text-sm font-semibold text-[#f0f4f8] mb-1.5 leading-snug">{direction.title}</h4>
             <p className="text-xs text-[#5a6a7a] leading-relaxed line-clamp-2">{direction.description}</p>
           </div>
         ))}
@@ -235,7 +235,7 @@ function PublicationCard({ publication }: PublicationCardProps) {
   return (
     <div className="publication-card">
       <div className="flex items-start justify-between gap-4 mb-3">
-        <h3 className="publication-title">{publication.title}</h3>
+        <h3 className="publication-title leading-snug">{publication.title}</h3>
         {publication.link && (
           <a 
             href={publication.link} 
@@ -265,18 +265,16 @@ export default function ResearchLab() {
   
   return (
     <section id="research" className="research-section relative">
-      {/* Subtle radial gradient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(99,102,241,0.04)] via-transparent to-transparent" />
-      </div>
+      {/* Hairline accent rail - replaces gradient blobs */}
+      <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-[#00D4FF]/30 via-[#00D4FF]/10 to-transparent" aria-hidden="true" />
       
       <div className="container-content relative z-10">
         <div className="research-layout">
           {/* Left - Research Constellation */}
           <div className="research-column">
+            <p className="section-eyebrow mb-3">{research.sectionLabel}</p>
             <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">{research.title}</h2>
-            <p className="section-eyebrow mb-4">{research.sectionLabel}</p>
-            <p className="text-body text-[#8899aa] mb-6">
+            <p className="text-body text-[#8899aa] mb-8">
               {research.subtitle}
             </p>
             <ResearchConstellation directions={research.directions} />

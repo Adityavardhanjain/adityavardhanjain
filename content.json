@@ -19,8 +19,8 @@
     "statusText": "AVAILABLE FOR AI ENGINEERING, DATA ANALYTICS & RESEARCH COLLABORATIONS",
     "highlights": [
       { "id": "work", "text": "Google - Data Analytics Apprentice", "color": "blue" },
-      { "id": "experience", "text": "3+ years building AI and data systems", "color": "indigo" },
-      { "id": "research", "text": "Research in Computer Vision, Robotics and Brain Computer Interface", "color": "purple" }
+      { "id": "experience", "text": "3+ years building AI and data systems", "color": "cyan" },
+      { "id": "research", "text": "Research in Computer Vision, Robotics and Brain Computer Interface", "color": "cyan" }
     ],
     "biography": "I believe in solving complex problems in a world moving towards superintelligence. I’m someone who is deeply driven by curiosity: about systems, data, intelligence, and how things work at scale. ",
     "ctas": [

@@ -10,28 +10,26 @@ export default function SystemsMatrix() {
   
   return (
     <section id="skills" className="section relative">
-      {/* Subtle radial gradient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-[rgba(0,212,255,0.03)] via-transparent to-transparent" />
-      </div>
+      {/* Hairline accent rail - replaces gradient blobs */}
+      <div className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-[#00D4FF]/30 via-[#00D4FF]/10 to-transparent" aria-hidden="true" />
       
       <div className="container-content relative z-10">
         <div className="section-heading">
-          <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">{skills.title}</h2>
           <p className="section-eyebrow">{skills.sectionLabel}</p>
+          <h2 className="text-section-title font-bold text-[#f0f4f8]">{skills.title}</h2>
           <p className="text-body text-[#8899aa] max-w-2xl">
             {skills.subtitle}
           </p>
         </div>
         
         {/* Five Capability Groups - per spec: responsive card grid, 3 cols desktop, 2 tablet, 1 mobile */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 min-w-0">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 min-w-0">
           {skills.categories.map((category) => (
             <div key={category.id} className="card">
-              <h3 className="text-card-title font-semibold text-[#f0f4f8] mb-4">{category.title}</h3>
+              <h3 className="font-serif text-card-title font-semibold text-[#f0f4f8] mb-4 leading-snug">{category.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((tech) => (
-                  <span key={tech} className="px-2.5 py-1 text-xs text-[#8899aa] bg-[#0d0e1a] rounded">
+                  <span key={tech} className="tech-tag">
                     {tech}
                   </span>
                 ))}
@@ -56,7 +54,7 @@ export default function SystemsMatrix() {
           </summary>
           <div className="flex flex-wrap gap-2 pt-6">
             {allSkills.map((tech) => (
-              <span key={tech} className="px-2.5 py-1 text-xs text-[#5a6a7a] bg-[#10121f] rounded">
+              <span key={tech} className="tech-tag">
                 {tech}
               </span>
             ))}
