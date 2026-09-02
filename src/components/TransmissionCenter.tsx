@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, MailIcon } from '@/components/ui/SocialIcons';
-import { siteConfig } from '@/lib/data';
 import content from '@/lib/content';
 
 export default function TransmissionCenter() {
@@ -32,18 +31,13 @@ export default function TransmissionCenter() {
       </div>
       
       <div className="container-content relative z-10">
-        {/* Section Label */}
-        <div className="section-label">
-          <span className="section-label-number">{contact.sectionLabel}</span>
-          <div className="section-label-line" />
-        </div>
-        
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-w-0">
           {/* Left - Header & Contact Links */}
           <div className="min-w-0">
             <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">
               {contact.title}
             </h2>
+            <p className="section-eyebrow mb-4">{contact.sectionLabel}</p>
             <p className="text-body text-[#8899aa] leading-relaxed mb-8 max-w-lg">
               {contact.subtitle}
             </p>

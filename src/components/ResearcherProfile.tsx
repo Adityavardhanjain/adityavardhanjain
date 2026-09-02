@@ -13,18 +13,13 @@ export default function ResearcherProfile() {
       </div>
       
       <div className="container-content relative z-10">
-        {/* Section Label */}
-        <div className="section-label">
-          <span className="section-label-number">{about.sectionLabel}</span>
-          <div className="section-label-line" />
-        </div>
-        
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-w-0">
           {/* Left - Large Statement */}
           <div className="min-w-0">
             <h2 className="text-section-title font-bold text-[#f0f4f8] leading-tight text-wrap">
               {about.headline}
             </h2>
+            <p className="section-eyebrow mt-4">{about.sectionLabel}</p>
           </div>
           
           {/* Right - Two concise paragraphs + Metrics */}
