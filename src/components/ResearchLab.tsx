@@ -208,7 +208,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
       )}
       
       {/* Mobile fallback - research interest grid */}
-      <div className="research-interest-grid md:hidden">
+      <div className="research-interest-grid research-mobile-fallback">
         {directions.slice(0, 6).map((direction) => (
           <div 
             key={direction.id}
