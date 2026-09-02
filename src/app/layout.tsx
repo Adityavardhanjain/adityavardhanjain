@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Source_Serif_4, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
   display: "swap",
 });
@@ -45,12 +51,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${sourceSerif.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="min-h-screen bg-[#0B0D17] text-slate-100 antialiased">
-        <div className="nebula" aria-hidden="true" />
+        <div className="instrument-grid" aria-hidden="true" />
         <div className="starfield-twinkle" aria-hidden="true" />
         {children}
       </body>

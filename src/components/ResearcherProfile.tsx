@@ -7,10 +7,8 @@ export default function ResearcherProfile() {
   
   return (
     <section id="about" className="section relative">
-      {/* Subtle radial gradient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[150vw] h-[400px] bg-gradient-radial from-[rgba(0,212,255,0.03)] via-transparent to-transparent" />
-      </div>
+      {/* Hairline accent rail - replaces gradient blobs */}
+      <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-[#00D4FF]/30 via-[#00D4FF]/10 to-transparent" aria-hidden="true" />
       
       <div className="container-content relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-w-0">
@@ -38,8 +36,8 @@ export default function ResearcherProfile() {
               <div className="flex flex-col gap-5 md:gap-6 md:items-end md:text-right min-w-0 md:border-l md:border-[rgba(255,255,255,0.08)] md:pl-8">
                 {about.metrics.map((metric, index) => (
                   <div key={index}>
-                    <p className="text-2xl sm:text-3xl font-bold text-[#f0f4f8] tracking-tight whitespace-nowrap">{metric.value}</p>
-                    <p className="text-sm text-[#5a6a7a] mt-1">{metric.label}</p>
+                    <p className="metric-value whitespace-nowrap">{metric.value}</p>
+                    <p className="metric-label">{metric.label}</p>
                   </div>
                 ))}
               </div>

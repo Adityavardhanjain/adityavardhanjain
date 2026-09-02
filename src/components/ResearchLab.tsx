@@ -265,10 +265,8 @@ export default function ResearchLab() {
   
   return (
     <section id="research" className="research-section relative">
-      {/* Subtle radial gradient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(99,102,241,0.04)] via-transparent to-transparent" />
-      </div>
+      {/* Hairline accent rail - replaces gradient blobs */}
+      <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-[#00D4FF]/30 via-[#00D4FF]/10 to-transparent" aria-hidden="true" />
       
       <div className="container-content relative z-10">
         <div className="research-layout">

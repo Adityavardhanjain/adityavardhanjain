@@ -13,7 +13,7 @@ function ExperienceEntry({ experience }: ExperienceEntryProps) {
     <div className="relative max-w-[850px]">
       {/* Timeline indicator */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-3.5 h-3.5 rounded-full flex-shrink-0 bg-[#00D4FF] shadow-[0_0_0_4px_rgba(0,212,255,0.15),0_0_12px_rgba(0,212,255,0.6)]" />
+        <div className="w-3.5 h-3.5 flex-shrink-0 bg-[#0B0D17] border-2 border-[#00D4FF] shadow-[0_0_0_4px_rgba(0,212,255,0.12)]" />
         <p className="font-mono text-sm text-[#00D4FF] tracking-wide">{experience.period}</p>
       </div>
       
@@ -30,8 +30,8 @@ function ExperienceEntry({ experience }: ExperienceEntryProps) {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 mb-4">
             {experience.impactMetrics.map((metric, i) => (
               <div key={i}>
-                <p className="text-xl sm:text-2xl font-bold text-[#f0f4f8] tracking-tight">{metric.value}</p>
-                <p className="text-xs text-[#5a6a7a]">{metric.label}</p>
+                <p className="metric-value">{metric.value}</p>
+                <p className="metric-label">{metric.label}</p>
               </div>
             ))}
           </div>
@@ -47,7 +47,7 @@ function ExperienceEntry({ experience }: ExperienceEntryProps) {
           <div className="space-y-3">
             {experience.highlights.slice(0, 3).map((highlight, i) => (
               <div key={i} className="flex items-start gap-3">
-                <div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#00D4FF] shadow-[0_0_6px_rgba(0,212,255,0.9)] flex-shrink-0" />
+                <div className="w-2 h-2 mt-1.5 flex-shrink-0 border border-[#00D4FF] rotate-45" />
                 <p className="text-sm text-[#8899aa] leading-relaxed">{highlight}</p>
               </div>
             ))}
@@ -82,10 +82,8 @@ export default function MissionTimeline() {
   
   return (
     <section id="experience" className="section relative">
-      {/* Subtle radial gradient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-gradient-radial from-[rgba(0,212,255,0.03)] via-transparent to-transparent" />
-      </div>
+      {/* Hairline accent rail - replaces gradient blobs */}
+      <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-[#00D4FF]/30 via-[#00D4FF]/10 to-transparent" aria-hidden="true" />
       
       <div className="container-content relative z-10">
         <div className="section-heading">
