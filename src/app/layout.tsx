@@ -50,6 +50,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="min-h-screen bg-[#0B0D17] text-slate-100 antialiased">
+        <div className="nebula" aria-hidden="true" />
+        <div className="starfield-twinkle" aria-hidden="true" />
         {children}
       </body>
     </html>

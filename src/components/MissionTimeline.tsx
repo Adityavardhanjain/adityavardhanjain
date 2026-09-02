@@ -6,21 +6,20 @@ import type { Experience, Achievement } from '@/lib/content';
 // Experience Entry Component - per spec: max-width 850px
 interface ExperienceEntryProps {
   experience: Experience;
-  isFirst: boolean;
 }
 
-function ExperienceEntry({ experience, isFirst }: ExperienceEntryProps) {
+function ExperienceEntry({ experience }: ExperienceEntryProps) {
   return (
     <div className="relative max-w-[850px]">
       {/* Timeline indicator */}
-      <div className="flex items-center gap-4 mb-4">
-        <div className={`w-3 h-3 rounded-full flex-shrink-0 ${isFirst ? 'bg-[#00D4FF] shadow-lg shadow-[#00D4FF]/30' : 'bg-[#272742]'}`} />
+      <div className="flex items-center gap-4 mb-6">
+        <div className="w-3.5 h-3.5 rounded-full flex-shrink-0 bg-[#00D4FF] shadow-[0_0_0_4px_rgba(0,212,255,0.15),0_0_12px_rgba(0,212,255,0.6)]" />
         <p className="font-mono text-sm text-[#00D4FF] tracking-wide">{experience.period}</p>
       </div>
       
       <div className="pl-7">
         {/* Organization & Role */}
-        <div className="mb-3">
+        <div className="mb-4">
           <h3 className="text-xl sm:text-2xl font-bold text-[#f0f4f8] tracking-tight mb-1">{experience.organization}</h3>
           <p className="text-base text-[#c8d4e3] mb-1">{experience.title}</p>
           <p className="text-sm text-[#5a6a7a]">{experience.location}</p>
@@ -43,12 +42,12 @@ function ExperienceEntry({ experience, isFirst }: ExperienceEntryProps) {
           {experience.description}
         </p>
         
-        {/* Impact Highlights - per spec: max 3 bullets */}
+        {/* Impact Highlights - per spec: max 3 bullets, spaced for skimming */}
         {experience.highlights.length > 0 && (
-          <div className="space-y-2">
+          <div className="space-y-3">
             {experience.highlights.slice(0, 3).map((highlight, i) => (
               <div key={i} className="flex items-start gap-3">
-                <div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#00D4FF] flex-shrink-0" />
+                <div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#00D4FF] shadow-[0_0_6px_rgba(0,212,255,0.9)] flex-shrink-0" />
                 <p className="text-sm text-[#8899aa] leading-relaxed">{highlight}</p>
               </div>
             ))}
@@ -100,11 +99,10 @@ export default function MissionTimeline() {
           <div className="absolute left-1.5 top-0 bottom-0 w-px bg-gradient-to-b from-[rgba(0,212,255,0.3)] via-[rgba(0,212,255,0.1)] to-transparent" />
           
           <div className="space-y-12 sm:space-y-16">
-            {experience.items.map((exp, index) => (
+            {experience.items.map((exp) => (
               <ExperienceEntry 
                 key={exp.id} 
                 experience={exp} 
-                isFirst={index === 0}
               />
             ))}
           </div>

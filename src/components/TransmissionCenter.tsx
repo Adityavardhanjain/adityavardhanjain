@@ -34,6 +34,15 @@ export default function TransmissionCenter() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-w-0">
           {/* Left - Header & Contact Links */}
           <div className="min-w-0">
+            {/* Availability badge - pulsing green dot per spec */}
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-[rgba(52,211,153,0.25)] bg-[rgba(52,211,153,0.06)] px-3.5 py-1.5 mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#34d399] opacity-60"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#34d399]"></span>
+              </span>
+              <span className="text-xs font-medium text-[#34d399] tracking-wide">Available for collaborations</span>
+            </div>
+
             <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">
               {contact.title}
             </h2>
