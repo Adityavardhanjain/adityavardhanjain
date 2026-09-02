@@ -7,7 +7,7 @@ export default function CommandCenter() {
   const { hero } = content;
   
   return (
-    <section id="home" className="min-h-[100svh] flex items-center relative overflow-hidden">
+    <section id="home" className="command-center min-h-[100svh] flex items-center relative overflow-hidden">
       {/* Subtle atmospheric glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
@@ -84,12 +84,24 @@ export default function CommandCenter() {
                 )
               ))}
             </div>
+
+            {/* Keeping this in normal document flow prevents it from colliding with
+                longer hero copy on short mobile screens. */}
+            <div className="command-center__mobile-orbit lg:hidden" aria-hidden="true">
+              <div className="command-center__orbit-shell">
+                <div className="absolute inset-0 rounded-full border border-[rgba(59,130,246,0.10)] animate-orbital" style={{ animationDuration: '120s' }} />
+                <div className="absolute inset-[20%] rounded-full border border-[rgba(99,102,241,0.08)] animate-orbital-reverse" style={{ animationDuration: '80s' }} />
+                <div className="absolute inset-[40%] rounded-full bg-gradient-to-br from-[#0a1120] via-[#0d1828] to-[#060c18] border border-[rgba(255,255,255,0.06)] flex items-center justify-center">
+                  <span className="text-2xl font-bold text-[#f0f4f8] tracking-tight">AJ</span>
+                </div>
+              </div>
+            </div>
           </div>
           
           {/* Right Column - 40% width - Orbital Visual */}
           <div className="hidden lg:flex lg:col-span-2 items-center justify-center relative">
             <div 
-              className="relative w-full"
+              className="relative w-full aspect-square"
               style={{ maxWidth: 'min(100%, 360px)' }}
             >
               {/* Outermost atmospheric glow - lower contrast per spec */}
@@ -135,29 +147,6 @@ export default function CommandCenter() {
         </div>
       </div>
       
-      {/* Mobile Orbital - smaller, below content */}
-      <div className="lg:hidden absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center">
-        <div 
-          className="relative"
-          style={{ width: 'min(60vw, 200px)' }}
-        >
-          <div className="absolute inset-0 rounded-full border border-[rgba(59,130,246,0.06)] animate-orbital" style={{ animationDuration: '120s' }}>
-            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-2 h-2">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[#3b82f6] to-[#6366f1]" />
-            </div>
-          </div>
-          <div className="absolute inset-[20%] rounded-full border border-[rgba(99,102,241,0.05)] animate-orbital-reverse" style={{ animationDuration: '80s' }}>
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
-            </div>
-          </div>
-          <div className="absolute inset-[40%] rounded-full bg-gradient-to-br from-[#0a1120] via-[#0d1828] to-[#060c18] border border-[rgba(255,255,255,0.05)]">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-2xl font-bold text-[#f0f4f8] tracking-tight">AJ</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

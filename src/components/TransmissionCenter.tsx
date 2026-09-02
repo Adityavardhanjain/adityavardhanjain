@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, MailIcon } from '@/components/ui/SocialIcons';
-import { siteConfig } from '@/lib/data';
 import content from '@/lib/content';
 
 export default function TransmissionCenter() {

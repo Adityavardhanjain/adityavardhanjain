@@ -126,32 +126,6 @@ body {
 }
 
 /* ========================================
-   BASE RESET
-   ======================================== */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  font-size: var(--text-body);
-  line-height: var(--leading-body);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 100dvh;
-  overflow-x: hidden;
-}
-
-/* ========================================
    PAGE CONTAINER SYSTEM
    Per specification: width: min(1180px, calc(100% - 48px))
    ======================================== */
@@ -190,6 +164,18 @@ body {
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--container-padding);
+}
+
+.command-center__mobile-orbit {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.75rem;
+}
+
+.command-center__orbit-shell {
+  position: relative;
+  width: min(52vw, 11rem);
+  aspect-ratio: 1;
 }
 
 /* ========================================
@@ -730,7 +716,7 @@ body {
 
 /* Mobile research interest grid */
 .research-interest-grid {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 24px;
@@ -767,7 +753,7 @@ body {
 }
 
 /* Responsive Research Layout */
-@media (max-width: 850px) {
+@media (max-width: 1023px) {
   .research-layout {
     grid-template-columns: 1fr;
   }
@@ -780,12 +766,34 @@ body {
     display: none;
   }
 
-  .research-interest-grid {
+  .research-mobile-fallback {
     display: grid;
   }
 }
 
 @media (max-width: 600px) {
+  :root {
+    --container-padding: 1.25rem;
+    --section-padding: clamp(3.75rem, 14vw, 5rem);
+  }
+
+  .page-container {
+    width: min(var(--container-max), calc(100% - 2.5rem));
+  }
+
+  .command-center {
+    align-items: flex-start;
+  }
+
+  .command-center .container-content {
+    padding-top: 6.75rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .command-center__mobile-orbit {
+    padding-top: 0.25rem;
+  }
+
   .research-interest-grid {
     grid-template-columns: 1fr;
   }

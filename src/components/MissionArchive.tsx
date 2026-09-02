@@ -399,7 +399,7 @@ export default function MissionArchive() {
   const additional = featured.slice(3);
   
   return (
-    <section id="projects" className="py-[var(--section-spacing)] relative">
+    <section id="projects" className="section relative">
       {/* Readability mask behind content */}
       <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.3)] to-transparent" />
       
@@ -416,7 +416,7 @@ export default function MissionArchive() {
         </div>
         
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-section-heading font-bold text-[#f0f4f8] mb-4">{projectsContent.title}</h2>
+          <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">{projectsContent.title}</h2>
           <p className="text-[#8899aa] text-body max-w-2xl text-wrap">
             {projectsContent.subtitle}
           </p>
