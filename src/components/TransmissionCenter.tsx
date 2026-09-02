@@ -25,10 +25,8 @@ export default function TransmissionCenter() {
   
   return (
     <section id="contact" className="section relative">
-      {/* Subtle radial gradient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-[rgba(0,212,255,0.04)] via-transparent to-transparent" />
-      </div>
+      {/* Hairline accent rail - replaces gradient blobs */}
+      <div className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-[#00D4FF]/30 via-[#00D4FF]/10 to-transparent" aria-hidden="true" />
       
       <div className="container-content relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-w-0">
@@ -57,7 +55,7 @@ export default function TransmissionCenter() {
                 href={contact.social.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#00D4FF]/30 transition-all group min-w-0"
+                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] transition-colors group min-w-0 card"
               >
                 <GithubIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#00D4FF] transition-colors flex-shrink-0" />
                 <div className="min-w-0">
@@ -70,7 +68,7 @@ export default function TransmissionCenter() {
                 href={contact.social.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#00D4FF]/30 transition-all group min-w-0"
+                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] transition-colors group min-w-0 card"
               >
                 <LinkedinIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#00D4FF] transition-colors flex-shrink-0" />
                 <div className="min-w-0">
@@ -81,7 +79,7 @@ export default function TransmissionCenter() {
               
               <a 
                 href={`mailto:${contact.email}`}
-                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#00D4FF]/30 transition-all group min-w-0"
+                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] transition-colors group min-w-0 card"
               >
                 <MailIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#00D4FF] transition-colors flex-shrink-0" />
                 <div className="min-w-0">
@@ -96,7 +94,7 @@ export default function TransmissionCenter() {
           <div className="min-w-0">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-[#8899aa] mb-2">Name</label>
+                <label htmlFor="name" className="block font-mono text-[0.75rem] tracking-[0.1em] uppercase text-[#8899aa] mb-2">Name</label>
                 <input
                   id="name"
                   name="name"
@@ -110,7 +108,7 @@ export default function TransmissionCenter() {
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#8899aa] mb-2">Email</label>
+                <label htmlFor="email" className="block font-mono text-[0.75rem] tracking-[0.1em] uppercase text-[#8899aa] mb-2">Email</label>
                 <input
                   id="email"
                   name="email"
@@ -124,7 +122,7 @@ export default function TransmissionCenter() {
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-[#8899aa] mb-2">Message</label>
+                <label htmlFor="message" className="block font-mono text-[0.75rem] tracking-[0.1em] uppercase text-[#8899aa] mb-2">Message</label>
                 <textarea
                   id="message"
                   name="message"

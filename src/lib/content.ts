@@ -12,7 +12,7 @@ import contentData from '../../content.json';
 export interface HeroHighlight {
   id: string;
   text: string;
-  color: 'blue' | 'indigo' | 'purple';
+  color: 'cyan' | 'blue';
 }
 
 export interface HeroCTA {

@@ -73,10 +73,13 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
         transition={{ duration: 0.8, ease: 'easeInOut' }}
         className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0B0D17]"
       >
-        {/* Scan lines effect */}
-        <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent animate-pulse" />
-        </div>
+        {/* Scan lines effect - hairline raster, no gradients */}
+        <div
+          className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,212,255,0.06) 0px, rgba(0,212,255,0.06) 1px, transparent 1px, transparent 3px)',
+          }}
+        />
         
         {/* Boot text */}
         <div className="relative z-10 font-mono text-sm md:text-base">
@@ -130,7 +133,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-4xl md:text-6xl font-bold text-slate-100 tracking-wider"
+                className="font-serif text-4xl md:text-6xl font-bold text-slate-100 tracking-tight"
               >
                 ADITYAVARDHAN JAIN
               </motion.h1>
@@ -138,7 +141,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="mt-4 text-cyan-400/80 font-mono text-sm md:text-base"
+                className="mt-4 font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-[#00D4FF]/80"
               >
                 Data Analyst · AI/ML Engineer · Research Enthusiast
               </motion.p>
