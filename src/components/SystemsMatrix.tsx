@@ -15,18 +15,18 @@ export default function SystemsMatrix() {
       
       <div className="container-content relative z-10">
         <div className="section-heading">
-          <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">{skills.title}</h2>
           <p className="section-eyebrow">{skills.sectionLabel}</p>
+          <h2 className="text-section-title font-bold text-[#f0f4f8]">{skills.title}</h2>
           <p className="text-body text-[#8899aa] max-w-2xl">
             {skills.subtitle}
           </p>
         </div>
         
         {/* Five Capability Groups - per spec: responsive card grid, 3 cols desktop, 2 tablet, 1 mobile */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 min-w-0">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 min-w-0">
           {skills.categories.map((category) => (
             <div key={category.id} className="card">
-              <h3 className="text-card-title font-semibold text-[#f0f4f8] mb-4">{category.title}</h3>
+              <h3 className="font-serif text-card-title font-semibold text-[#f0f4f8] mb-4 leading-snug">{category.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((tech) => (
                   <span key={tech} className="tech-tag">

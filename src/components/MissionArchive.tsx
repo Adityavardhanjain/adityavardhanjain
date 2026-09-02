@@ -61,11 +61,11 @@ function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="project-card__content">
-        <h3 className="text-card-title text-[#f4f7fb]">
+        <h3 className="font-serif text-card-title font-semibold text-[#f4f7fb] leading-snug">
           {safeString(project.title, 'Untitled Project')}
         </h3>
         {objective && (
-          <p className="font-mono text-[0.8125rem] text-[#00D4FF]/80 leading-snug">
+          <p className="font-mono text-[0.8125rem] text-[#00D4FF]/75 leading-relaxed">
             {objective}
           </p>
         )}

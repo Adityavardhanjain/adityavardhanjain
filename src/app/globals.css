@@ -34,16 +34,16 @@
   --container-padding: clamp(1.25rem, 3vw,  2.5rem);
 
   /* ---- Type scale (clamp) ---- */
-  --text-hero-name: clamp(2.9rem,  6vw,  5.6rem);
+  --text-hero-name: clamp(3.5rem,  8vw,  7.5rem);
   --text-section-title: clamp(1.7rem,  2.8vw,  2.6rem);
   --text-card-title: clamp(1.25rem,  1.8vw, 1.55rem);
   --text-body: 1.0625rem;
   --text-hero-role: clamp(1rem,  1.3vw, 1.2rem);
-  --text-body-sm: 0.9375rem;
+  --text-body-sm: 1rem;
   --text-label: 0.75rem;
 
   /* ---- Line heights ---- */
-  --leading-hero: 1.0;
+  --leading-hero: 1.04;
   --leading-heading: 1.1;
   --leading-subheading: 1.2;
   --leading-body: 1.6;
@@ -51,7 +51,7 @@
   --leading-tight: 1.15;
 
   /* ---- Spacing ---- */
-  --section-padding: clamp(4rem, 7vw, 6rem);
+  --section-padding: clamp(3.5rem,  5.5vw,  5rem);
   --section-inner-spacing: clamp(1.5rem, 3vw, 3rem);
   --gap-section: 2rem;
   --gap-card: 1.5rem;
@@ -270,7 +270,18 @@ body {
   border-block: 1px solid rgba(255,255,255,0.04);
 }
 
-.section-heading { margin-bottom: 2.5rem; }
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: clamp(2rem,  4vw,  2.5rem);
+}
+
+.section-heading .section-eyebrow {
+  order: -1;
+  margin-bottom:  0.875rem;
+}
+
+.section-heading .text-section-title { margin-bottom:  1rem; }
 
 .section-eyebrow {
   font-family: var(--font-jetbrains), monospace;
@@ -348,7 +359,7 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 1.5rem;
+  padding: clamp(1.25rem,  2vw,  1.75rem);
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
@@ -700,7 +711,7 @@ body {
 .project-card__content {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
+  gap: 1.125rem;
   padding: clamp(1.25rem, 2.5vw, 1.75rem);
   flex: 1;
 }
@@ -832,7 +843,7 @@ body {
 @media (max-width: 600px) {
   :root {
     --container-padding: 1.25rem;
-    --section-padding: clamp(3.75rem, 14vw, 5rem);
+    --section-padding: clamp(3.5rem,  6vw,  4.5rem);
   }
   .page-container { width: min(var(--container-max), calc(100% - 2.5rem)); }
   .command-center { align-items: flex-start; }

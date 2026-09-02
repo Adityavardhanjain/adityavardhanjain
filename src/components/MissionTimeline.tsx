@@ -20,14 +20,14 @@ function ExperienceEntry({ experience }: ExperienceEntryProps) {
       <div className="pl-7">
         {/* Organization & Role */}
         <div className="mb-4">
-          <h3 className="text-xl sm:text-2xl font-bold text-[#f0f4f8] tracking-tight mb-1">{experience.organization}</h3>
-          <p className="text-base text-[#c8d4e3] mb-1">{experience.title}</p>
+          <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#f0f4f8] tracking-tight leading-snug mb-2">{experience.organization}</h3>
+          <p className="font-mono text-sm tracking-[0.08em] uppercase text-[#00D4FF]/90 mb-2">{experience.title}</p>
           <p className="text-sm text-[#5a6a7a]">{experience.location}</p>
         </div>
         
         {/* Impact Metrics - per spec: metrics only where credible */}
         {experience.impactMetrics && experience.impactMetrics.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 mb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-5 mb-3">
             {experience.impactMetrics.map((metric, i) => (
               <div key={i}>
                 <p className="metric-value">{metric.value}</p>
@@ -38,7 +38,7 @@ function ExperienceEntry({ experience }: ExperienceEntryProps) {
         )}
         
         {/* Description */}
-        <p className="text-body text-[#8899aa] leading-relaxed mb-4 max-w-[700px]">
+        <p className="text-body text-[#8899aa] leading-relaxed mb-3 max-w-[700px]">
           {experience.description}
         </p>
         
@@ -66,8 +66,8 @@ interface AchievementCardProps {
 function AchievementCard({ achievement }: AchievementCardProps) {
   return (
     <div className="card">
-      <p className="font-mono text-xs text-[#00D4FF] tracking-widest mb-2">{achievement.year}</p>
-      <h4 className="text-sm font-semibold text-[#f0f4f8] mb-1 leading-snug">
+      <p className="font-mono text-[0.6875rem] text-[#00D4FF] tracking-[0.15em] mb-3">{achievement.year}</p>
+      <h4 className="font-serif text-base font-semibold text-[#f0f4f8] mb-1 leading-snug">
         {achievement.title}
       </h4>
       <p className="text-xs text-[#5a6a7a]">
@@ -96,7 +96,7 @@ export default function MissionTimeline() {
           {/* Timeline track */}
           <div className="absolute left-1.5 top-0 bottom-0 w-px bg-gradient-to-b from-[rgba(0,212,255,0.3)] via-[rgba(0,212,255,0.1)] to-transparent" />
           
-          <div className="space-y-12 sm:space-y-16">
+          <div className="space-y-14 sm:space-y-20">
             {experience.items.map((exp) => (
               <ExperienceEntry 
                 key={exp.id} 
@@ -107,8 +107,8 @@ export default function MissionTimeline() {
         </div>
         
         {/* Achievements & Recognition */}
-        <div className="mt-20 pt-12 border-t border-[rgba(255,255,255,0.04)]">
-          <h3 className="text-card-title text-[#f0f4f8] mb-8">{experience.achievements.sectionLabel}</h3>
+        <div className="mt-16 pt-10 border-t border-[rgba(255,255,255,0.04)]">
+          <h3 className="text-card-title text-[#f0f4f8] mb-6">{experience.achievements.sectionLabel}</h3>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 min-w-0">
             {experience.achievements.items.slice(0, 6).map((achievement) => (

@@ -14,10 +14,12 @@ export default function ResearcherProfile() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-w-0">
           {/* Left - Large Statement */}
           <div className="min-w-0">
-            <h2 className="text-section-title font-bold text-[#f0f4f8] leading-tight text-wrap">
-              {about.headline}
-            </h2>
-            <p className="section-eyebrow mt-4">{about.sectionLabel}</p>
+            <div className="section-heading">
+              <p className="section-eyebrow">{about.sectionLabel}</p>
+              <h2 className="text-section-title font-bold text-[#f0f4f8] leading-tight text-wrap mt-1">
+                {about.headline}
+              </h2>
+            </div>
           </div>
           
           {/* Right - Two concise paragraphs + right-aligned metrics column aligned to bottom */}
