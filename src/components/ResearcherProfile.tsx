@@ -9,7 +9,7 @@ export default function ResearcherProfile() {
     <section id="about" className="section relative">
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[150vw] h-[400px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
+        <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[150vw] h-[400px] bg-gradient-radial from-[rgba(0,212,255,0.03)] via-transparent to-transparent" />
       </div>
       
       <div className="container-content relative z-10">

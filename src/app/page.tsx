@@ -6,7 +6,7 @@ import { Navigation, CommandCenter, ResearcherProfile, MissionArchive, ResearchL
 // Dynamic import for StarField to avoid SSR issues
 const StarField = dynamic(() => import('@/components/StarField'), {
   ssr: false,
-  loading: () => <div className="fixed inset-0 bg-[#07090f]" />,
+  loading: () => <div className="fixed inset-0 bg-[#0B0D17]" />,
 });
 
 export default function Home() {

@@ -55,7 +55,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
               y1={centerNode.y}
               x2={topic.x}
               y2={topic.y}
-              stroke={isActive ? 'rgba(59, 130, 246, 0.6)' : 'rgba(255, 255, 255, 0.15)'}
+              stroke={isActive ? 'rgba(0, 212, 255, 0.6)' : 'rgba(255, 255, 255, 0.15)'}
               strokeWidth={isActive ? 1.5 : 1}
               className="transition-all duration-300"
             />
@@ -75,7 +75,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
                 y1={topic.y}
                 x2={target.x}
                 y2={target.y}
-                stroke={isActive ? 'rgba(59, 130, 246, 0.5)' : 'rgba(255, 255, 255, 0.08)'}
+                stroke={isActive ? 'rgba(0, 212, 255, 0.5)' : 'rgba(255, 255, 255, 0.08)'}
                 strokeWidth={isActive ? 1.2 : 0.8}
                 className="transition-all duration-300"
               />
@@ -88,8 +88,8 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
           cx={centerNode.x}
           cy={centerNode.y}
           r={45}
-          fill="#0a1120"
-          stroke="rgba(59, 130, 246, 0.4)"
+          fill="#10121f"
+          stroke="rgba(0, 212, 255, 0.4)"
           strokeWidth={2}
         />
         <circle
@@ -97,7 +97,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
           cy={centerNode.y}
           r={40}
           fill="none"
-          stroke="rgba(59, 130, 246, 0.2)"
+          stroke="rgba(0, 212, 255, 0.2)"
           strokeWidth={1}
         />
         <text
@@ -135,8 +135,8 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
                 cx={topic.x}
                 cy={topic.y}
                 r={nodeRadius}
-                fill={isActive ? 'rgba(59, 130, 246, 0.2)' : '#0a1120'}
-                stroke={isActive ? 'rgba(59, 130, 246, 0.8)' : isConnected ? 'rgba(59, 130, 246, 0.4)' : 'rgba(255, 255, 255, 0.2)'}
+                fill={isActive ? 'rgba(0, 212, 255, 0.2)' : '#10121f'}
+                stroke={isActive ? 'rgba(0, 212, 255, 0.8)' : isConnected ? 'rgba(0, 212, 255, 0.4)' : 'rgba(255, 255, 255, 0.2)'}
                 strokeWidth={isActive ? 2 : 1.5}
                 className="cursor-pointer transition-all duration-300"
                 onMouseEnter={() => setHoveredTopic(topic.id)}
@@ -151,7 +151,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
                   cy={topic.y}
                   r={nodeRadius + 6}
                   fill="none"
-                  stroke="rgba(59, 130, 246, 0.4)"
+                  stroke="rgba(0, 212, 255, 0.4)"
                   strokeWidth={1.5}
                   className="animate-pulse-slow"
                 />
@@ -169,7 +169,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
                     fontFamily: 'var(--font-jetbrains), monospace', 
                     fontSize: '9px', 
                     fontWeight: 500, 
-                    fill: isActive ? '#3b82f6' : 'rgba(255, 255, 255, 0.7)'
+                    fill: isActive ? '#00D4FF' : 'rgba(255, 255, 255, 0.7)'
                   }}
                 >
                   {line}
@@ -186,7 +186,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
                   fontFamily: 'var(--font-jetbrains), monospace', 
                   fontSize: '10px', 
                   fontWeight: 600, 
-                  fill: isActive ? '#3b82f6' : 'rgba(255, 255, 255, 0.5)'
+                  fill: isActive ? '#00D4FF' : 'rgba(255, 255, 255, 0.5)'
                 }}
               >
                 {topic.label.join(' ')}
@@ -199,7 +199,7 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
       {/* Active topic info panel */}
       {activeDirection && (
         <div className="research-info-panel">
-          <p className="text-xs text-[#5ea0ff] mb-2">
+          <p className="text-xs text-[#00D4FF] mb-2">
             {activeDirection.status}
           </p>
           <h4 className="text-base font-semibold text-[#f0f4f8] mb-2">{activeDirection.title}</h4>
@@ -241,7 +241,7 @@ function PublicationCard({ publication }: PublicationCardProps) {
             href={publication.link} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-[#3b82f6] hover:text-[#60a5fd] transition-colors flex-shrink-0"
+            className="text-[#00D4FF] hover:text-[#00D4FF] transition-colors flex-shrink-0"
             aria-label="View publication"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -251,7 +251,7 @@ function PublicationCard({ publication }: PublicationCardProps) {
         )}
       </div>
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-sm font-mono text-[#3b82f6]">{publication.venue}</span>
+        <span className="text-sm font-mono text-[#00D4FF]">{publication.venue}</span>
         {publication.venue && publication.year && <span className="text-xs text-[#5a6a7a]">·</span>}
         {publication.year && <span className="text-sm font-mono text-[#5a6a7a]">{publication.year}</span>}
       </div>

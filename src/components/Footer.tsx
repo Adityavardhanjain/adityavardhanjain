@@ -30,7 +30,7 @@ export default function Footer() {
               href={contact.social.github} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2.5 text-[#5a6a7a] hover:text-[#3b82f6] bg-[#0a1120] border border-[rgba(255,255,255,0.04)] rounded-lg hover:border-[#3b82f6]/30 transition-all touch-target"
+              className="p-2.5 text-[#5a6a7a] hover:text-[#00D4FF] bg-[#10121f] border border-[rgba(255,255,255,0.04)] rounded-lg hover:border-[#00D4FF]/30 transition-all touch-target"
               aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4" />
@@ -39,7 +39,7 @@ export default function Footer() {
               href={contact.social.linkedin} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2.5 text-[#5a6a7a] hover:text-[#3b82f6] bg-[#0a1120] border border-[rgba(255,255,255,0.04)] rounded-lg hover:border-[#3b82f6]/30 transition-all touch-target"
+              className="p-2.5 text-[#5a6a7a] hover:text-[#00D4FF] bg-[#10121f] border border-[rgba(255,255,255,0.04)] rounded-lg hover:border-[#00D4FF]/30 transition-all touch-target"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />

@@ -27,7 +27,7 @@ export default function TransmissionCenter() {
     <section id="contact" className="section relative">
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.04)] via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-[rgba(0,212,255,0.04)] via-transparent to-transparent" />
       </div>
       
       <div className="container-content relative z-10">
@@ -48,9 +48,9 @@ export default function TransmissionCenter() {
                 href={contact.social.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group min-w-0"
+                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#00D4FF]/30 transition-all group min-w-0"
               >
-                <GithubIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#3b82f6] transition-colors flex-shrink-0" />
+                <GithubIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#00D4FF] transition-colors flex-shrink-0" />
                 <div className="min-w-0">
                   <p className="text-[#f0f4f8] font-medium">GitHub</p>
                   <p className="text-sm text-[#5a6a7a]">View my repositories</p>
@@ -61,9 +61,9 @@ export default function TransmissionCenter() {
                 href={contact.social.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group min-w-0"
+                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#00D4FF]/30 transition-all group min-w-0"
               >
-                <LinkedinIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#3b82f6] transition-colors flex-shrink-0" />
+                <LinkedinIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#00D4FF] transition-colors flex-shrink-0" />
                 <div className="min-w-0">
                   <p className="text-[#f0f4f8] font-medium">LinkedIn</p>
                   <p className="text-sm text-[#5a6a7a]">Connect with me</p>
@@ -72,9 +72,9 @@ export default function TransmissionCenter() {
               
               <a 
                 href={`mailto:${contact.email}`}
-                className="flex items-center gap-4 p-4 bg-[#0a1120] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#3b82f6]/30 transition-all group min-w-0"
+                className="flex items-center gap-4 p-4 bg-[#10121f] border border-[rgba(255,255,255,0.05)] rounded-xl hover:border-[#00D4FF]/30 transition-all group min-w-0"
               >
-                <MailIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#3b82f6] transition-colors flex-shrink-0" />
+                <MailIcon className="w-5 h-5 text-[#8899aa] group-hover:text-[#00D4FF] transition-colors flex-shrink-0" />
                 <div className="min-w-0">
                   <p className="text-[#f0f4f8] font-medium">Email</p>
                   <p className="text-sm text-[#5a6a7a]">{contact.email}</p>

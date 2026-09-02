@@ -66,7 +66,7 @@ function Nebula() {
     <mesh ref={mesh} position={[30, -20, -40]}>
       <sphereGeometry args={[20, 32, 32]} />
       <meshBasicMaterial
-        color="#1a2744"
+        color="#16272e"
         transparent
         opacity={0.1}
         side={THREE.BackSide}
@@ -88,7 +88,7 @@ function DistantNebula() {
     <mesh ref={mesh} position={[-40, 30, -60]}>
       <sphereGeometry args={[30, 32, 32]} />
       <meshBasicMaterial
-        color="#0a1628"
+        color="#12141f"
         transparent
         opacity={0.06}
         side={THREE.BackSide}
