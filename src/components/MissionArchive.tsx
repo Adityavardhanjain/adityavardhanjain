@@ -18,19 +18,6 @@ type ProjectCardProps = {
   featured?: boolean;
 };
 
-function ProjectVisual({ type, title }: { type: string; title: string }) {
-  return (
-    <div className={`project-visual project-visual--${type}`} aria-hidden="true">
-      <div className="project-visual__grid" />
-      <div className="project-visual__glow" />
-      {type === 'eeg' && <><span className="project-visual__wave project-visual__wave--one" /><span className="project-visual__wave project-visual__wave--two" /><span className="project-visual__node" /></>}
-      {type === 'document' && <><span className="project-visual__document project-visual__document--back" /><span className="project-visual__document project-visual__document--front" /><span className="project-visual__cursor" /></>}
-      {type === 'road' && <><span className="project-visual__road" /><span className="project-visual__marker project-visual__marker--one" /><span className="project-visual__marker project-visual__marker--two" /></>}
-      <span className="project-visual__caption">{title}</span>
-    </div>
-  );
-}
-
 function ProjectCard({ project, featured = false }: ProjectCardProps) {
   const technologies = safeArray(project.technologies).filter((technology): technology is string => typeof technology === 'string');
   const github = safeUrl(project.github);
@@ -38,7 +25,6 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
 
   return (
     <article className={featured ? 'project-card project-card--featured' : 'project-card'}>
-      <ProjectVisual type={project.visualType} title={safeString(project.title, 'Project')} />
       <div className="project-card__content">
         <h3 className="text-card-title text-[#f4f7fb]">{safeString(project.title, 'Untitled Project')}</h3>
         <p className="text-body-sm text-[#b9c7d8] leading-relaxed">{safeString(project.description)}</p>
@@ -49,8 +35,8 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
         </div>
         {(github || demo) && (
           <div className="flex items-center gap-4 pt-1">
-            {github && <a href={github} target="_blank" rel="noopener noreferrer" className="project-link"><GithubIcon className="w-4 h-4" />GitHub</a>}
-            {demo && <a href={demo} target="_blank" rel="noopener noreferrer" className="project-link"><ExternalLink className="w-4 h-4" />Live demo</a>}
+            {github && <a href={github} target="_blank" rel="noopener noreferrer" className="project-link" aria-label={`View ${project.title} on GitHub`}><GithubIcon className="w-5 h-5" /></a>}
+            {demo && <a href={demo} target="_blank" rel="noopener noreferrer" className="project-link" aria-label={`View ${project.title} demo`}><ExternalLink className="w-5 h-5" /></a>}
           </div>
         )}
       </div>
@@ -70,6 +56,27 @@ export default function MissionArchive() {
           <h2 className="text-section-title">{projects.title}</h2>
           <p className="section-eyebrow">{projects.sectionLabel}</p>
           <p className="text-body text-[#b9c7d8] max-w-2xl">{projects.subtitle}</p>
+    <section id="projects" className="section relative">
+      {/* Readability mask behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-[rgba(3,8,16,0.3)] to-transparent" />
+      
+      {/* Subtle radial gradient */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
+      </div>
+      
+      <div className="container-content relative z-10">
+        {/* Section Label */}
+        <div className="section-label">
+          <span className="section-label-number">{projectsContent.sectionLabel}</span>
+          <div className="section-label-line" />
+        </div>
+        
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">{projectsContent.title}</h2>
+          <p className="text-[#8899aa] text-body max-w-2xl text-wrap">
+            {projectsContent.subtitle}
+          </p>
         </div>
         {leadProject && <ProjectCard project={leadProject} featured />}
         <div className="project-grid mt-6 sm:mt-8">

@@ -64,7 +64,7 @@
      SPACING SYSTEM
      Per specification: section padding-block: clamp(72px, 9vw, 128px)
      ======================================== */
-  --section-padding: clamp(4rem, 7vw, 6rem);
+  --section-padding: clamp(4rem, 8vw, 7rem);
   --section-inner-spacing: clamp(1.5rem, 3vw, 3rem);
   --gap-section: 2rem;
   --gap-card: 1.5rem;
@@ -855,8 +855,6 @@ body {
 .project-card--featured {
   border-top-color: var(--accent);
   background: var(--bg-card);
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
 }
 
 .project-card__content {
@@ -872,73 +870,6 @@ body {
   padding: clamp(1.5rem, 4vw, 3rem);
 }
 
-.project-visual {
-  position: relative;
-  min-height: 13rem;
-  overflow: hidden;
-  background: #091727;
-  border-bottom: 1px solid var(--border);
-}
-
-.project-card--featured .project-visual {
-  min-height: 100%;
-  border-right: 1px solid var(--border);
-  border-bottom: 0;
-}
-
-.project-visual__grid {
-  position: absolute;
-  inset: 0;
-  opacity: 0.32;
-  background-image: linear-gradient(rgba(94, 160, 255, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(94, 160, 255, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-.project-visual__glow {
-  position: absolute;
-  width: 13rem;
-  height: 13rem;
-  right: -3rem;
-  top: -4rem;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(94, 160, 255, 0.35), transparent 68%);
-}
-
-.project-visual__caption {
-  position: absolute;
-  left: 1.25rem;
-  bottom: 1rem;
-  max-width: calc(100% - 2.5rem);
-  color: rgba(244, 247, 251, 0.74);
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.35;
-}
-
-.project-visual__wave {
-  position: absolute;
-  left: 10%;
-  width: 78%;
-  height: 2.5rem;
-  border-top: 2px solid var(--accent);
-  border-radius: 50%;
-  transform: skewX(-20deg);
-}
-
-.project-visual__wave--one { top: 34%; }
-.project-visual__wave--two { top: 50%; border-color: rgba(185, 199, 216, 0.65); transform: skewX(22deg); }
-.project-visual__node { position: absolute; top: 42%; left: 50%; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0.45rem rgba(94, 160, 255, 0.15); }
-
-.project-visual__document { position: absolute; width: 36%; height: 56%; top: 18%; border: 1px solid rgba(185, 199, 216, 0.48); background: linear-gradient(145deg, rgba(18, 36, 58, 0.95), rgba(7, 17, 31, 0.95)); }
-.project-visual__document::after { content: ''; position: absolute; inset: 22% 16%; background: repeating-linear-gradient(to bottom, rgba(185, 199, 216, 0.58) 0 2px, transparent 2px 12px); }
-.project-visual__document--back { left: 25%; transform: rotate(-8deg); }
-.project-visual__document--front { right: 24%; transform: rotate(7deg); border-color: var(--accent); }
-.project-visual__cursor { position: absolute; right: 21%; bottom: 22%; width: 0.85rem; height: 0.85rem; border: 2px solid var(--accent); border-radius: 50%; }
-
-.project-visual__road { position: absolute; inset: 16% 18% 18%; border: 1px solid rgba(185, 199, 216, 0.32); background: linear-gradient(130deg, transparent 47%, rgba(94, 160, 255, 0.5) 48% 52%, transparent 53%); transform: perspective(10rem) rotateX(20deg); }
-.project-visual__marker { position: absolute; width: 0.65rem; height: 0.65rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0.35rem rgba(94, 160, 255, 0.15); }
-.project-visual__marker--one { top: 36%; left: 39%; }.project-visual__marker--two { top: 53%; right: 31%; }
-
 .project-card__content .text-card-title {
   max-width: 30ch;
 }
@@ -951,11 +882,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  min-width: 2.75rem;
   min-height: 2.75rem;
-  padding-inline: 0.875rem;
-  font-size: 0.875rem;
-  font-weight: 500;
   color: var(--text-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -992,19 +920,4 @@ body {
   .project-card--featured .project-card__content {
     padding-inline: 1.25rem;
   }
-
-  .project-card--featured {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card--featured .project-visual {
-    min-height: 13rem;
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .project-card--featured { grid-template-columns: 1fr; }
-  .project-card--featured .project-visual { min-height: 16rem; border-right: 0; border-bottom: 1px solid var(--border); }
 }
