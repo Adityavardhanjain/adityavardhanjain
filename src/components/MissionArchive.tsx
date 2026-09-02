@@ -11,6 +11,7 @@ type ProjectCardProps = {
     title: string;
     description: string;
     technologies: string[];
+    visualType: string;
     github?: string;
     demo?: string;
   };

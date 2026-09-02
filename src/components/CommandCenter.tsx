@@ -13,10 +13,10 @@ export default function CommandCenter() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
       </div>
       
-      <div className="container-content w-full relative z-10 py-20">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center">
+      <div className="container-content w-full relative z-10 py-16 sm:py-20">
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-8 items-center">
           {/* Left Column - 60% width */}
-          <div className="lg:col-span-3 space-y-8">
+          <div className="lg:col-span-3 space-y-6">
             {/* Status indicator */}
             <div className="flex items-center gap-3">
               <span className="relative flex h-2.5 w-2.5">
@@ -43,7 +43,7 @@ export default function CommandCenter() {
             </p>
             
             {/* Three compact highlights per spec */}
-            <div className="flex flex-wrap gap-6 py-4">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 py-2">
               {hero.highlights.map((highlight) => (
                 <div key={highlight.id} className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#5ea0ff]" />
