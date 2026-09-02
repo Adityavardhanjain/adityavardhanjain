@@ -12,7 +12,7 @@ export default function SystemsMatrix() {
     <section id="skills" className="section relative">
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-[rgba(0,212,255,0.03)] via-transparent to-transparent" />
       </div>
       
       <div className="container-content relative z-10">
@@ -31,7 +31,7 @@ export default function SystemsMatrix() {
               <h3 className="text-card-title font-semibold text-[#f0f4f8] mb-4">{category.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((tech) => (
-                  <span key={tech} className="px-2.5 py-1 text-xs text-[#8899aa] bg-[#060c18] rounded">
+                  <span key={tech} className="px-2.5 py-1 text-xs text-[#8899aa] bg-[#0d0e1a] rounded">
                     {tech}
                   </span>
                 ))}
@@ -56,7 +56,7 @@ export default function SystemsMatrix() {
           </summary>
           <div className="flex flex-wrap gap-2 pt-6">
             {allSkills.map((tech) => (
-              <span key={tech} className="px-2.5 py-1 text-xs text-[#5a6a7a] bg-[#0a1120] rounded">
+              <span key={tech} className="px-2.5 py-1 text-xs text-[#5a6a7a] bg-[#10121f] rounded">
                 {tech}
               </span>
             ))}

@@ -11,14 +11,12 @@ type ProjectCardProps = {
     title: string;
     description: string;
     technologies: string[];
-    visualType: string;
     github?: string;
     demo?: string;
   };
-  featured?: boolean;
 };
 
-function ProjectCard({ project, featured = false }: ProjectCardProps) {
+function ProjectCard({ project }: ProjectCardProps) {
   const technologies = safeArray(project.technologies).filter(
     (technology): technology is string => typeof technology === 'string'
   );
@@ -26,7 +24,7 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
   const demo = safeUrl(project.demo);
 
   return (
-    <article className={featured ? 'project-card project-card--featured' : 'project-card'}>
+    <article className="project-card">
       <div className="project-card__content">
         <h3 className="text-card-title text-[#f4f7fb]">
           {safeString(project.title, 'Untitled Project')}
@@ -75,7 +73,6 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
 export default function MissionArchive() {
   const { projects } = content;
   const projectsList = getFeaturedProjects();
-  const [leadProject, ...supportingProjects] = projectsList;
 
   return (
     <section id="projects" className="section section--calm relative">
@@ -84,7 +81,7 @@ export default function MissionArchive() {
       
       {/* Subtle radial gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-radial from-[rgba(59,130,246,0.03)] via-transparent to-transparent" />
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-radial from-[rgba(0,212,255,0.03)] via-transparent to-transparent" />
       </div>
       
       <div className="container-content relative z-10">
@@ -93,11 +90,10 @@ export default function MissionArchive() {
           <p className="section-eyebrow">{projects.sectionLabel}</p>
           <p className="text-body text-[#b9c7d8] max-w-2xl">{projects.subtitle}</p>
         </div>
-        
-        {leadProject && <ProjectCard project={leadProject} featured />}
-        
-        <div className="project-grid mt-6 sm:mt-8">
-          {supportingProjects.map((project) => (
+
+        {/* Unified equal-height card grid */}
+        <div className="project-grid">
+          {projectsList.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>

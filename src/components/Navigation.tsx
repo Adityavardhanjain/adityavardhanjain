@@ -78,7 +78,7 @@ export default function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-[#030810]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.04)]' 
+            ? 'bg-[#0B0D17]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.04)]' 
             : ''
         }`}
         role="navigation"
@@ -90,11 +90,11 @@ export default function Navigation() {
             <button
               ref={menuButtonRef}
               onClick={() => handleNavClick('home')}
-              className="group relative text-xl sm:text-2xl font-bold tracking-tight text-[#f0f4f8] hover:text-[#3b82f6] transition-colors duration-300 no-select"
+              className="group relative text-xl sm:text-2xl font-bold tracking-tight text-[#f0f4f8] hover:text-[#00D4FF] transition-colors duration-300 no-select"
               aria-label="Go to home"
             >
               AJ
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#3b82f6] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#00D4FF] transition-all duration-300 group-hover:w-full" />
             </button>
             
             {/* Desktop Menu */}
@@ -112,7 +112,7 @@ export default function Navigation() {
                 >
                   {item.shortLabel}
                   {activeSection === item.id && (
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#3b82f6] rounded-full" />
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#00D4FF] rounded-full" />
                   )}
                 </button>
               ))}
@@ -121,7 +121,7 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2.5 text-[#8899aa] hover:text-[#f0f4f8] transition-colors rounded-lg hover:bg-[#0a1120] touch-target"
+              className="lg:hidden p-2.5 text-[#8899aa] hover:text-[#f0f4f8] transition-colors rounded-lg hover:bg-[#10121f] touch-target"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
@@ -140,7 +140,7 @@ export default function Navigation() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed inset-0 z-40 lg:hidden bg-[#030810] transition-all duration-300 ${
+        className={`fixed inset-0 z-40 lg:hidden bg-[#0B0D17] transition-all duration-300 ${
           isMobileMenuOpen 
             ? 'opacity-100 visible' 
             : 'opacity-0 invisible pointer-events-none'
@@ -158,15 +158,15 @@ export default function Navigation() {
                   onClick={() => handleNavClick(item.id)}
                   className={`flex items-center w-full text-left px-4 py-4 min-h-[56px] text-base font-medium transition-all duration-200 rounded-xl border ${
                     activeSection === item.id
-                      ? 'text-[#f0f4f8] bg-[#0a1120] border-[rgba(59,130,246,0.3)]'
-                      : 'text-[#8899aa] bg-[#060c18] border-[rgba(255,255,255,0.04)] hover:text-[#f0f4f8] hover:bg-[#0a1120] hover:border-[rgba(255,255,255,0.08)]'
+                      ? 'text-[#f0f4f8] bg-[#10121f] border-[rgba(0,212,255,0.3)]'
+                      : 'text-[#8899aa] bg-[#0d0e1a] border-[rgba(255,255,255,0.04)] hover:text-[#f0f4f8] hover:bg-[#10121f] hover:border-[rgba(255,255,255,0.08)]'
                   }`}
                   tabIndex={isMobileMenuOpen ? 0 : -1}
                 >
                   <span 
                     className={`w-6 h-6 flex items-center justify-center rounded text-xs font-mono mr-3 flex-shrink-0 ${
                       activeSection === item.id 
-                        ? 'text-[#3b82f6] bg-[#3b82f6]/10' 
+                        ? 'text-[#00D4FF] bg-[#00D4FF]/10' 
                         : 'text-[#5a6a7a]'
                     }`}
                   >
@@ -180,7 +180,7 @@ export default function Navigation() {
           
           {/* Close hint */}
           <p className="mt-6 text-center text-xs text-[#5a6a7a]">
-            Press <kbd className="px-1.5 py-0.5 bg-[#0a1120] rounded text-[#8899aa]">ESC</kbd> or tap the logo to close
+            Press <kbd className="px-1.5 py-0.5 bg-[#10121f] rounded text-[#8899aa]">ESC</kbd> or tap the logo to close
           </p>
         </nav>
       </div>
