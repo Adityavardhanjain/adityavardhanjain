@@ -85,4 +85,3 @@ export default function MissionArchive() {
       </div>
     </section>
   );
-}
