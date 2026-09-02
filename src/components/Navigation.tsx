@@ -85,7 +85,7 @@ export default function Navigation() {
         aria-label="Main navigation"
       >
         <div className="container-content">
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center justify-between py-3">
             {/* Logo */}
             <button
               ref={menuButtonRef}
@@ -98,12 +98,12 @@ export default function Navigation() {
             </button>
             
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative text-xs xl:text-sm font-medium tracking-wide transition-colors duration-300 py-2 min-h-[44px] ${
+                  className={`relative px-3 text-sm font-medium transition-colors duration-300 py-2 min-h-[44px] ${
                     activeSection === item.id 
                       ? 'text-[#f0f4f8]' 
                       : 'text-[#8899aa] hover:text-[#f0f4f8]'

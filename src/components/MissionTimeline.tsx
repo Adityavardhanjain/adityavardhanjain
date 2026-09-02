@@ -89,14 +89,9 @@ export default function MissionTimeline() {
       </div>
       
       <div className="container-content relative z-10">
-        {/* Section Label */}
-        <div className="section-label">
-          <span className="section-label-number">{experience.sectionLabel}</span>
-          <div className="section-label-line" />
-        </div>
-        
-        <div className="mb-12">
+        <div className="section-heading">
           <h2 className="text-section-title font-bold text-[#f0f4f8]">{experience.title}</h2>
+          <p className="section-eyebrow">{experience.sectionLabel}</p>
         </div>
         
         {/* Timeline */}
@@ -117,10 +112,7 @@ export default function MissionTimeline() {
         
         {/* Achievements & Recognition */}
         <div className="mt-20 pt-12 border-t border-[rgba(255,255,255,0.04)]">
-          <div className="section-label mb-8">
-            <span className="section-label-number">{experience.achievements.sectionLabel}</span>
-            <div className="section-label-line" />
-          </div>
+          <h3 className="text-card-title text-[#f0f4f8] mb-8">{experience.achievements.sectionLabel}</h3>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 min-w-0">
             {experience.achievements.items.slice(0, 6).map((achievement) => (

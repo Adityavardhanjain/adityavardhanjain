@@ -25,13 +25,13 @@ export const siteConfig = {
 };
 
 export const navigationItems = [
-  { id: "home", label: "Command Center", shortLabel: "HOME" },
-  { id: "about", label: "Researcher Profile", shortLabel: "PROFILE" },
-  { id: "projects", label: "Mission Archive", shortLabel: "MISSIONS" },
-  { id: "research", label: "Research Lab", shortLabel: "RESEARCH" },
-  { id: "skills", label: "Systems Matrix", shortLabel: "SYSTEMS" },
-  { id: "experience", label: "Mission Timeline", shortLabel: "TIMELINE" },
-  { id: "contact", label: "Transmission Center", shortLabel: "CONTACT" },
+  { id: "home", label: "Home", shortLabel: "Home" },
+  { id: "about", label: "About", shortLabel: "About" },
+  { id: "projects", label: "Projects", shortLabel: "Projects" },
+  { id: "research", label: "Research", shortLabel: "Research" },
+  { id: "skills", label: "Skills", shortLabel: "Skills" },
+  { id: "experience", label: "Timeline", shortLabel: "Timeline" },
+  { id: "contact", label: "Contact", shortLabel: "Contact" },
 ];
 
 export const bootSequence = [

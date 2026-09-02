@@ -46,11 +46,7 @@ export default function CommandCenter() {
             <div className="flex flex-wrap gap-6 py-4">
               {hero.highlights.map((highlight) => (
                 <div key={highlight.id} className="flex items-center gap-2">
-                  <div className={`w-1.5 h-1.5 rounded-full ${
-                    highlight.color === 'blue' ? 'bg-[#3b82f6]' :
-                    highlight.color === 'indigo' ? 'bg-[#6366f1]' :
-                    'bg-[#8b5cf6]'
-                  }`} />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#5ea0ff]" />
                   <span className="text-sm text-[#8899aa]">{highlight.text}</span>
                 </div>
               ))}
@@ -69,7 +65,7 @@ export default function CommandCenter() {
                     href={siteConfig.resume}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-secondary"
+                    className="btn btn-quiet"
                   >
                     {cta.label}
                   </a>
@@ -77,7 +73,7 @@ export default function CommandCenter() {
                   <a 
                     key={cta.id}
                     href={cta.href} 
-                    className="text-[#8899aa] hover:text-[#f0f4f8] font-medium transition-colors duration-300 text-nowrap"
+                    className="btn btn-text"
                   >
                     {cta.label}
                   </a>
