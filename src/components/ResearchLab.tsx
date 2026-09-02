@@ -199,8 +199,8 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
       {/* Active topic info panel */}
       {activeDirection && (
         <div className="research-info-panel">
-          <p className="font-mono text-[10px] text-[#3b82f6] tracking-widest uppercase mb-2">
-            {activeDirection.status.toUpperCase()}
+          <p className="text-xs text-[#5ea0ff] mb-2">
+            {activeDirection.status}
           </p>
           <h4 className="text-base font-semibold text-[#f0f4f8] mb-2">{activeDirection.title}</h4>
           <p className="text-sm text-[#8899aa] leading-relaxed">{activeDirection.description}</p>
@@ -208,14 +208,14 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
       )}
       
       {/* Mobile fallback - research interest grid */}
-      <div className="research-interest-grid md:hidden">
+      <div className="research-interest-grid research-mobile-fallback">
         {directions.slice(0, 6).map((direction) => (
           <div 
             key={direction.id}
             className="research-interest-card"
           >
-            <p className="font-mono text-[10px] text-[#3b82f6]/70 tracking-widest uppercase mb-1">
-              {direction.status.toUpperCase()}
+            <p className="text-xs text-[#8ea1b5] mb-1">
+              {direction.status}
             </p>
             <h4 className="text-sm font-semibold text-[#f0f4f8] mb-1">{direction.title}</h4>
             <p className="text-xs text-[#5a6a7a] leading-relaxed line-clamp-2">{direction.description}</p>
@@ -271,16 +271,11 @@ export default function ResearchLab() {
       </div>
       
       <div className="container-content relative z-10">
-        {/* Section Label */}
-        <div className="section-label">
-          <span className="section-label-number">{research.sectionLabel}</span>
-          <div className="section-label-line" />
-        </div>
-        
         <div className="research-layout">
           {/* Left - Research Constellation */}
           <div className="research-column">
             <h2 className="text-section-title font-bold text-[#f0f4f8] mb-4">{research.title}</h2>
+            <p className="section-eyebrow mb-4">{research.sectionLabel}</p>
             <p className="text-body text-[#8899aa] mb-6">
               {research.subtitle}
             </p>
