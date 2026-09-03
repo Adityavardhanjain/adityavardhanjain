@@ -37,6 +37,7 @@ export interface Project {
   researchThemes: string[];
   github?: string;
   demo?: string;
+  youtube?: string;
   documentation?: string;
   featured: boolean;
   status: 'completed' | 'in-progress' | 'archived';

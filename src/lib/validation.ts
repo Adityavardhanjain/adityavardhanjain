@@ -14,6 +14,7 @@ export interface ValidatedProject {
   researchThemes: string[];
   github?: string;
   demo?: string;
+  youtube?: string;
   documentation?: string;
   featured: boolean;
   status: "completed" | "in-progress" | "archived";
@@ -136,6 +137,7 @@ export function validateProject(project: unknown): ValidatedProject | null {
     researchThemes: safeArray(p.researchThemes, []),
     github: safeUrl(p.github),
     demo: safeUrl(p.demo),
+    youtube: safeUrl(p.youtube),
     documentation: safeUrl(p.documentation),
     featured: safeBoolean(p.featured, false),
     status: validateStatus(p.status),

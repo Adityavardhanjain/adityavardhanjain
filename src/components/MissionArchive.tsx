@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { ExternalLink, Cpu, FileText, Map, Dna, Brain } from 'lucide-react';
+import { ExternalLink, Cpu, FileText, Map, Dna, Brain, CirclePlay } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/SocialIcons';
 import { safeArray, safeString, safeUrl } from '@/lib/data';
 import content, { getFeaturedProjects } from '@/lib/content';
@@ -33,6 +33,7 @@ type ProjectCardProps = {
     technologies: string[];
     github?: string;
     demo?: string;
+    youtube?: string;
     status?: 'completed' | 'in-progress' | 'archived';
     visualType?: VisualKey;
   };
@@ -44,6 +45,7 @@ function ProjectCard({ project }: ProjectCardProps) {
   );
   const github = safeUrl(project.github);
   const demo = safeUrl(project.demo);
+  const youtube = safeUrl(project.youtube);
   const missionId = safeString(project.missionId);
   const objective = safeString(project.objective);
   const status = project.status ?? 'completed';
@@ -79,8 +81,8 @@ function ProjectCard({ project }: ProjectCardProps) {
             </span>
           ))}
         </div>
-        {(github || demo) && (
-          <div className="flex items-center gap-3 pt-2 mt-auto">
+        {(github || demo || youtube) && (
+          <div className="flex flex-wrap items-center gap-3 pt-2 mt-auto">
             {github && (
               <a
                 href={github}
@@ -91,6 +93,18 @@ function ProjectCard({ project }: ProjectCardProps) {
               >
                 <GithubIcon className="w-4 h-4" />
                 <span className="font-mono text-[0.6875rem] tracking-widest uppercase">Repo</span>
+              </a>
+            )}
+            {youtube && (
+              <a
+                href={youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+                aria-label={`Watch ${project.title} demo video on YouTube`}
+              >
+                <CirclePlay className="w-4 h-4" />
+                <span className="font-mono text-[0.6875rem] tracking-widest uppercase">Watch</span>
               </a>
             )}
             {demo && (

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import content from '@/lib/content';
 import type { ResearchDirection, Publication } from '@/lib/content';
 
-// Research topic positions for constellation visualization - viewBox 700x430
+// Research topic positions for constellation visualization - viewBox -20 0 740 430
 // Positions with 70-80 unit padding from edges
 const topicPositions = [
   { id: 'ai-verification', x: 140, y: 90, connections: ['world-models', 'intelligent-agents', 'multimodal-reasoning'], label: ['AI', 'Verification'], labelPos: 'left' },
@@ -25,22 +25,23 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
   
   const activeDirection = directions.find(d => d.id === activeTopic || d.id === hoveredTopic);
   
-  // Helper to get label offset
+  // Helper to get two-line external label position (spaced clear of nodes to avoid overlap)
   const getLabelOffset = (labelPos: string, isActive: boolean) => {
-    const baseOffset = isActive ? 50 : 45;
+    const baseOffset = isActive ? 86 : 78;
     switch (labelPos) {
-      case 'left': return { x: -baseOffset, y: 5, textAnchor: 'end' as const };
-      case 'right': return { x: baseOffset, y: 5, textAnchor: 'start' as const };
-      case 'top': return { x: 0, y: -baseOffset, textAnchor: 'middle' as const };
-      default: return { x: baseOffset, y: 5, textAnchor: 'start' as const };
+      case 'left': return { x: -baseOffset, y0: -6, y1: 12, textAnchor: 'end' as const };
+      case 'right': return { x: baseOffset, y0: -6, y1: 12, textAnchor: 'start' as const };
+      case 'top': return { x: 0, y0: -72, y1: -58, textAnchor: 'middle' as const };
+      default: return { x: baseOffset, y0: -6, y1: 12, textAnchor: 'start' as const };
     }
   };
+
   
   return (
     <div className="research-visualization">
       {/* SVG Constellation - properly sized viewBox with all content inside */}
       <svg 
-        viewBox="0 0 700 430" 
+        viewBox="-20 0 740 430" 
         width="100%"
         role="img"
         aria-label="Research interests connected around intelligent systems"
@@ -176,21 +177,24 @@ function ResearchConstellation({ directions }: { directions: ResearchDirection[]
                 </text>
               ))}
               
-              {/* External label offset (for longer labels that need more space) */}
-              <text
-                x={topic.x + labelOffset.x}
-                y={topic.y + labelOffset.y}
-                textAnchor={labelOffset.textAnchor}
-                className="pointer-events-none select-none transition-all duration-300"
-                style={{ 
-                  fontFamily: 'var(--font-jetbrains), monospace', 
-                  fontSize: '10px', 
-                  fontWeight: 600, 
-                  fill: isActive ? '#00D4FF' : 'rgba(255, 255, 255, 0.5)'
-                }}
-              >
-                {topic.label.join(' ')}
-              </text>
+              {/* External caption - two lines off to the side, well clear of the node */}
+              {topic.label.map((line, idx) => (
+                <text
+                  key={`${topic.id}-caption-${idx}`}
+                  x={topic.x + labelOffset.x}
+                  y={topic.y + (idx === 0 ? labelOffset.y0 : labelOffset.y1)}
+                  textAnchor={labelOffset.textAnchor}
+                  className="pointer-events-none select-none transition-all duration-300"
+                  style={{ 
+                    fontFamily: 'var(--font-jetbrains), monospace', 
+                    fontSize: '9px', 
+                    fontWeight: 600, 
+                    fill: isActive ? '#00D4FF' : 'rgba(255, 255, 255, 0.5)'
+                  }}
+                >
+                  {line}
+                </text>
+              ))}
             </g>
           );
         })}

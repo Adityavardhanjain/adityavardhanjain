@@ -34,13 +34,13 @@
   --container-padding: clamp(1.25rem, 3vw,  2.5rem);
 
   /* ---- Type scale (clamp) ---- */
-  --text-hero-name: clamp(3.5rem,  8vw,  7.5rem);
-  --text-section-title: clamp(1.7rem,  2.8vw,  2.6rem);
-  --text-card-title: clamp(1.25rem,  1.8vw, 1.55rem);
-  --text-body: 1.0625rem;
-  --text-hero-role: clamp(1rem,  1.3vw, 1.2rem);
-  --text-body-sm: 1rem;
-  --text-label: 0.75rem;
+  --text-hero-name: clamp(2.75rem,  5.5vw,  4.5rem);
+  --text-section-title: clamp(1.35rem,  2.2vw,  1.8rem);
+  --text-card-title: clamp(1.05rem,  1.4vw,  1.25rem);
+  --text-body: 0.9375rem;
+  --text-hero-role: clamp(0.875rem,  1vw,  1rem);
+  --text-body-sm: 0.875rem;
+  --text-label: 0.6875rem;
 
   /* ---- Line heights ---- */
   --leading-hero: 1.04;
@@ -644,7 +644,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: 1fr;
-  gap: 24px;
+  gap: 32px;
 }
 
 @media (max-width: 800px) { .project-grid { grid-template-columns: 1fr; } }
@@ -711,8 +711,8 @@ body {
 .project-card__content {
   display: flex;
   flex-direction: column;
-  gap: 1.125rem;
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  gap: 1.375rem;
+  padding: clamp(1.5rem, 2.75vw, 2rem);
   flex: 1;
 }
 

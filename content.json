@@ -60,7 +60,7 @@
         "description": "Developed a real-time brain-computer interface system that processes EEG signals collected using an OpenBCI UltraCortex headset during Tetris gameplay. Applied signal processing, feature extraction, data analysis, and deep-learning techniques to investigate neural activity and predict gameplay outcomes.",
         "technologies": ["Python for Data Science", "BCI", "Network Protocols", "EEG Signal Processing", "FFT", "Machine Learning", "Feature Engineering", "Data Analysis"],
         "researchThemes": ["Brain-computer interfaces", "Neural-signal analysis", "Human-computer interaction", "Real-time prediction"],
-        "youtube": "https://youtu.be/4zTdjzhOBEI?si=8s-1vHSAd5hiYI1A",
+        "youtube": "https://youtu.be/4zTdjzhOBEI",
         "featured": true,
         "status": "completed",
         "visualType": "eeg"
