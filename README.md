@@ -1,140 +1,215 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=header" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=140&section=header" width="100%" alt="Header banner" />
 
-# Hey, I'm Adityavardhan
+# Hey, I'm Adityavardhan Jain
 
-<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=20&pause=1000&color=58A6FF&center=true&vCenter=true&width=800&lines=AI+%26+ML+Engineer;Data+Analyst;Community+Leader;Space+%26+Defence+Tech+Explorer" alt="Typing SVG" />
+### AI & ML Engineer | Data Analyst | Community Leader
 
-Data Analytics Apprentice @ Google &nbsp;|&nbsp; Ex Martech Analyst &nbsp;|&nbsp; Ex Computer Vision Engineer &nbsp;|&nbsp; Data Science Research Intern
+AI, intelligent systems, computer vision, and space & defence technology.
 
-<img src="https://komarev.com/ghpvc/?username=Adityavardhanjain&color=blueviolet&style=flat&label=Profile+Views" alt="Profile views" />
-<img src="https://img.shields.io/github/followers/Adityavardhanjain?label=Followers&style=social" alt="GitHub followers" />
+**Data Analytics Apprentice @ Google** · Ex Martech Analyst · Ex Computer Vision Engineer · Data Science Research Intern
+
+<p>
+  <img src="https://komarev.com/ghpvc/?username=Adityavardhanjain&color=blueviolet&style=flat&label=Profile+Views" alt="Profile views" />
+  <img src="https://img.shields.io/github/followers/Adityavardhanjain?label=Followers&style=social" alt="GitHub followers" />
+</p>
+
+<p>
+  <a href="https://adityavardhanjain.vercel.app/">
+    <img src="https://img.shields.io/badge/Portfolio-Visit-58A6FF?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
+  </a>
+  <a href="https://github.com/Adityavardhanjain">
+    <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  <a href="https://www.linkedin.com/in/adityavardhan-jain/">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+</p>
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
+---
 
-## What I'm Working On
+## About Me
 
-- Advanced data analysis and business intelligence
-- Intelligent data systems and agentic AI for automation
-- Computer vision–based problem statements
-- Data science and machine learning
-- Scalable AI apps integrating MLOps + Cloud
-- Perception models for real-world robotics
-- Generative AI
+I'm an AI & ML engineer and data analyst passionate about building intelligent systems that solve real-world problems.
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
+My interests lie at the intersection of data, artificial intelligence, computer vision, and robotics. I enjoy transforming complex problems into practical, scalable solutions — from analytical systems and machine learning models to interactive AI-powered applications.
 
-## Tech Stack
-
-**Languages & Frameworks**
-
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=python,mysql,bash,r,cpp,c,html,css,tensorflow,pytorch,flask,opencv,sklearn,sqlite,regex" />
-</p>
-
-**Tools & Cloud**
-
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=anaconda,gcp,docker,git,github,linux,firebase,raspberrypi,kubernetes,replit" />
-</p>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
-
-## Achievements & Leadership
-
-- Google Certified Data Analytics Professional & Advanced Data Analytics Professional
-- Certified in Python for Data Science and Data Science: Inference and Modeling — Harvard University (edX)
-- Google Certified Prompt Engineering Professional & AI Professional
-- Best Paper Award — Neural Signatures in EEG Analysis
-- CCNA Certified — Introduction to Networks, Switching/Routing & Wireless Essentials, Enterprise Networking Security & Automation
-- Winner — Smart India Hackathon 2023 (Software Edition)
-- Lead — GDSC | CodeChef Chapter
-- Spot Award for Exceptional Performance as Consultant & Data Analyst at Tatvic
-
-<p align="left">
-  <img src="https://img.shields.io/badge/Google-Data%20Analytics%20Professional-4285F4?style=for-the-badge&logo=google&logoColor=white" />
-  <img src="https://img.shields.io/badge/Harvard-edX%20Certified-A51C30?style=for-the-badge&logo=edx&logoColor=white" />
-  <img src="https://img.shields.io/badge/CCNA-Certified-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" />
-  <img src="https://img.shields.io/badge/SIH%202023-Winner-FF6F00?style=for-the-badge" />
-</p>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
-
-## Featured Projects
-
-| Project | Domain | Tech |
-|---|---|---|
-| **[My Portfolio](https://adityavardhanjain.github.io/adityavardhanjain/)** | Single-page portfolio website | HTML, CSS, jQuery |
-| **Contagious Tech** | CV-based human target detection & acquisition | YOLO, Python, Scikit-learn |
-| **Tesseract** | Legal document AI chatbot | Gemini API, OCR, Flask |
-
-*Pinned repositories below highlight project code & demos.*
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
-
-## GitHub Stats
-
-<p align="center">
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adityavardhanjain&show_icons=true&theme=tokyonight" />
-  <img width="49%" src="https://streak-stats.demolab.com/?user=Adityavardhanjain&theme=tokyonight" />
-</p>
-<p align="center">
-  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adityavardhanjain&layout=compact&theme=tokyonight" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Adityavardhanjain&theme=tokyonight&no-frame=true&row=1&column=7" />
-</p>
-
-<p align="center">
-  <img width="90%" src="https://github-readme-activity-graph.vercel.app/graph?username=Adityavardhanjain&theme=tokyo-night&hide_border=true" />
-</p>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
-
-## Portfolio Sections
-
-- About Me
-- CV / Resume
-- Projects
-- Communities & Clubs
-- Contact
+- Currently working as a **Data Analytics Apprentice at Google**
+- Experienced in data analytics, martech, and computer vision
+- Interested in agentic AI, generative AI, and intelligent automation
+- Exploring robotics, perception systems, and space technology
+- Always learning, experimenting, and building
 
 > My goal is to build systems that connect intelligence with impact.
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
+## What I'm Working On
 
-## Resume
+- **Data Analytics & Intelligent Systems** — Advanced analytics, business intelligence, and data-driven decision-making.
+- **Agentic & Generative AI** — Building AI-powered applications, intelligent agents, and automation workflows.
+- **Computer Vision & Robotics** — Developing perception models and vision-based solutions for real-world applications.
+- **Scalable ML Systems** — Exploring MLOps, cloud infrastructure, and production-ready AI applications.
 
-[View / Download my latest resume](https://adityavardhanjain.github.io/adityavardhanjain/#cv)
+## Tech Stack
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
+### Languages
 
-## Connect With Me
-
-<p align="left">
-<a href="mailto:jainadityavardhan@gmail.com"><img src="https://skillicons.dev/icons?i=gmail" /></a>
-<a href="https://www.linkedin.com/in/adityavardhan-jain/"><img src="https://skillicons.dev/icons?i=linkedin" /></a>
+<p>
+  <img src="https://skillicons.dev/icons?i=python,cpp,c,r,bash" alt="Programming languages" />
 </p>
 
-<p align="left">
-<a href="mailto:jainadityavardhan@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-<a href="https://www.linkedin.com/in/adityavardhan-jain/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+### Machine Learning & AI
+
+<p>
+  <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,opencv,sklearn" alt="Machine learning technologies" />
 </p>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=100%25" width="100%"/>
+### Backend & Databases
 
-### Random dev joke
+<p>
+  <img src="https://skillicons.dev/icons?i=flask,mysql,sqlite,firebase" alt="Backend and database technologies" />
+</p>
 
-![Jokes Card](https://readme-jokes.vercel.app/api)
+### Tools, Cloud & Infrastructure
+
+<p>
+  <img src="https://skillicons.dev/icons?i=gcp,docker,kubernetes,git,github,linux,anaconda,raspberrypi" alt="Tools and infrastructure" />
+</p>
+
+### Additional Technologies
+
+`SQL` · `HTML` · `CSS` · `Regex` · `MLOps` · `Computer Vision` · `NLP` · `Generative AI`
+
+---
+
+## Featured Projects
+
+<table>
+  <tr>
+    <td width="50%">
+      <h3><a href="https://github.com/Adityavardhanjain/WikiCrawl">WikiCrawl</a></h3>
+      <p>An interactive graph explorer that visualizes the connections between Wikipedia articles. Search for a topic, watch the crawl unfold, and explore the resulting knowledge graph.</p>
+      <p>
+        <a href="https://wiki-crawl.vercel.app/">
+          <img src="https://img.shields.io/badge/Live-Demo-2EA44F?style=flat-square" alt="Live demo" />
+        </a>
+        <a href="https://github.com/Adityavardhanjain/WikiCrawl">
+          <img src="https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github" alt="Source code" />
+        </a>
+      </p>
+      <sub>Interactive Visualization · Web Development · Graph Exploration</sub>
+    </td>
+    <td width="50%">
+      <h3><a href="https://legal-tesseract.onrender.com/">Tesseract</a></h3>
+      <p>An AI-powered legal document application for document summarization and multilingual translation, combining OCR with language models.</p>
+      <p>
+        <a href="https://legal-tesseract.onrender.com/">
+          <img src="https://img.shields.io/badge/Live-Demo-2EA44F?style=flat-square" alt="Live demo" />
+        </a>
+      </p>
+      <sub>Python · Flask · OCR · Gemini API · NLP</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>Contagious Tech</h3>
+      <p>A computer vision project focused on human target detection and acquisition using deep learning techniques.</p>
+      <sub>YOLO · Python · Computer Vision · Scikit-learn</sub>
+    </td>
+    <td width="50%">
+      <h3>Brain-Computer Interface Research</h3>
+      <p>Exploring EEG signal processing and brain-computer interfaces for interactive applications, including game-play analysis and prediction.</p>
+      <sub>Python · OpenBCI · BrainFlow · Signal Processing</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <i>Explore my pinned repositories for more projects, source code, and experiments.</i>
+</p>
+
+---
+
+## Achievements & Leadership
+
+### Certifications
+
+- Google Data Analytics Professional Certificate
+- Google Advanced Data Analytics Professional Certificate
+- Google Prompt Engineering and AI-related certifications
+- Python for Data Science — Harvard University (edX)
+- Data Science: Inference and Modeling — Harvard University (edX)
+- Cisco CCNA coursework and certifications:
+  - Introduction to Networks
+  - Switching, Routing, and Wireless Essentials
+  - Enterprise Networking, Security, and Automation
+
+### Awards & Recognition
+
+- **Winner — Smart India Hackathon 2023**, Software Edition
+- **Best Paper Award** — Neural Signatures in EEG Analysis
+- **Spot Award** — Exceptional Performance as Consultant & Data Analyst at Tatvic
+
+### Leadership
+
+- **Lead — Google Developer Student Clubs (GDSC)**, IIST Indore
+- **Lead — CodeChef Chapter**
+- Organized and promoted technical events, workshops, and community initiatives
+
+---
+
+## GitHub Stats
 
 <div align="center">
 
-<b>Thanks for reading!</b>
+<a href="https://github.com/Adityavardhanjain">
+  <img height="180" src="https://github-readme-stats.vercel.app/api?username=Adityavardhanjain&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" alt="GitHub statistics" />
+</a>
+<a href="https://github.com/Adityavardhanjain">
+  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adityavardhanjain&layout=compact&theme=tokyonight&hide_border=true" alt="Most used languages" />
+</a>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" width="100%"/>
+<br />
+
+<img width="70%" src="https://streak-stats.demolab.com/?user=Adityavardhanjain&theme=tokyonight&hide_border=true" alt="GitHub contribution streak" />
+
+<br />
+
+<img width="95%" src="https://github-readme-activity-graph.vercel.app/graph?username=Adityavardhanjain&theme=tokyo-night&hide_border=true&area=true" alt="GitHub contribution activity graph" />
+
+</div>
+
+---
+
+## Let's Connect
+
+I'm always interested in discussing AI, machine learning, data science, research, and opportunities to build impactful technology.
+
+<p>
+  <a href="mailto:jainadityavardhan@gmail.com">
+    <img src="https://img.shields.io/badge/Email-Contact%20Me-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+  <a href="https://www.linkedin.com/in/adityavardhan-jain/">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://github.com/Adityavardhanjain">
+    <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  <a href="https://adityavardhanjain.vercel.app/#cv">
+    <img src="https://img.shields.io/badge/Resume-View-6C63FF?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Resume" />
+  </a>
+</p>
+
+---
+
+<div align="center">
+
+### Thanks for stopping by!
+
+*Building systems that connect intelligence with impact.*
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" width="100%" alt="Footer banner" />
 
 </div>
