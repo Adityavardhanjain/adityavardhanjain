@@ -75,20 +75,20 @@ export const researchDirections: ResearchDirection[] = [
 export const publications: Publication[] = [
   {
     id: "eeg-doctors",
-    title: "A Method for Doctor's Handwritten Text Recognition",
+    title: "A Method for Doctor's Handwritten Text Recognition by Utilizing Deep Learning and Ambiguity Handling",
     venue: "ACM Digital Library",
     year: "2026",
-    description: "Utilizing Deep Learning and Ambiguity Handling for handwritten medical record extraction.",
+    description: "A deep-learning approach to recognizing handwritten medicine names, with ambiguity handling and comparisons against OCR baselines.",
     status: "published",
+    link: "https://doi.org/10.1145/3793449.3793517",
   },
   {
     id: "neural-signatures",
-    title: "Neural Signatures of Eye Blinking",
-    venue: "CARE IIST Conference",
-    year: "2024",
-    description: "EEG analysis for inferencing complex cognitive processes during voluntary actions. Awarded Best Paper.",
+    title: "Neural Signatures of Eye Blinking: EEG Analysis for Inferring Complex Cognitive Processes",
+    venue: "International Conference for Advances in Cutting Edge Engineering and Technology",
+    year: "2025",
+    description: "EEG analysis exploring cognitive processes during voluntary actions. Recognized with a Best Paper Award.",
     status: "published",
-    link: "#",
   },
 ];
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "./studio.css";
+import "./cosmos.css";
 
 const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
@@ -21,23 +23,27 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Adityavardhan Jain | AI/ML Engineer, Data Analyst & Research Enthusiast",
-  description: "Portfolio of Adityavardhan Jain, exploring artificial intelligence, machine learning, data analytics, computer vision, brain-computer interfaces, intelligent systems, and interdisciplinary research.",
-  keywords: ["AI", "Machine Learning", "Data Science", "Portfolio", "Brain-Computer Interface", "Computer Vision", "Research"],
+  metadataBase: new URL("https://adityavardhanjain.dev"),
+  title: "Adityavardhan Jain — AI/ML Engineer, Data Analyst & Researcher",
+  description: "AI/ML engineer, data analyst, and researcher building intelligent systems across data, perception, and human-computer interaction.",
+  alternates: { canonical: "/" },
+  keywords: ["AI/ML Engineer", "Data Analyst", "Researcher", "Computer Vision", "Artificial Intelligence", "Brain-Computer Interfaces"],
   authors: [{ name: "Adityavardhan Jain" }],
   creator: "Adityavardhan Jain",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://adityavardhanjain.dev",
+    url: "/",
     siteName: "Adityavardhan Jain Portfolio",
-    title: "Adityavardhan Jain | AI/ML Engineer, Data Analyst & Research Enthusiast",
-    description: "Portfolio exploring artificial intelligence, machine learning, data analytics, computer vision, brain-computer interfaces, and interdisciplinary research.",
+    title: "Adityavardhan Jain — AI/ML Engineer, Data Analyst & Researcher",
+    description: "Building intelligent systems across data, perception, and human-computer interaction.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Adityavardhan Jain — AI / ML, Data, Research" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adityavardhan Jain | AI/ML Engineer",
-    description: "Building intelligent systems at the intersection of AI, data, and human cognition.",
+    title: "Adityavardhan Jain — AI/ML Engineer",
+    description: "Building intelligent systems across AI, data, and perception.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
@@ -55,10 +61,21 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className="min-h-screen bg-[#0B0D17] text-slate-100 antialiased">
-        <div className="instrument-grid" aria-hidden="true" />
-        <div className="starfield-twinkle" aria-hidden="true" />
+      <body className="min-h-screen antialiased">
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Adityavardhan Jain",
+              url: "https://adityavardhanjain.dev",
+              jobTitle: "AI/ML Engineer, Data Analyst, and Researcher",
+              sameAs: ["https://github.com/Adityavardhanjain", "https://linkedin.com/in/adityavardhan-jain/"],
+            }),
+          }}
+        />
       </body>
     </html>
   );

@@ -10,13 +10,13 @@ export const skills: SkillCategory[] = [
     id: "programming",
     title: "Programming Languages",
     icon: "code",
-    skills: ["Python", "SQL", "C", "C++", "Bash", "R"],
+    skills: ["Python", "SQL", "C", "C++", "Bash", "R", "Data Structures & Algorithms"],
   },
   {
     id: "ai-ml",
     title: "Artificial Intelligence",
     icon: "brain",
-    skills: ["Machine Learning", "Deep Learning", "Generative AI", "Computer Vision", "Natural Language Processing", "Time-Series Analysis"],
+    skills: ["Machine Learning", "Deep Learning", "Generative AI", "Computer Vision", "Natural Language Processing", "Time-Series Analysis", "Agentic AI", "RAG", "LLM Evaluation", "Transformers", "Prompt Engineering", "Embeddings", "Vector Databases", "Statistical Modeling"],
   },
   {
     id: "frameworks",
@@ -28,13 +28,13 @@ export const skills: SkillCategory[] = [
     id: "data",
     title: "Data & Analytics",
     icon: "database",
-    skills: ["Data Analysis", "Data Visualization", "Probability & Statistics", "Microsoft Excel", "Power BI", "Tableau", "Database Management", "BigQuery", "Pandas", "NumPy"],
+    skills: ["Data Analysis", "Data Visualization", "Probability & Statistics", "Microsoft Excel", "Power BI", "Tableau", "Database Management", "BigQuery", "Pandas", "NumPy", "PySpark", "Hadoop", "ETL", "Data Pipelines"],
   },
   {
     id: "infrastructure",
     title: "Infrastructure & DevOps",
     icon: "server",
-    skills: ["Git", "Docker", "Kubernetes", "Google Cloud Platform", "Linux", "Flask", "React", "AWS", "GCP", "CI/CD"],
+    skills: ["Git", "Docker", "Kubernetes", "Google Cloud Platform", "Linux", "Flask", "React", "AWS", "GCP", "CI/CD", "Azure Databricks", "Google Agentspace", "Google AI Studio", "FastAPI", "REST APIs"],
   },
   {
     id: "robotics",
@@ -46,7 +46,7 @@ export const skills: SkillCategory[] = [
     id: "research",
     title: "Research & Signal Processing",
     icon: "activity",
-    skills: ["EEG Analysis", "Brain-Computer Interfaces", "Signal Processing", "Feature Extraction", "Experimental Analysis", "Research Methodology", "Technical Writing"],
+    skills: ["EEG Analysis", "EEG Signal Processing", "Brain-Computer Interfaces", "Signal Processing", "Feature Extraction", "Experimental Analysis", "Research Methodology", "Technical Writing", "OCR", "Image Processing", "ROS2", "SLAM"],
   },
 ];
 

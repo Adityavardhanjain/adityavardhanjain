@@ -15,6 +15,22 @@ export interface Project {
   visualType: "eeg" | "document" | "road" | "protein" | "emotion" | "default";
 }
 
+export const wikiCrawl = {
+  id: "wikicrawl",
+  slug: "wikicrawl",
+  title: "WikiCrawl",
+  category: "Interactive knowledge graph",
+  description: "An interactive Wikipedia crawler that turns connected articles into a graph you can explore as it unfolds.",
+  problem: "Search returns pages, but hides the relationships between them.",
+  approach: "Traverse linked articles and render their connections as an interactive graph.",
+  technologies: ["Next.js", "Graph traversal", "Web crawling", "Interactive visualization", "Vercel"],
+  live: "https://wiki-crawl.vercel.app/",
+  github: "https://github.com/Adityavardhanjain/WikiCrawl",
+  favicon: "https://wiki-crawl.vercel.app/icon?f94c37ae60e3f47d",
+  featured: true,
+  status: "live",
+} as const;
+
 export const projects: Project[] = [
   {
     id: "neuro-tetris",
@@ -24,7 +40,7 @@ export const projects: Project[] = [
     description: "Developed a real-time brain-computer interface system that processes EEG signals collected using an OpenBCI UltraCortex headset during Tetris gameplay. Applied signal processing, feature extraction, data analysis, and machine-learning techniques to investigate neural activity and predict gameplay outcomes.",
     technologies: ["Python", "OpenBCI", "BrainFlow", "EEG Signal Processing", "FFT", "Machine Learning", "Feature Engineering", "Data Analysis"],
     researchThemes: ["Brain-computer interfaces", "Neural-signal analysis", "Human-computer interaction", "Real-time prediction"],
-    github: "https://github.com/adityavardhanjain/EEG-Tetris-Prediction",
+    youtube: "https://youtu.be/4zTdjzhOBEI?si=_uQZmrVjmDlWOi1T",
     featured: true,
     status: "completed",
     visualType: "eeg",
@@ -37,8 +53,6 @@ export const projects: Project[] = [
     description: "Built an intelligent legal-document platform that extracts text using OCR, summarizes complex legal content using language models, and translates information into Indian languages to improve accessibility.",
     technologies: ["Python", "Flask", "Tesseract OCR", "Legal-BERT", "Gemini", "Natural Language Processing", "Translation", "Generative AI"],
     researchThemes: ["Legal AI", "Document understanding", "Multilingual NLP", "Accessibility"],
-    github: "https://github.com/adityavardhanjain/Legal-Tesseract",
-    demo: "https://legal-tesseract.onrender.com",
     featured: true,
     status: "completed",
     visualType: "document",
@@ -48,10 +62,9 @@ export const projects: Project[] = [
     missionId: "MISSION-03",
     title: "AI Pothole Detection and Road-Maintenance System",
     objective: "Computer-vision system for real-time road damage detection with geospatial tracking",
-    description: "Developed a computer-vision system for detecting road damage using YOLO, edge-computing hardware, cameras, and GPS. Designed the system to identify potholes, capture geospatial information, and support infrastructure monitoring through analytical dashboards.",
-    technologies: ["YOLOv9", "Python", "OpenCV", "Raspberry Pi", "Computer Vision", "GPS", "Power BI", "Data Visualization"],
+    description: "Built Legolas, a YOLOv11 computer-vision pipeline for pothole detection across 50,000+ images, combining edge hardware, geospatial tagging, cameras, GPS, and analytical dashboards; achieved 95% mAP.",
+    technologies: ["YOLOv11", "Python", "OpenCV", "Raspberry Pi", "Computer Vision", "GPS", "Power BI", "Data Visualization"],
     researchThemes: ["Real-time object detection", "Edge AI", "Geospatial mapping", "Smart infrastructure"],
-    github: "https://github.com/adityavardhanjain/Pothole-Detection",
     featured: true,
     status: "completed",
     visualType: "road",
